@@ -1,0 +1,11 @@
+.DS_Store
+
+.config/.wrangler
+.config/configstore
+.config/jgit
+.config/lazygit/state.yml
+.config/neofetch
+.config/yarn
+
+Brewfile.lock.json
+.config/raycast

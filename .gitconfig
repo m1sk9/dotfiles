@@ -1,0 +1,37 @@
+[user]
+	name = lis2a
+	email = me@lilis.dev
+	signingKey = AAE831FBF2C0F93F
+[push]
+	default = current
+[pull]
+	ff = only
+	rebase = false
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = false
+	ignorecase = false
+	editor = code --wait
+	quotepath = false
+[color]
+	ui = true
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg]
+	program = gpg
+[ghq]
+	root = ~/project
+[alias]
+	a = add
+	co = checkout
+	cob = checkout -b
+	cm = commit -m
+	s = status
+	l = log --oneline --graph --decorate
+	ls = log --show-signature
+	all = add .
+	b = branch
+	ba = branch -a
