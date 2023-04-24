@@ -8,6 +8,13 @@ on:
       - 'bin/installer/installer.sh'
       - 'bin/installer/small_installer.sh'
       - 'bin/installer/ssh_installer.sh'
+  push:
+    branches:
+      - main
+    path:
+      - 'bin/installer/installer.sh'
+      - 'bin/installer/small_installer.sh'
+      - 'bin/installer/ssh_installer.sh'
 
 jobs:
   test:
