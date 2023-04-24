@@ -1,53 +1,66 @@
-# Homebrew 自身のアップデート
-homebrew_update() {
-    echo "--- Homebrew 自身のアップデートを行います。"
-    brew update
-    echo "--- Homebrew のアップデートが完了しました。"
-}
+# tap
 
-# Brewfile の同期
-brewfile() {
-    echo "--- Brewfile の同期を行います。"
-    brew bundle --file '~/Brewfile'
-    brew bundle cleanup --force --file '~/Brewfile'
-    echo "--- Brewfile の同期が完了しました。"
-}
+tap "heroku/brew"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
 
-# インストール済みのformulaの更新
-brew_upgrade() {
-    echo "--- インストール済みのformulaの更新を行います。"
-    brew upgrade
-    echo "--- 更新が完了しました。"
-}
+# brew
 
-# インストール済みのformulaのクリーンアップ
-# 同時にHomebrew prefix に存在するデッドシンボリックリンク(死んでしまったシンボリックリンク)を削除
-brew_cleanup() {
-    echo "--- インストール済みのformulaのクリーンアップを行います。"
-    brew cleanup -n
-    echo "--- 以上。これらのパッケージがクリーンアップされます。"
-    brew cleanup
-    echo "--- クリーンアップが完了しました。"
-}
+brew "bat"
+brew "cloudflared"
+brew "coreutils"
+brew "deno"
+brew "ffmpeg"
+brew "figlet"
+brew "gawk"
+brew "gh"
+brew "ghq"
+brew "git"
+brew "gnupg"
+brew "lazygit"
+brew "mas"
+brew "neofetch"
+brew "nvm"
+brew "onefetch"
+brew "peco"
+brew "pinentry-mac"
+brew "sbt"
+brew "starship"
+brew "tmux"
+brew "trivy"
+brew "ykman"
+brew "yt-dlp"
+brew "binutils"
 
-# -----------
+# cask
 
-figlet -f standard Homebrew Runner
+cask_args appdir: "~/Applications", require_sha: true
 
-echo "--- Homebrew Runner へようこそ。このランナーは Homebrew 関係の処理を一度に行います。"
+cask "alacritty"
+cask "cleanshot"
+cask "clipy"
+cask "discord"
+cask "docker"
+cask "google-chrome"
+cask "google-japanese-ime"
+cask "jetbrains-toolbox"
+cask "keybase"
+cask "notion"
+cask "postman"
+cask "raycast"
+cask "spotify"
+cask "visual-studio-code"
 
-echo "--- 現在の Homebrew:"
-brew --version
+# mas
 
-if [ ! command -v rustc &>/dev/null ]; then
-    echo "--- Homebrew がインストールされていません。このランナーは Homebrew をインストールしていないと実行できません。"
-    exit 1
-fi
-
-homebrew_update
-brewfile
-brew_upgrade
-brew_cleanup
-
-figlet -f standard Done!
-echo "--- Done! ランナーの実行が完了しました。"
+mas "1Password for Safari", id: 1569813296
+mas "BetterSnapTool", id: 417375580
+mas "iMovie", id: 408981434
+mas "LINE", id: 539883307
+mas "Microsoft Outlook", id: 985367838
+mas "NextDNS", id: 1464122853
+mas "RunCat", id: 1429033973
+mas "TickTick", id: 966085870
