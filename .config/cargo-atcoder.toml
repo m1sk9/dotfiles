@@ -1,0 +1,17 @@
+submit_via_binary = false
+
+use_cross = false
+
+strip_path = true
+
+template = """
+use proconio::{input, fastout};
+
+#[fastout]
+fn main() {
+    todo!();
+}
+"""
+
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
