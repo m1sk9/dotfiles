@@ -5,16 +5,12 @@ on:
     branches:
       - main
     path:
-      - 'bin/installer/installer.sh'
-      - 'bin/installer/small_installer.sh'
-      - 'bin/installer/ssh_installer.sh'
+      - 'installer.sh'
   push:
     branches:
       - main
     path:
-      - 'bin/installer/installer.sh'
-      - 'bin/installer/small_installer.sh'
-      - 'bin/installer/ssh_installer.sh'
+      - 'installer.sh'
 
 jobs:
   test:
@@ -25,29 +21,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: installer
-        run: ./bin/installer/installer.sh
-  test-small-installer:
-    # すもーる！のほうもテスト。同じVM上でやっても意味がないのでワークフローを分割。 (事前に macOS でのテストが成功している必要がある)
-    name: test small installer (macOS)
-    needs: test
-    runs-on: macos-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: small installer
-        run: ./bin/installer/small_installer.sh
-  test-ssh-installer:
-    # SSH版のほうもテスト。同じVM上でやっても意味がないのでワークフローを分割。 (事前に macOS でのテストが成功している必要がある)
-    name: test ssh installer (macOS)
-    needs: test
-    runs-on: macos-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: ssh installer
-        run: ./bin/installer/ssh_installer.sh
+        run: ./installer.sh
   test-other-os:
     # 本来 macOS でしか行えないインストール手順をスキップできるかの確認 (事前に macOS でのテストが成功している必要がある)
     name: test installer (ubuntu)
@@ -58,5 +32,5 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: installer
-        run: ./bin/installer/installer.sh
+        run: ./installer.sh
 
