@@ -53,6 +53,7 @@ cask "postman"
 cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
+cask "deepl"
 
 # mas
 
