@@ -34,6 +34,7 @@ brew "trivy"
 brew "ykman"
 brew "yt-dlp"
 brew "binutils"
+brew "htop"
 
 # cask
 
