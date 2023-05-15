@@ -10,3 +10,4 @@
 Brewfile.lock.json
 .config/raycast
 .config/github-copilot
+.config/htop
