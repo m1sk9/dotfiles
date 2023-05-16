@@ -8,7 +8,10 @@ export PATH="$PATH:/Users/m2en/Library/Application Support/JetBrains/Toolbox/scr
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Added JAVA_HOME
-export JAVA_HOME=`/usr/libexec/java_home -v "8"`
+## JDK 17
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+## JDK 8
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
 PATH=$JAVA_HOME/bin:$PATH
 
 # Added Deno path
