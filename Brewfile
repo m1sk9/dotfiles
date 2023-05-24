@@ -55,6 +55,8 @@ cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
 cask "deepl"
+# sha256 checksum 未定義
+cask "cloudflare-warp"
 
 # mas
 
