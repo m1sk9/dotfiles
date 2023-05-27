@@ -35,6 +35,7 @@ brew "ykman"
 brew "yt-dlp"
 brew "binutils"
 brew "htop"
+brew "sl"
 
 # cask
 
