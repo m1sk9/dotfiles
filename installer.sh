@@ -72,10 +72,7 @@ setup_development() {
 }
 
 reload_file() {
-    source ~/.
     source ~/dotfiles/.zshrc
-    source ~/dotfiles/.zshenv
-    source ~/dotfiles/.zprofile
 }
 
 # ---------------
