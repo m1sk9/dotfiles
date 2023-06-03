@@ -53,6 +53,12 @@ cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
 
+## JDK
+### Appleシリコン(ARM64) に対応したJDKを使用する
+
+cask "zulu17" # JDK17
+cask "zulu8" # JDK8
+
 # mas
 
 brew "mas"
