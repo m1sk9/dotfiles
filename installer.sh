@@ -48,25 +48,18 @@ setup_development() {
     else
         brew install nvm
         nvm install "lts/*" --reinstall-packages-from=current
-        node -v
-        npm -v
     fi
 
     if command -v rustc &>/dev/null; then
         echo "--- すでに Rust はインストールされています。"
     else
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-        cargo --version
-        rustup --version
-        rustc --version
     fi
 
     if command -v deno &>/dev/null; then
         echo "--- すでに Deno はインストールされています。"
     else
         brew install deno
-        deno --version
     fi
     echo "--- 開発環境のセットアップが完了しました。"
 }
