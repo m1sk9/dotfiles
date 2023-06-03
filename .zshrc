@@ -28,13 +28,10 @@ alias g='lazygit'
 alias vsc='code ./'
 alias v='code ./'
 alias cat='bat'
-alias atest='cargo compete test'
-alias asubmit='cargo compete submit'
 
 alias sbtss='sbt scalafixAll && sbt scalafmtAll'
 
 alias jdk17='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
-alias jdk11='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
 alias jdk8='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
 
 HISTFILE=~/.zsh-history
