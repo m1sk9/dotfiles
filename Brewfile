@@ -69,4 +69,4 @@ mas "Microsoft Outlook", id: 985367838
 mas "NextDNS", id: 1464122853
 mas "RunCat", id: 1429033973
 mas "TickTick", id: 966085870
-mas "Xcode", id: 497799835
+# mas "Xcode", id: 497799835
