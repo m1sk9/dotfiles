@@ -2,7 +2,7 @@
 SSH_AUTH_SOCK="$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
 
 # Added by Toolbox App
-export PATH="$PATH:/Users/m2en/Library/Application Support/JetBrains/Toolbox/scripts"
+export PATH="$PATH:/Users/lis/Library/Application Support/JetBrains/Toolbox/scripts"
 
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -15,9 +15,9 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 PATH=$JAVA_HOME/bin:$PATH
 
 # Added Deno path
-export DENO_INSTALL="/Users/m2en/.deno"
+export DENO_INSTALL="/Users/lis/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-export PATH="/Users/lis2a/.deno/bin:$PATH"
+export PATH="/Users/lis/.deno/bin:$PATH"
 
 # Changed config path
 export XDG_CONFIG_HOME="$HOME/.config"
