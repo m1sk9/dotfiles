@@ -57,8 +57,7 @@ cask "spotify"
 cask "visual-studio-code"
 cask "deepl"
 # sha256 checksum 未定義
-cask "cloudflare-warp"
-cask "brave-browser"
+# cask "cloudflare-warp"
 
 # mas
 
