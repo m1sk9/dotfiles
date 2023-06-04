@@ -52,6 +52,7 @@ cask "postman"
 cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
+cask "prismlauncher"
 
 ## JDK
 ### Appleシリコン(ARM64) に対応したJDKを使用する
