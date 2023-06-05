@@ -1,7 +1,7 @@
 [user]
 	name = lis2a
 	email = me@lilis.dev
-	signingKey = AAE831FBF2C0F93F
+	signingKey = 92C4779D1B5A80F3
 [push]
 	default = current
 [pull]
