@@ -5,6 +5,7 @@ link_symboliclink() {
     ln -s ~/dotfiles/.zshenv ~/
     ln -s ~/dotfiles/.zprofile ~/
     ln -s ~/dotfiles/.tmux.conf ~/
+    ln -s ~/dotfiles/iceberg_minimal.tmux.conf ~/
     ln -s ~/dotfiles/.gitconfig ~/
     ln -s ~/dotfiles/Brewfile ~/
     ln -s ~/dotfiles/.config ~/
