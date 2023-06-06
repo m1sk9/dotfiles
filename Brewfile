@@ -6,6 +6,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+tap "homebrew/cask-fonts"
 
 # brew
 
@@ -53,6 +54,10 @@ cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
 cask "prismlauncher"
+
+## Fonts
+
+cask "font-jetbrains-mono-nerd-font"
 
 ## JDK
 ### Appleシリコン(ARM64) に対応したJDKを使用する
