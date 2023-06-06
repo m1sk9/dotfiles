@@ -27,7 +27,6 @@ brew "onefetch"
 brew "peco" # Simplistic interactive filtering tool
 brew "pinentry-mac"
 brew "sbt"
-brew "starship"
 brew "tmux"
 brew "trivy"
 brew "ykman"
