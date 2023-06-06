@@ -33,7 +33,6 @@ brew "ykman"
 brew "binutils"
 brew "htop"
 brew "sl"
-brew "pure"
 
 # cask
 
