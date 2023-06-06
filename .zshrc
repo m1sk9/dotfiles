@@ -16,6 +16,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light mollifier/anyframe
+zinit light sindresorhus/pure
 
 bindkey '^r' anyframe-widget-execute-history
 bindkey '^g' anyframe-widget-cd-ghq-repository
@@ -41,5 +42,3 @@ SAVEHIST=1000000
 setopt AUTO_CD
 
 setopt AUTO_PARAM_KEYS
-
-eval "$(starship init zsh)"
