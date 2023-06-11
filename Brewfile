@@ -53,6 +53,7 @@ cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
 cask "prismlauncher"
+cask "obs"
 
 ## Fonts
 
