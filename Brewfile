@@ -54,6 +54,7 @@ cask "spotify"
 cask "visual-studio-code"
 cask "prismlauncher"
 cask "obs"
+cask "figma"
 
 ## Fonts
 
