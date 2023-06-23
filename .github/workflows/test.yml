@@ -5,32 +5,26 @@ on:
     branches:
       - main
     path:
-      - 'installer.sh'
+      - 'installer.ts'
   push:
     branches:
       - main
     path:
-      - 'installer.sh'
+      - 'installer.ts'
 
 jobs:
-  test:
-    name: test installer (macOS)
+  deploy-test:
+    name: deploy dotfile test
     runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: installer
-        run: ./installer.sh
-  test-other-os:
-    # 本来 macOS でしか行えないインストール手順をスキップできるかの確認 (事前に macOS でのテストが成功している必要がある)
-    name: test installer (ubuntu)
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
 
       - name: installer
-        run: ./installer.sh
+        run: deno task deploy
 
+      - run: deno task deploy:check

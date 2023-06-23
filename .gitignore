@@ -1,13 +1,13 @@
 .DS_Store
 
-.config/.wrangler
-.config/configstore
-.config/jgit
-.config/lazygit/state.yml
-.config/neofetch
-.config/yarn
+config/others/.wrangler
+config/others/configstore
+config/others/jgit
+config/others/lazygit/state.yml
+config/others/neofetch
+config/others/yarn
 
 Brewfile.lock.json
-.config/raycast
-.config/github-copilot
-.config/htop
+config/others/raycast
+config/others/github-copilot
+config/others/htop
