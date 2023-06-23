@@ -57,7 +57,7 @@ const deployDotfiles = defineTask([
 const setupDotfiles = defineTask([
     // Install Homebrew
     exec({
-        cmd: "bash",
+        cmd: "bin/bash",
         args: ["-c", "\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""],
     }),
     // Install Rosetta2
@@ -70,8 +70,8 @@ const setupDotfiles = defineTask([
         args: ["~/dotfiles/.zshrc"],
     }),
     exec({
-        cmd: "brew",
-        args: ["bundle"],
+        cmd: "./homebrew.sh",
+        args: [""],
     }),
     exec({
         cmd: "git",
