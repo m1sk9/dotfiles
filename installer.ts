@@ -39,6 +39,10 @@ const deployDotfiles = defineTask([
         source: './config/Brewfile',
         destination: `${home}/Brewfile`,
     }),
+    /**
+     * .config, .gitconfig は GitHub Actions 上では必ず失敗する
+     * これは、GitHub Actions のホスト環境で既に存在しているためである
+     */
     link({
         source: './config/others',
         destination: `${home}/.config`,
