@@ -42,6 +42,11 @@ const deployDotfiles = defineTask([
     link({
         source: './config/others',
         destination: `${home}/.config`,
+    }),
+    // Git
+    link({
+        source: './.gitconfig',
+        destination: `${home}/.gitconfig`,
     })
 ])
 
