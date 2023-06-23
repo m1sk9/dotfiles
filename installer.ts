@@ -1,0 +1,88 @@
+// cf. https://github.com/re-taro/dotfiles/blob/main/dotfiles.ts
+import { exec } from "https://deno.land/x/moira@0.1.0/actions.ts"
+import {
+    defineTask,
+    home,
+    link,
+    printCheckResults,
+} from "https://deno.land/x/moira@0.1.0/mod.ts"
+
+if(!home) {
+    throw new Error("[$HOME] is not set")
+}
+
+const deployDotfiles = defineTask([
+    // zsh
+    link({
+        source: './config/zsh/.zprofile',
+        destination: `${home}/.zprofile`,
+    }),
+    link({
+        source: './config/zsh/.zshrc',
+        destination: `${home}/.zshrc`,
+    }),
+    link({
+        source: './config/zsh/.zshenv',
+        destination: `${home}/.zshenv`,
+    }),
+    // tmux
+    link({
+        source: './config/tmux/.tmux.conf',
+        destination: `${home}/.tmux.conf`,
+    }),
+    link({
+        source: './config/tmux/iceberg_minimal.tmux.conf',
+        destination: `${home}/.tmux/iceberg_minimal.tmux.conf`,
+    }),
+    // Homebrew
+    link({
+        source: './config/Brewfile',
+        destination: `${home}/Brewfile`,
+    }),
+    link({
+        source: './config/others',
+        destination: `${home}/.config`,
+    })
+])
+
+const setupDotfiles = defineTask([
+    // Install Homebrew
+    exec({
+        cmd: "bash",
+        args: ["-c", "\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""],
+    }),
+    // Install Rosetta2
+    exec({
+        cmd: "sudo",
+        args: ["softwareupdate", "--install-rosetta", "--agree-to-license"],
+    }),
+    exec({
+        cmd: "source",
+        args: ["~/dotfiles/.zshrc"],
+    }),
+    exec({
+        cmd: "brew",
+        args: ["bundle"],
+    }),
+    exec({
+        cmd: "git",
+        args: ["clone", "https://github.com/tmux-plugins/tpm", "~/.tmux/plugins/tpm"],
+    }),
+])
+
+if (Deno.args.includes('deploy')) {
+    if(Deno.args.includes('run')) {
+        await deployDotfiles.run()
+    } else {
+        printCheckResults(await deployDotfiles.check())
+    }
+} else if (Deno.args.includes('setup')) {
+    if(Deno.args.includes('run')) {
+        await setupDotfiles.run()
+    } else {
+        printCheckResults(await setupDotfiles.check())
+    }
+} else {
+    console.log('Usage: deno run --allow-read --allow-write dotfiles.ts [deploy|setup]')
+    Deno.exit(1)
+}
