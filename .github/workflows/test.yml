@@ -13,8 +13,8 @@ on:
       - 'installer.ts'
 
 jobs:
-  test:
-    name: test installer (macOS)
+  deploy-test:
+    name: deploy dotfile test
     runs-on: macos-latest
 
     steps:
@@ -25,5 +25,19 @@ jobs:
           deno-version: v1.x
 
       - name: installer
-        run: ./installer.sh
+        run: deno task deploy
 
+      - run: deno task deploy:check
+  setup-test:
+    name: setup dotfile test
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: installer
+        run: deno task setup
