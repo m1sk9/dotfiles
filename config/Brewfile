@@ -8,6 +8,7 @@ tap "homebrew/cask-fonts"
 
 # brew
 
+brew "terraform"
 brew "bat"
 brew "nvm"
 brew "cloudflared"
