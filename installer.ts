@@ -1,11 +1,10 @@
-// cf. https://github.com/re-taro/dotfiles/blob/main/dotfiles.ts
-import { exec } from "https://deno.land/x/moira@0.1.0/actions.ts"
 import {
+    exec,
     defineTask,
     home,
     link,
     printCheckResults,
-} from "https://deno.land/x/moira@0.1.0/mod.ts"
+} from "./deps.ts"
 
 if(!home) {
     throw new Error("[$HOME] is not set")
