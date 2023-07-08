@@ -8,14 +8,17 @@
 	ff = only
 	rebase = false
 [init]
-	defaultBranch = main
+	defaultbranch = main
 [core]
-	autocrlf = false
+	autocrlf = input
 	ignorecase = false
 	editor = code --wait
 	quotepath = false
 [color]
 	ui = true
+	diff = auto
+	status = auto
+	branch = auto
 [commit]
 	gpgsign = true
 [tag]
@@ -35,3 +38,11 @@
 	all = add .
 	b = branch
 	ba = branch -a
+[rebase]
+	updateRefs = true
+[fetch]
+	prune = true
+[status]
+	showUntrackedFiles = all
+[merge]
+	conflictStyle = diff3
