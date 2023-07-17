@@ -6,6 +6,7 @@ config/others/jgit
 config/others/lazygit/state.yml
 config/others/neofetch
 config/others/yarn
+config/others/gh
 
 Brewfile.lock.json
 config/others/raycast
