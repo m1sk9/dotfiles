@@ -1,7 +1,7 @@
 # 2023/04/02: テーマ設定は alacritty がメンテしている alacritty-theme を import する形に対応
 
 import:
-  - ~/.config/alacritty/themes/iceberg.yaml
+  - ~/.config/alacritty/themes/momiji.yaml
 
 # フォント
 font:
