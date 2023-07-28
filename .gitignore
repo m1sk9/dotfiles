@@ -3,12 +3,13 @@
 config/others/.wrangler
 config/others/configstore
 config/others/jgit
-config/others/lazygit/state.yml
 config/others/neofetch
 config/others/yarn
 config/others/gh
-
-Brewfile.lock.json
 config/others/raycast
 config/others/github-copilot
 config/others/htop
+
+config/lazygit/state.yml
+
+Brewfile.lock.json
