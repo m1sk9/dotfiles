@@ -30,8 +30,13 @@ const deployDotfiles = defineTask([
         destination: `${home}/.tmux.conf`,
     }),
     link({
-        source: './config/tmux/iceberg_minimal.tmux.conf',
+        source: './config/tmux/theme.conf',
         destination: `${home}/.tmux/theme.conf`,
+    }),
+    // Alacritty
+    link({
+        source: './config/alacritty',
+        destination: `${home}/.config/alacritty`,
     }),
     // Homebrew
     link({
