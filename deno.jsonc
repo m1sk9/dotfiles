@@ -1,8 +1,7 @@
 {
     "tasks": {
-        "deploy": "deno run --allow-run --allow-read --allow-write --allow-env installer.ts deploy run",
-        "setup": "deno run --allow-run --allow-read --allow-write --allow-env installer.ts setup run",
-        "deploy:check": "deno run --allow-run --allow-read --allow-write --allow-env installer.ts deploy",
-        "setup:check": "deno run --allow-run --allow-read --allow-write --allow-env installer.ts setup"
+        "deploy": "deno run --allow-run --allow-read --allow-write --allow-env runner.ts deploy",
+        "setup": "deno run --allow-run --allow-read --allow-write --allow-env runner.ts setup",
+        "check": "deno run --allow-run --allow-read --allow-write --allow-env runner.ts check"
     }
 }
