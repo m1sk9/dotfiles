@@ -38,6 +38,11 @@ const deployDotfiles = defineTask([
         source: './config/alacritty',
         destination: `${home}/.config/alacritty`,
     }),
+    // git
+    link({
+        source: './config/git',
+        destination: `${home}/.config/git`,
+    }),
     // Homebrew
     link({
         source: './config/Brewfile',
