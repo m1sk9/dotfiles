@@ -5,12 +5,12 @@ on:
     branches:
       - main
     path:
-      - 'installer.ts'
+      - 'runner.ts'
   push:
     branches:
       - main
     path:
-      - 'installer.ts'
+      - 'runner.ts'
 
 jobs:
   deploy-test:
@@ -24,7 +24,8 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: installer
+      - name: installer (link)
         run: deno task deploy
 
-      - run: deno task deploy:check
+      - name: installer (exec)
+        run: deno task setup
