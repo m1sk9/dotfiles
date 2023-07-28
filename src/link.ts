@@ -1,16 +1,10 @@
-import {
-    exec,
-    defineTask,
-    home,
-    link,
-    printCheckResults,
-} from "./deps.ts"
+import { defineTask, link, home } from "../deps.ts";
 
 if(!home) {
-    throw new Error("[$HOME] is not set")
+    throw new Error('[home] is not defined')
 }
 
-const deployDotfiles = defineTask([
+export const linkDotfile = defineTask([
     // zsh
     link({
         source: './config/zsh/.zprofile',
@@ -67,45 +61,3 @@ const deployDotfiles = defineTask([
         destination: `${home}/.gitconfig`,
     })
 ])
-
-const setupDotfiles = defineTask([
-    // Install Homebrew
-    exec({
-        cmd: "bin/bash",
-        args: ["-c", "\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""],
-    }),
-    // Install Rosetta2
-    exec({
-        cmd: "sudo",
-        args: ["softwareupdate", "--install-rosetta", "--agree-to-license"],
-    }),
-    exec({
-        cmd: "source",
-        args: ["~/dotfiles/.zshrc"],
-    }),
-    exec({
-        cmd: "./homebrew.sh",
-        args: [""],
-    }),
-    exec({
-        cmd: "git",
-        args: ["clone", "https://github.com/tmux-plugins/tpm", "~/.tmux/plugins/tpm"],
-    }),
-])
-
-if (Deno.args.includes('deploy')) {
-    if(Deno.args.includes('run')) {
-        await deployDotfiles.run()
-    } else {
-        printCheckResults(await deployDotfiles.check())
-    }
-} else if (Deno.args.includes('setup')) {
-    if(Deno.args.includes('run')) {
-        await setupDotfiles.run()
-    } else {
-        printCheckResults(await setupDotfiles.check())
-    }
-} else {
-    console.log('Usage: deno run --allow-read --allow-write dotfiles.ts [deploy|setup]')
-    Deno.exit(1)
-}
