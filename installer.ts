@@ -43,6 +43,11 @@ const deployDotfiles = defineTask([
         source: './config/git',
         destination: `${home}/.config/git`,
     }),
+    // lazygit
+    link({
+        source: './config/lazygit',
+        destination: `${home}/.config/lazygit`,
+    }),
     // Homebrew
     link({
         source: './config/Brewfile',
