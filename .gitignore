@@ -12,4 +12,8 @@ config/others/htop
 
 config/lazygit/state.yml
 
+ssh/config
+ssh/known_hosts
+ssh/known_hosts.old
+
 Brewfile.lock.json

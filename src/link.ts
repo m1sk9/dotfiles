@@ -47,6 +47,11 @@ export const linkDotfile = defineTask([
         source: './config/Brewfile',
         destination: `${home}/Brewfile`,
     }),
+    // SSH
+    link({
+        source: './ssh',
+        destination: `${home}/.ssh`,
+    }),
     /**
      * .config, .gitconfig は GitHub Actions 上では必ず失敗する
      * これは、GitHub Actions のホスト環境で既に存在しているためである
