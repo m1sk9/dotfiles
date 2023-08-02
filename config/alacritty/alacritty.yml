@@ -1,7 +1,7 @@
 # 2023/04/02: テーマ設定は alacritty がメンテしている alacritty-theme を import する形に対応
 
 import:
-  - ~/.config/alacritty/themes/momiji.yaml
+  - ~/.config/alacritty/themes/tokyo-night.yaml
 
 # フォント
 font:
@@ -12,7 +12,7 @@ font:
 # シェルの設定
 shell:
   ## 起動時に tmux を起動する
-  program: /bin/zsh
+  program: /opt/homebrew/bin/fish
   ## セッションが存在していればそのセッションに attach し、セッションが存在しない場合は新規セッションを作成する
   args:
     - -l
@@ -30,12 +30,6 @@ window:
   ## macOS では何も表示しないオプション等が用意されていたが今後 macOS 以外でも使う可能性を考慮して設定していない
   ## See also: https://github.com/alacritty/alacritty/blob/master/alacritty.yml#L56-L65
   decorations: full
-
-# セレクション設定
-selection:
-  ## Alacitty 上で指定した文字を自動的にクリップボードにコピーする
-  ## tmux が pbcopy を叩きにいくのもありだけど、 pbcopy があるのは macOS だけなのでこれはあまり好まれない気がするので Alacitty にやらせたい
-  save_to_clipboard: true
 
 # カーソル設定
 cursor:

@@ -5,18 +5,10 @@ if(!home) {
 }
 
 export const linkDotfile = defineTask([
-    // zsh
+    // fish
     link({
-        source: './config/zsh/.zprofile',
-        destination: `${home}/.zprofile`,
-    }),
-    link({
-        source: './config/zsh/.zshrc',
-        destination: `${home}/.zshrc`,
-    }),
-    link({
-        source: './config/zsh/.zshenv',
-        destination: `${home}/.zshenv`,
+        source: './config/fish/config.fish',
+        destination: `${home}/.config/fish/config.fish`,
     }),
     // tmux
     link({
@@ -51,14 +43,6 @@ export const linkDotfile = defineTask([
     link({
         source: './ssh',
         destination: `${home}/.ssh`,
-    }),
-    /**
-     * .config, .gitconfig は GitHub Actions 上では必ず失敗する
-     * これは、GitHub Actions のホスト環境で既に存在しているためである
-     */
-    link({
-        source: './config/others',
-        destination: `${home}/.config/others`,
     }),
     // Git
     link({
