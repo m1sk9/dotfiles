@@ -5,6 +5,8 @@ alias clone='ghq get'
 alias lg='lazygit'
 alias v='code'
 alias cat='bat'
+alias g='git'
+alias d='docker'
 
 alias sbtss='sbt scalafixAll && sbt scalafmtAll'
 

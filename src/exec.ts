@@ -23,4 +23,12 @@ export const execDotfiles = defineTask([
         cmd: "git",
         args: ["clone", "https://github.com/tmux-plugins/tpm", "~/.tmux/plugins/tpm"],
     }),
+    exec({
+        cmd: "fisher",
+        args: ["install", "decors/fish-ghq"],
+    }),
+    exec({
+        cmd: "fisher",
+        args: ["install", "jorgebucaran/fish-nvm"],
+    })
 ])
