@@ -18,6 +18,11 @@ export const linkDotfile = defineTask([
         source: './config/zsh/.zshenv',
         destination: `${home}/.zshenv`,
     }),
+    // fish
+    link({
+        source: './config/fish/config.fish',
+        destination: `${home}/.config/fish/config.fish`,
+    }),
     // tmux
     link({
         source: './config/tmux/.tmux.conf',
