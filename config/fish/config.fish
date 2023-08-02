@@ -1,5 +1,3 @@
-gpg-connect-agent --quiet /bye
-
 # setting alias
 alias clone='ghq get'
 alias lg='lazygit'
@@ -21,10 +19,9 @@ set -x PATH "$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 set -x DENO_INSTALL "$HOME/.deno"
 set -x XDG_CONFIG_HOME "$HOME/.config"
+set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-fish_add_path $HOME/.cargo/env
 
 # ------
 starship init fish | source
