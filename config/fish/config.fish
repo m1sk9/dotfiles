@@ -24,4 +24,14 @@ set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # ------
+
 starship init fish | source
+
+# ------
+
+function nvm
+   bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+end
+
+set -x NVM_DIR ~/.nvm
+nvm use default --silent
