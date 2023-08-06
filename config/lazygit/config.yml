@@ -18,12 +18,16 @@ refresher:
 customCommands:
   - key: 'u'
     context: 'files'
-    description: 'stash unstaged files'
+    description: 'Stash unstaged files'
     command: 'git stash save --include-untracked'
   - key: 'r'
     context: 'status'
-    description: 'add remote url'
+    description: 'Add remote url'
     command: 'git remote add origin "{{index .PromptResponses 0}}" '
     prompts:
       - type: 'input'
         title: 'remote url'
+  - key: '<c-c>'
+    context: 'commits'
+    description: 'Cancel commit'
+    command: 'git reset --soft HEAD^'
