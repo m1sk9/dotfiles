@@ -33,8 +33,6 @@ brew "sl"
 brew "starship"
 brew "terraform"
 brew "tmux"
-brew "tokei"
-brew "trivy"
 brew "ykman"
 
 # cask
@@ -42,12 +40,13 @@ brew "ykman"
 cask_args appdir: "~/Applications", require_sha: true
 
 cask "alacritty"
+cask "arc"
 cask "cleanshot"
 cask "discord"
 cask "deepl"
 cask "docker"
 cask "figma"
-cask "google-chrome"
+# cask "google-chrome"
 cask "google-japanese-ime"
 cask "jetbrains-toolbox"
 cask "keybase"

@@ -15,9 +15,10 @@ export const linkDotfile = defineTask([
         source: './config/tmux/.tmux.conf',
         destination: `${home}/.tmux.conf`,
     }),
+    // GitHub CLI
     link({
-        source: './config/tmux/theme.conf',
-        destination: `${home}/.tmux/theme.conf`,
+        source: './config/gh/config.yml',
+        destination: `${home}/.config/gh/config.yml`,
     }),
     // Alacritty
     link({
