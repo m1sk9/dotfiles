@@ -52,6 +52,7 @@ cask "jetbrains-toolbox"
 cask "keybase"
 cask "notion"
 cask "obs"
+cask "stats"
 cask "postman"
 cask "prismlauncher"
 cask "raycast"
@@ -73,8 +74,8 @@ cask "zulu8" # JDK8
 brew "mas"
 
 mas "BetterSnapTool", id: 417375580
+mas "Hidden Bar", id: 1452453066
 mas "LINE", id: 539883307
 mas "Microsoft Outlook", id: 985367838
-mas "RunCat", id: 1429033973
 mas "TickTick", id: 966085870
 mas "Toggl Track: Hours & Time Log", id: 1291898086
