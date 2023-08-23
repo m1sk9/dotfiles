@@ -8,6 +8,7 @@ tap "heroku/brew"
 
 # brew
 
+brew "1password-cli"
 brew "bat"
 brew "binutils"
 brew "cloudflared"
@@ -23,17 +24,15 @@ brew "git"
 brew "gnupg"
 brew "htop"
 brew "lazygit"
-brew "neofetch"
+brew "lazydocker"
 brew "nvm"
 brew "peco"
 brew "pinentry-mac"
 brew "pkg-config"
 brew "sbt"
-brew "sl"
 brew "starship"
-brew "terraform"
 brew "tmux"
-brew "ykman"
+
 
 # cask
 
@@ -41,16 +40,17 @@ cask_args appdir: "~/Applications", require_sha: true
 
 cask "alacritty"
 cask "arc"
+cask "cron"
 cask "cleanshot"
 cask "discord"
 cask "deepl"
 cask "docker"
 cask "figma"
-# cask "google-chrome"
 cask "google-japanese-ime"
 cask "jetbrains-toolbox"
 cask "keybase"
 cask "notion"
+cask "obsidian"
 cask "obs"
 cask "stats"
 cask "postman"
@@ -77,5 +77,4 @@ mas "BetterSnapTool", id: 417375580
 mas "Hidden Bar", id: 1452453066
 mas "LINE", id: 539883307
 mas "Microsoft Outlook", id: 985367838
-mas "TickTick", id: 966085870
 mas "Toggl Track: Hours & Time Log", id: 1291898086
