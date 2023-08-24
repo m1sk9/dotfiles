@@ -12,7 +12,7 @@
 [core]
 	autocrlf = input
 	ignorecase = false
-	editor = code --wait
+	editor = vim
 	quotepath = false
 [color]
 	ui = true
@@ -29,15 +29,9 @@
 	root = ~/project
 [alias]
 	a = add
-	co = checkout
-	cob = checkout -b
-	cm = commit -m
 	s = status
 	l = log --oneline --graph --decorate
 	ls = log --show-signature
-	all = add .
-	b = branch
-	ba = branch -a
 [rebase]
 	updateRefs = true
 [fetch]
