@@ -1,80 +1,97 @@
-# tap
-
+tap "heroku/brew"
+tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-tap "homebrew/cask-fonts"
-tap "heroku/brew"
-
-# brew
-
-brew "1password-cli"
 brew "bat"
 brew "binutils"
 brew "cloudflared"
 brew "coreutils"
 brew "deno"
+brew "ffmpeg"
 brew "fish"
 brew "fzf"
-brew "ffmpeg"
 brew "gawk"
 brew "gh"
 brew "ghq"
 brew "git"
 brew "gnupg"
 brew "htop"
-brew "lazygit"
 brew "lazydocker"
+brew "lazygit"
+brew "mas"
 brew "nvm"
 brew "peco"
 brew "pinentry-mac"
 brew "pkg-config"
 brew "sbt"
 brew "starship"
+brew "terminal-notifier"
 brew "tmux"
-
-
-# cask
-
-cask_args appdir: "~/Applications", require_sha: true
-
 cask "alacritty"
 cask "arc"
-cask "cron"
 cask "cleanshot"
-cask "discord"
+cask "cron"
 cask "deepl"
+cask "discord"
 cask "docker"
 cask "figma"
+cask "font-jetbrains-mono-nerd-font"
 cask "google-japanese-ime"
 cask "jetbrains-toolbox"
 cask "keybase"
 cask "notion"
-cask "obsidian"
 cask "obs"
-cask "stats"
+cask "obsidian"
 cask "postman"
 cask "prismlauncher"
 cask "raycast"
 cask "spotify"
+cask "stats"
 cask "visual-studio-code"
-
-## Fonts
-
-cask "font-jetbrains-mono-nerd-font"
-
-## JDK
-### Appleシリコン(ARM64) に対応したJDKを使用する
-
-cask "zulu17" # JDK17
-cask "zulu8" # JDK8
-
-# mas
-
-brew "mas"
-
+cask "zulu17"
+cask "zulu8"
 mas "BetterSnapTool", id: 417375580
 mas "Hidden Bar", id: 1452453066
 mas "LINE", id: 539883307
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft OneNote", id: 784801555
 mas "Microsoft Outlook", id: 985367838
-mas "Toggl Track: Hours & Time Log", id: 1291898086
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
+mas "NextDNS", id: 1464122853
+mas "Toggl Track", id: 1291898086
+vscode "Avetis.tokyo-night"
+vscode "codezombiech.gitignore"
+vscode "DavidAnson.vscode-markdownlint"
+vscode "dbaeumer.vscode-eslint"
+vscode "denoland.vscode-deno"
+vscode "donjayamanne.githistory"
+vscode "eamodio.gitlens"
+vscode "EditorConfig.EditorConfig"
+vscode "esbenp.prettier-vscode"
+vscode "GitHub.copilot"
+vscode "GitHub.remotehub"
+vscode "github.vscode-github-actions"
+vscode "GitHub.vscode-pull-request-github"
+vscode "hashicorp.terraform"
+vscode "mhutchie.git-graph"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-vscode.makefile-tools"
+vscode "ms-vscode.remote-repositories"
+vscode "mutantdino.resourcemonitor"
+vscode "oderwat.indent-rainbow"
+vscode "PKief.material-icon-theme"
+vscode "ritwickdey.LiveServer"
+vscode "rust-lang.rust-analyzer"
+vscode "shardulm94.trailing-spaces"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "tamasfe.even-better-toml"
+vscode "unifiedjs.vscode-mdx"
+vscode "usernamehw.errorlens"
+vscode "vscjava.vscode-java-pack"
+vscode "WakaTime.vscode-wakatime"
+vscode "wayou.vscode-todo-highlight"
+vscode "yzhang.markdown-all-in-one"
+
+cask_args appdir: "~/Applications", require_sha: true
