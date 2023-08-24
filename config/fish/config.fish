@@ -1,6 +1,7 @@
 # setting alias
 alias clone='ghq get'
 alias lg='lazygit'
+alias ld='lazydocker'
 alias v='code'
 alias cat='bat'
 alias g='git'
