@@ -14,13 +14,11 @@ export LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/laz
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit ; sudo install lazygit /usr/local/bin
 
-export LAZYDOCKER_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazydocker/releases/latest" | grep -Po '"tag_name": "v\K[0-35.]+')
-curl -Lo lazydocker.tar.gz "https://github.com/jesseduffield/lazydocker/releases/latest/download/lazydocker${LAZYDOCKER_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazydocker.tar.gz lazydocker ; sudo install lazydocker /usr/local/bin
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
 curl -sS https://starship.rs/install.sh | sh
 
-ln -sfvn $PWD/config/fish/config.ssh.fish $HOME/.config/fish/config.ssh.fish
+ln -sfvn $PWD/config/fish/config.ssh.fish $HOME/.config/fish/config.fish
 ln -sfv $PWD/config/git/.gitconfig $HOME/.gitconfig
 
 sudo chsh -s /usr/bin/fish
