@@ -6,7 +6,7 @@ fi
 echo
 
 ln -sfvn $PWD/config/alacritty $HOME/.config/alacritty
-ln -sfvn $PWD/config/fish $HOME/.config/fish
+ln -sfvn $PWD/config/fish/config.fish $HOME/.config/fish/config.fish
 ln -sfvn $PWD/config/gh $HOME/.config/gh
 ln -sfvn $PWD/config/lazygit $HOME/.config/lazygit
 ln -sfvn $PWD/config/git/ignore $HOME/.config/ignore
