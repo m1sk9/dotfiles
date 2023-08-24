@@ -18,27 +18,11 @@ export LAZYDOCKER_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/
 curl -Lo lazydocker.tar.gz "https://github.com/jesseduffield/lazydocker/releases/latest/download/lazydocker${LAZYDOCKER_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazydocker.tar.gz lazydocker ; sudo install lazydocker /usr/local/bin
 
+curl -sS https://starship.rs/install.sh | sh
+
 ln -sfvn $PWD/config/fish/config.ssh.fish $HOME/.config/fish/config.ssh.fish
 ln -sfv $PWD/config/git/.gitconfig $HOME/.gitconfig
 
-# --
-
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-sudo softwareupdate --install-rosetta --agree-to-license
-
-./symlink.sh
-
-brew bundle --file '~/Brewfile'
-
-brew autoupdate start
-
-sudo chsh -s /opt/homebrew/bin/fish
-
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-fisher install decors/fish-ghq
-
-fisher install jorgebucaran/fish-nvm
+sudo chsh -s /usr/bin/fish
 
 fish
