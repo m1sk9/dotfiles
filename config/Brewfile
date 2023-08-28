@@ -31,7 +31,6 @@ brew "terminal-notifier"
 brew "tmux"
 brew "rust-analyzer"
 cask "alacritty"
-cask "arc"
 cask "cleanshot"
 cask "cron"
 cask "deepl"
@@ -53,6 +52,7 @@ cask "stats"
 cask "visual-studio-code"
 cask "zulu17"
 cask "zulu8"
+mas "1Password for Safari", id: 1569813296
 mas "BetterSnapTool", id: 417375580
 mas "Hidden Bar", id: 1452453066
 mas "LINE", id: 539883307

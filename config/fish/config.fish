@@ -6,6 +6,9 @@ alias v='code'
 alias cat='bat'
 alias g='git'
 alias d='docker'
+alias n='nvim'
+alias vim='nvim'
+alias nano='nvim'
 
 alias sbtss='sbt scalafixAll && sbt scalafmtAll'
 
@@ -33,7 +36,7 @@ gpg-connect-agent /bye
 # ------
 
 function nvm
-   bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+    bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
 end
 
 set -x NVM_DIR ~/.nvm
