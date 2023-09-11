@@ -15,8 +15,6 @@ brew autoupdate start
 
 sudo chsh -s /opt/homebrew/bin/fish
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 fisher install decors/fish-ghq
 
 fisher install jorgebucaran/fish-nvm
