@@ -3,12 +3,10 @@ alias clone='ghq get'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias v='code'
+alias vs='code ./'
 alias cat='bat'
 alias g='git'
 alias d='docker'
-alias n='nvim'
-alias vim='nvim'
-alias nano='nvim'
 
 alias sbtss='sbt scalafixAll && sbt scalafmtAll'
 
