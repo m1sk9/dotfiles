@@ -10,6 +10,7 @@ alias d='docker'
 
 alias sbtss='sbt scalafixAll && sbt scalafmtAll'
 
+alias jdk21='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
 alias jdk17='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
 alias jdk8='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
 
@@ -19,7 +20,7 @@ set -x PATH "$DENO_INSTALL/bin:$PATH"
 set -x PATH "$HOME/.deno/bin:$PATH"
 set -x PATH "$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 set -x PATH "$PATH:/usr/local/bin"
-set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"
 set -x DENO_INSTALL "$HOME/.deno"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
