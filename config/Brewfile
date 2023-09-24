@@ -49,6 +49,7 @@ cask "spotify"
 cask "stats"
 cask "slack"
 cask "visual-studio-code"
+cask "zulu21"
 cask "zulu17"
 cask "zulu8"
 mas "BetterSnapTool", id: 417375580
