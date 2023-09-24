@@ -53,11 +53,6 @@ cask "zulu17"
 cask "zulu8"
 mas "BetterSnapTool", id: 417375580
 mas "LINE", id: 539883307
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft OneNote", id: 784801555
-mas "Microsoft Outlook", id: 985367838
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Word", id: 462054704
 mas "NextDNS", id: 1464122853
 mas "Toggl Track", id: 1291898086
 vscode "Avetis.tokyo-night"
