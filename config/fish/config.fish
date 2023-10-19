@@ -10,9 +10,9 @@ alias d='docker'
 
 alias sbtss='sbt scalafixAll && sbt scalafmtAll'
 
-alias jdk21='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
-alias jdk17='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
-alias jdk8='export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home" && PATH=$JAVA_HOME/bin:$PATH'
+alias jdk21='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"'
+alias jdk17='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"'
+alias jdk8='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"'
 
 # setting path
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
