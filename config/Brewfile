@@ -11,6 +11,7 @@ brew "coreutils" # deps formula
 brew "deno"
 brew "ffmpeg"
 brew "fish"
+brew "fzf"
 brew "gawk" # deps formula
 brew "gh"
 brew "ghq"
