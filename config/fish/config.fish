@@ -7,6 +7,8 @@ alias cat='bat'
 alias g='git'
 alias d='docker'
 
+alias c='cargo'
+
 alias sbtss='sbt scalafixAll && sbt scalafmtAll'
 
 alias jdk21='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"'
