@@ -11,8 +11,8 @@ shell:
 
 window:
   dimensions:
-    columns: 185
-    lines: 50
+    columns: 100
+    lines: 30
   decorations: full
 
 cursor:
