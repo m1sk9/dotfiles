@@ -27,6 +27,7 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+. /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 # ------
 
@@ -35,12 +36,3 @@ starship init fish | source
 gpg-connect-agent /bye
 
 # ------
-
-function nvm
-    bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
-end
-
-set -x NVM_DIR ~/.nvm
-nvm use default --silent
-
-. /opt/homebrew/opt/asdf/libexec/asdf.fish
