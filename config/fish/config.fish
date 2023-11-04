@@ -42,3 +42,5 @@ end
 
 set -x NVM_DIR ~/.nvm
 nvm use default --silent
+
+. /opt/homebrew/opt/asdf/libexec/asdf.fish
