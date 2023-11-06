@@ -18,3 +18,5 @@ ssh/known_hosts
 ssh/known_hosts.old
 
 Brewfile.lock.json
+
+config/gh/hosts.yml
