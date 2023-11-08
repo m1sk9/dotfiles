@@ -9,7 +9,7 @@ brew "bat"
 brew "btop" # deps formula
 brew "bun"
 brew "coreutils" # deps formula
-brew "deno"
+# brew "deno"
 brew "ffmpeg"
 brew "fish"
 brew "fzf"
