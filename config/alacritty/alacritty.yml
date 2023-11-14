@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/theme.yml
+  - ~/.config/alacritty/iceberg.yml
 
 font:
   size: 14
@@ -11,8 +11,8 @@ shell:
 
 window:
   dimensions:
-    columns: 100
-    lines: 30
+    columns: 120
+    lines: 40
   decorations: full
 
 cursor:
