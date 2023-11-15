@@ -1,6 +1,3 @@
-import:
-  - ~/.config/alacritty/iceberg.yml
-
 font:
   size: 14
   normal:
@@ -14,6 +11,11 @@ window:
     columns: 120
     lines: 40
   decorations: full
+
+colors:
+  primary:
+    background: '#191d19'
+    foreground: '#d2d4de'
 
 cursor:
   style:
