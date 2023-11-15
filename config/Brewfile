@@ -49,7 +49,6 @@ cask "raycast"
 cask "spotify"
 cask "slack"
 cask "stats"
-cask "ticktick"
 cask "visual-studio-code"
 cask "zulu21"
 cask "zulu17"
@@ -59,5 +58,6 @@ mas "BetterSnapTool", id: 417375580
 mas "LINE", id: 539883307
 mas "NextDNS", id: 1464122853
 mas "Toggl Track", id: 1291898086
+mas "TickTick:To-Do List, Calendar", id: 966085870
 
 cask_args appdir: "~/Applications", require_sha: true
