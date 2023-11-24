@@ -11,6 +11,7 @@ window:
     columns: 120
     lines: 40
   decorations: full
+  decorations_theme_variant: Dark
 
 colors:
   primary:
