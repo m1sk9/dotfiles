@@ -18,3 +18,4 @@ ln -sfvn "$HOME"/dotfiles/common/ssh/smartcard.pub "$HOME"/.ssh/smartcard.pub
 
 # home
 ln -sfvn "$HOME"/dotfiles/common/config/git/.gitconfig "$HOME"/.gitconfig
+ln -sfvn "$HOME"/dotfiles/common/config/tmux/.tmux.conf "$HOME"/.tmux.conf

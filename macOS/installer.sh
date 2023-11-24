@@ -18,5 +18,6 @@ if [ "$(echo $SHELL)" != "/opt/homebrew/bin/fish" ]; then
     sudo chsh -s /opt/homebrew/bin/fish
 fi
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 fisher install decors/fish-ghq
-fisher install jorgebucaran/fish-nvm
