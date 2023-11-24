@@ -1,22 +1,2 @@
-.DS_Store
-.vscode
 
-config/others/.wrangler
-config/others/configstore
-config/others/jgit
-config/others/neofetch
-config/others/yarn
-config/others/gh
-config/others/raycast
-config/others/github-copilot
-config/others/htop
-
-config/lazygit/state.yml
-
-ssh/config
-ssh/known_hosts
-ssh/known_hosts.old
-
-Brewfile.lock.json
-
-config/gh/hosts.yml
+common/config/lazygit/state.yml

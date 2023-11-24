@@ -1,21 +1,24 @@
+import:
+  - ~/.config/alacritty/theme.yml
+
 font:
   size: 14
   normal:
-    family: 'JetBrainsMonoNL Nerd Font Mono'
+    family: 'JetBrainsMonoNL NFM'
 
 shell:
   program: /opt/homebrew/bin/fish
+  args:
+    - -l
+    - -c
+    - "tmux a -t 0 || tmux"
 
 window:
   dimensions:
     columns: 120
     lines: 40
   decorations: full
-
-colors:
-  primary:
-    background: '#191d19'
-    foreground: '#d2d4de'
+  decorations_theme_variant: Dark
 
 cursor:
   style:
