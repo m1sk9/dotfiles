@@ -1,3 +1,6 @@
+import:
+  - ~/.config/alacritty/theme.yml
+
 font:
   size: 14
   normal:
@@ -12,11 +15,6 @@ window:
     lines: 40
   decorations: full
   decorations_theme_variant: Dark
-
-colors:
-  primary:
-    background: '#191d19'
-    foreground: '#d2d4de'
 
 cursor:
   style:

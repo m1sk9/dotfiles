@@ -1,6 +1,7 @@
 # .config
 mkdir -p "$HOME"/.config/alacritty
 ln -sfvn "$HOME"/dotfiles/common/config/alacritty/alacritty.yml "$HOME"/.config/alacritty/alacritty.yml
+ln -sfvn "$HOME"/dotfiles/common/config/alacritty/theme.yml "$HOME"/.config/alacritty/theme.yml
 
 mkdir -p "$HOME"/.config/gh
 ln -sfvn "$HOME"/dotfiles/common/config/gh/config.yml "$HOME"/.config/gh/config.yml
