@@ -27,7 +27,7 @@ brew "pinentry-mac"
 brew "sbt"
 brew "starship"
 brew "tfenv" # deps formula
-brew "tmux"
+# brew "tmux"
 brew "rust-analyzer"
 cask "1password"
 cask "1password-cli"
