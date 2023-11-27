@@ -1,4 +1,4 @@
-$HOME/dotfiles/common/symlink.sh
+$HOME/dotfiles/symlink.sh
 
 mkdir -p "$HOME"/.config/fish
 ln -sfvn "$HOME"/dotfiles/macOS/config/fish/config.fish "$HOME"/.config/fish/config.fish
