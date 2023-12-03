@@ -4,6 +4,7 @@ alias lg='lazygit'
 alias ld='lazydocker'
 alias v='code ./'
 alias cat='bat'
+alias find='fd'
 alias g='git'
 alias d='docker'
 
