@@ -10,7 +10,8 @@ ln -sfvn "$HOME"/dotfiles/config/gh/hosts.yml "$HOME"/.config/gh/hosts.yml
 mkdir -p "$HOME"/.config/lazygit
 ln -sfvn "$HOME"/dotfiles/config/lazygit/config.yml "$HOME"/.config/lazygit/config.yml
 
-ln -sfvn "$HOME"/dotfiles/config/git/ignore "$HOME"/.config/ignore
+mkdir -p "$HOME"/.config/git
+ln -sfvn "$HOME"/dotfiles/config/git/ignore "$HOME"/.config/git/ignore
 
 # .ssh
 mkdir -p "$HOME"/.ssh
