@@ -9,7 +9,6 @@ brew "bat"
 brew "btop" # deps formula
 brew "bun"
 brew "coreutils" # deps formula
-# brew "deno"
 brew "ffmpeg"
 brew "fish"
 brew "fzf"
@@ -28,12 +27,10 @@ brew "pinentry-mac"
 brew "sbt"
 brew "starship"
 brew "tfenv" # deps formula
-# brew "tmux"
 brew "rust-analyzer"
 cask "1password"
 cask "1password-cli"
 cask "alacritty"
-# cask "arc"
 cask "cron"
 cask "cleanshot"
 cask "deepl"
@@ -61,6 +58,5 @@ mas "BetterSnapTool", id: 417375580
 mas "LINE", id: 539883307
 mas "NextDNS", id: 1464122853
 mas "Toggl Track", id: 1291898086
-mas "TickTick:To-Do List, Calendar", id: 966085870
 
 cask_args appdir: "~/Applications", require_sha: true
