@@ -24,6 +24,7 @@ brew "lazygit"
 brew "neofetch"
 brew "mas"
 brew "pinentry-mac"
+brew "pkg-config"
 brew "sbt"
 brew "starship"
 brew "tfenv" # deps formula
