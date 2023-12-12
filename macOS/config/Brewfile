@@ -57,6 +57,10 @@ cask "zulu8"
 cask "linear-linear"
 mas "BetterSnapTool", id: 417375580
 mas "LINE", id: 539883307
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft Word", id: 462054704
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Outlook", id: 985367838
 mas "NextDNS", id: 1464122853
 mas "Toggl Track", id: 1291898086
 
