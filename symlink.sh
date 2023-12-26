@@ -13,10 +13,10 @@ ln -sfvn "$HOME"/dotfiles/config/lazygit/config.yml "$HOME"/.config/lazygit/conf
 mkdir -p "$HOME"/.config/git
 ln -sfvn "$HOME"/dotfiles/config/git/ignore "$HOME"/.config/git/ignore
 
-# .ssh
-mkdir -p "$HOME"/.ssh
-ln -sfvn "$HOME"/dotfiles/ssh/smartcard.pub "$HOME"/.ssh/smartcard.pub
+mkdir -p "$HOME"/.config/fish
+ln -sfvn "$HOME"/dotfiles/config/fish/config.fish "$HOME"/.config/fish/config.fish
 
 # home
 ln -sfvn "$HOME"/dotfiles/config/git/.gitconfig "$HOME"/.gitconfig
 ln -sfvn "$HOME"/dotfiles/config/tmux/.tmux.conf "$HOME"/.tmux.conf
+ln -sfvn "$HOME"/dotfiles/config/Brewfile "$HOME"/Brewfile

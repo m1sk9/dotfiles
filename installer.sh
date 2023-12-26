@@ -18,6 +18,8 @@ if [ "$(echo $SHELL)" != "/opt/homebrew/bin/fish" ]; then
     sudo chsh -s /opt/homebrew/bin/fish
 fi
 
+curl https://github.com/m1sk9.keys > ~/.ssh/smartcard.pub
+
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 fisher install decors/fish-ghq
