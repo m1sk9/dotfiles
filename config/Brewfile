@@ -64,6 +64,7 @@ mas "Microsoft Outlook", id: 985367838
 mas "Hidden Bar", id: 1452453066
 mas "NextDNS", id: 1464122853
 mas "Toggl Track", id: 1291898086
+mas "Tailscale", id: 1475387142
 mas "RunCat", id: 1429033973
 
 cask_args appdir: "~/Applications", require_sha: true
