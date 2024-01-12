@@ -1,24 +1,30 @@
-# Inferno theme
+# Colors (Gruvbox dark)
+
+# Default colors
 [colors.primary]
-background = '0x270d06'
-foreground = '0xd9d9d9'
+# hard contrast background = = '#1d2021'
+background = '#282828'
+# soft contrast background = = '#32302f'
+foreground = '#ebdbb2'
 
+# Normal colors
 [colors.normal]
-black = '0x330000'
-red = '0xff3300'
-green = '0xff6600'
-yellow = '0xff9900'
-blue = '0xffcc00'
-magenta = '0xff6600'
-cyan = '0xff9900'
-white = '0xd9d9d9'
+black   = '#282828'
+red     = '#cc241d'
+green   = '#98971a'
+yellow  = '#d79921'
+blue    = '#458588'
+magenta = '#b16286'
+cyan    = '#689d6a'
+white   = '#a89984'
 
+# Bright colors
 [colors.bright]
-black = '0x663300'
-red = '0xff6633'
-green = '0xff9966'
-yellow = '0xffcc99'
-blue = '0xffcc33'
-magenta = '0xff9966'
-cyan = '0xffcc99'
-white = '0xd9d9d9'
+black   = '#928374'
+red     = '#fb4934'
+green   = '#b8bb26'
+yellow  = '#fabd2f'
+blue    = '#83a598'
+magenta = '#d3869b'
+cyan    = '#8ec07c'
+white   = '#ebdbb2'
