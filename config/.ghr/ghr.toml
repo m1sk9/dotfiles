@@ -1,0 +1,6 @@
+[profiles.default]
+user.name = "Sho Sakuma"
+user.email = "me@m1sk9.dev"
+
+[[rules]]
+profile.name = "default"

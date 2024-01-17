@@ -22,4 +22,4 @@ curl https://github.com/m1sk9.keys > ~/.ssh/smartcard.pub
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-fisher install decors/fish-ghq
+fisher install m1sk9/fish-ghr
