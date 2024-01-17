@@ -1,5 +1,5 @@
 # setting alias
-alias clone='ghq get'
+alias clone='ghr get'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias v='code ./'
@@ -25,6 +25,7 @@ set -x PATH "$PATH:/usr/local/bin"
 set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"
 set -x DENO_INSTALL "$HOME/.deno"
 set -x XDG_CONFIG_HOME "$HOME/.config"
+set -x GHR_ROOT "$HOME/project"
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
