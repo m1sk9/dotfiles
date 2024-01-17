@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "heroku/brew"
 tap "oven-sh/bun" # "bun" formula tap
+tap "s6n-jp/tap" # "ghr" formula tap
 brew "asdf"
 brew "bat"
 brew "btop" # deps formula
@@ -15,7 +16,7 @@ brew "fzf"
 brew "fd"
 brew "gawk" # deps formula
 brew "gh"
-brew "ghq"
+brew "s6n-jp/tap/ghr"
 brew "git"
 brew "gnupg"
 brew "htop"
