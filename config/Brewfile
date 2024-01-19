@@ -57,7 +57,6 @@ cask "zulu21"
 cask "zulu17"
 cask "zulu8"
 cask "linear-linear"
-mas "Bear - プライベートメモ", id: 1091189122
 mas "GarageBand", id: 682658836
 mas "LINE", id: 539883307
 mas "Microsoft Excel", id: 462058435
