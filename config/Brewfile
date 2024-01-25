@@ -66,14 +66,12 @@ cask "zulu21"
 cask "zulu17"
 cask "zulu8"
 cask "linear-linear"
-mas "GarageBand", id: 682658836
 mas "LINE", id: 539883307
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Word", id: 462054704
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Outlook", id: 985367838
 mas "Hand Mirror", id: 1502839586
-mas "Hidden Bar", id: 1452453066
 mas "NextDNS", id: 1464122853
 mas "Toggl Track", id: 1291898086
 mas "Tailscale", id: 1475387142
