@@ -28,6 +28,9 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x GHR_ROOT "$HOME/project"
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 . /opt/homebrew/opt/asdf/libexec/asdf.fish
 
