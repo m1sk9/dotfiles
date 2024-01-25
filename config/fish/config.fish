@@ -1,5 +1,5 @@
 # setting alias
-alias clone='ghr get'
+alias clone='ghr clone'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias v='code ./'
