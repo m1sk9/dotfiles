@@ -6,7 +6,7 @@ shape = "Underline"
 TERM = "alacritty"
 
 [font]
-size = 13.5
+size = 14
 
 [font.normal]
 family = "0xProto Nerd Font"
