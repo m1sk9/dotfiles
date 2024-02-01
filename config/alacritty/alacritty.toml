@@ -6,10 +6,10 @@ shape = "Underline"
 TERM = "alacritty"
 
 [font]
-size = 14
+size = 13.5
 
 [font.normal]
-family = "JetBrainsMonoNL NFM"
+family = "0xProto Nerd Font"
 
 [shell]
 program = "/opt/homebrew/bin/fish"
