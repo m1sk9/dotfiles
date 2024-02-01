@@ -21,5 +21,4 @@ ln -sfvn "$HOME"/dotfiles/config/starship/starship.toml "$HOME"/.config/starship
 
 # home
 ln -sfvn "$HOME"/dotfiles/config/git/.gitconfig "$HOME"/.gitconfig
-ln -sfvn "$HOME"/dotfiles/config/tmux/.tmux.conf "$HOME"/.tmux.conf
 ln -sfvn "$HOME"/dotfiles/config/Brewfile "$HOME"/Brewfile
