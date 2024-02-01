@@ -1,0 +1,14 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+$directory$package$git_branch$docker$rust$nodejs$character
+"""
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+[package]
+format = "([$version]($style)) "
+
+[git_branch]

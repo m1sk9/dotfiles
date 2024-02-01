@@ -26,6 +26,7 @@ set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"
 set -x DENO_INSTALL "$HOME/.deno"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x GHR_ROOT "$HOME/project"
+set -x STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
 set -gx VOLTA_HOME "$HOME/.volta"

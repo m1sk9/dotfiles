@@ -16,6 +16,9 @@ ln -sfvn "$HOME"/dotfiles/config/git/ignore "$HOME"/.config/git/ignore
 mkdir -p "$HOME"/.config/fish
 ln -sfvn "$HOME"/dotfiles/config/fish/config.fish "$HOME"/.config/fish/config.fish
 
+mkdir -p "$HOME"/.config/starship
+ln -sfvn "$HOME"/dotfiles/config/starship/starship.toml "$HOME"/.config/starship/starship.toml
+
 # home
 ln -sfvn "$HOME"/dotfiles/config/git/.gitconfig "$HOME"/.gitconfig
 ln -sfvn "$HOME"/dotfiles/config/tmux/.tmux.conf "$HOME"/.tmux.conf
