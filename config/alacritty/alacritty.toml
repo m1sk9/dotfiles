@@ -1,3 +1,7 @@
+import = [
+  "~/.config/alacritty/theme.toml"
+]
+
 [cursor.style]
 blinking = "Off"
 shape = "Underline"
