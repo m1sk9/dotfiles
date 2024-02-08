@@ -7,7 +7,6 @@ tap "oven-sh/bun" # "bun" formula tap
 tap "s6n-jp/tap" # "ghr" formula tap
 tap "sidneys/homebrew"
 tap "minacle/chntpw"
-brew "asdf"
 brew "aria2"
 brew "bat"
 brew "btop" # deps formula
@@ -19,7 +18,6 @@ brew "ffmpeg"
 brew "fish"
 brew "fzf"
 brew "fd"
-brew "volta"
 brew "gawk" # deps formula
 brew "gh"
 brew "s6n-jp/tap/ghr"
@@ -30,6 +28,7 @@ brew "lazydocker"
 brew "lazygit"
 brew "neofetch"
 brew "mas"
+brew "mise"
 brew "minacle/chntpw/chntpw"
 brew "pinentry-mac"
 brew "pkg-config"
