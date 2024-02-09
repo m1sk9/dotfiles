@@ -29,8 +29,5 @@ set -x GHR_ROOT "$HOME/project"
 set -x STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
-
 starship init fish | source
 gpg-connect-agent /bye
