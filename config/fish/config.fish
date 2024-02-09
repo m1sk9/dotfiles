@@ -5,10 +5,6 @@ alias ld='lazydocker'
 alias v='code ./'
 alias cat='bat'
 alias find='fd'
-alias g='git'
-alias d='docker'
-
-alias c='cargo'
 
 alias sbtss='sbt scalafixAll && sbt scalafmtAll'
 
