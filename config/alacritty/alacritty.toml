@@ -2,26 +2,15 @@ import = [
   "~/.config/alacritty/theme.toml"
 ]
 
-[cursor.style]
-blinking = "Off"
-shape = "Underline"
-
 [env]
 TERM = "alacritty"
 
 [font]
-size = 14
+size = 12.7
 
 [font.normal]
 family = "JetBrainsMonoNL NFM"
 
-[shell]
-program = "/opt/homebrew/bin/fish"
-
 [window]
 decorations = "full"
 decorations_theme_variant = "Dark"
-
-[window.dimensions]
-columns = 120
-lines = 40
