@@ -52,6 +52,7 @@ cask "font-noto-sans-jp"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-0xproto-nerd-font"
 cask "google-japanese-ime"
+cask "google-chrome-canary"
 cask "jetbrains-toolbox"
 cask "notion"
 cask "maccy"
@@ -75,7 +76,7 @@ mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Outlook", id: 985367838
 mas "Toggl Track", id: 1291898086
 mas "Tailscale", id: 1475387142
-mas "Xcode", id: 497799835
+# mas "Xcode", id: 497799835
 mas "RunCat", id: 1429033973
 
 cask_args appdir: "~/Applications", require_sha: true
