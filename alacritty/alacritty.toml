@@ -11,6 +11,9 @@ size = 12.7
 [font.normal]
 family = "JetBrainsMonoNL NFM"
 
+[shell]
+program = "/opt/homebrew/bin/fish"
+
 [window]
 decorations = "full"
 decorations_theme_variant = "Dark"
