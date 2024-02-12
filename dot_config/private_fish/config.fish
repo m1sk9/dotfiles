@@ -5,6 +5,9 @@ alias ld='lazydocker'
 alias cat='bat'
 alias find='fd'
 
+alias c='code'
+alias v='nvim'
+
 alias jdk21='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"'
 alias jdk17='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"'
 alias jdk8='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"'
