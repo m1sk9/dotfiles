@@ -43,4 +43,25 @@ chezmoi init git@github.com:m1sk9/dotfiles.git
 chezmoi apply
 ```
 
+## Edit dotfiles
 
+Editing files in dotfiles is done via chezmoi. Direct editing is not recommended.
+
+```sh
+chezmoi edit <file_path>
+```
+
+**Don't forget to apply the edits.**
+
+```sh
+chezmoi apply
+```
+
+## Note: For secure files managed by 1Password
+
+The following files are located in 1Password's Vault. These dotfiles contain only the uuid used by 1Password and do not work by themselves.
+
+- SSH Config (`~/.ssh/config`)
+- SSH Smartcard Pub (`~/.ssh/smardcard.pub`)
+
+You must be logged into 1Password and 1Password CLI to access these file entities. After logging in, run `chezmoi apply`.
