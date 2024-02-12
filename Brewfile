@@ -11,6 +11,7 @@ brew "aria2"
 brew "bat"
 brew "btop" # deps formula
 brew "bun"
+brew "chezmoi"
 brew "coreutils" # deps formula
 brew "cabextract"
 brew "cdrtools"
