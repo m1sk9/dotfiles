@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test m1sk9/dotfiles
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install and Apply
+        run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply -S .
