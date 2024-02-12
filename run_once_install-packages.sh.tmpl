@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Install Formulas and Casks
+brew bundle --file '~/Brewfile'
+
+# Setup Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Setup Node.js
+mise install node@20
+mise use --global node@20
