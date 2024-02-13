@@ -4,7 +4,9 @@ m1sk9's dotfiles.
 
 ## How to setup
 
-### macOS
+<details>
+
+<summary>macOS</summary>
 
 1. Install Command Line Tools.
 
@@ -42,6 +44,56 @@ chezmoi init git@github.com:m1sk9/dotfiles.git
 ```sh
 chezmoi apply
 ```
+
+
+</details>
+
+<details>
+
+<summary>Arch Linux</summary>
+
+1. Install required packages.
+
+```sh
+sudo pacman -S git
+sudo pacman -S fakeroot
+sudo pacman -S binutils
+sudo pacman -S make
+sudo pacman -S gcc
+```
+
+2. Setup yay.
+
+```sh
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+3. Install chezmoi.
+
+```sh
+pacman -S chezmoi
+```
+
+4. Initialize chezmoi with the contents of `m1sk9/dotfiles`.
+
+```sh
+# HTTPS
+chezmoi init https://github.com/m1sk9/dotfiles.git
+# SSH
+chezmoi init git@github.com:m1sk9/dotfiles.git
+```
+
+5. Apply the dotfiles.
+
+```sh
+chezmoi apply
+```
+
+
+</details>
+
 
 ## Edit dotfiles
 
