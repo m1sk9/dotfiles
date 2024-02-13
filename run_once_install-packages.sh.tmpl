@@ -1,12 +1,20 @@
 #!/bin/bash
 
+system=$(uname)
+
 # Install Formulas and Casks
-brew bundle --file '~/Brewfile'
+if [ "$system" == "Darwin" ]; then
+  brew bundle --file '~/Brewfile'
+fi
 
 # Setup Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Setup Node.js
+if [ "$system" == "Linux" ]; then
+  yay -S mise
+fi
+
 mise install node@20
 mise use --global node@20
 
@@ -16,5 +24,3 @@ mise use --global node@20
 # fisher install m1sk9/fish-ghr
 
 # Setup AstroNvim
-git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-git clone --depth 1 https://github.com/m1sk9/astronvim_configuration.git ~/.config/nvim/lua/user
