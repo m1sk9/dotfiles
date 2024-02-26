@@ -20,7 +20,8 @@ set -x PATH "$PATH:/usr/local/bin"
 
 # setting environment variables
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
-set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"
+## Fucking Gradle
+set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 set -x DENO_INSTALL "$HOME/.deno"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x GHR_ROOT "$HOME/projects"
