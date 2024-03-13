@@ -39,6 +39,7 @@ brew "pkg-config"
 brew "sbt"
 brew "starship"
 brew "tfenv" # deps formula
+brew "topgrade"
 brew "wimlib"
 brew "rust-analyzer"
 cask "1password"
