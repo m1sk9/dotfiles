@@ -68,7 +68,6 @@ cask "prismlauncher"
 cask "raycast"
 cask "rectangle"
 cask "spotify"
-cask "slack"
 cask "thunderbird-daily"
 cask "wireshark"
 cask "visual-studio-code-insiders"
@@ -83,7 +82,6 @@ mas "Microsoft Excel", id: 462058435
 mas "Microsoft Word", id: 462054704
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Outlook", id: 985367838
-mas "Toggl Track", id: 1291898086
 mas "Tailscale", id: 1475387142
 mas "RunCat", id: 1429033973
 
