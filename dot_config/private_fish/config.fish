@@ -2,11 +2,13 @@
 alias clone='ghr clone'
 alias lg='lazygit'
 alias ld='lazydocker'
-alias cat='bat'
-alias find='fd'
-
 alias c='code-insiders'
 alias v='vim'
+
+alias ls='exa'
+alias l='exa -abghHliS'
+alias cat='bat'
+alias find='fd'
 
 alias jdk21='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"'
 alias jdk17='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"'
