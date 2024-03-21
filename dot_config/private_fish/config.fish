@@ -6,7 +6,7 @@ alias cat='bat'
 alias find='fd'
 
 alias c='code-insiders'
-alias v='nvim'
+alias v='vim'
 
 alias jdk21='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"'
 alias jdk17='set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"'

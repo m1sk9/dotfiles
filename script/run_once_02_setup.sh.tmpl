@@ -1,0 +1,16 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.os "darwin" }}
+
+# Setup Rust
+if ! rustc --version > /dev/null 2>&1; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
+# Setup mise
+if ! mise --version > /dev/null 2>&1; then
+  mise install node@20
+  mise use --global node@20
+fi
+
+
