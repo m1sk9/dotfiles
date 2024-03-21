@@ -5,8 +5,8 @@ alias ld='lazydocker'
 alias c='code-insiders'
 alias v='vim'
 
-alias ls='exa'
-alias l='exa -abghHliS'
+alias ls='eza'
+alias l='eza -abghHliS'
 alias cat='bat'
 alias find='fd'
 
