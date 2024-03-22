@@ -39,6 +39,7 @@ brew "sbt"
 brew "starship"
 brew "topgrade"
 brew "wimlib"
+brew "wget"
 brew "rust-analyzer"
 
 ### Deps Formula (DON'T REMOVE!)
