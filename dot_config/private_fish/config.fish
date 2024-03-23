@@ -1,5 +1,6 @@
 # setting alias
 alias clone='ghr clone'
+alias clone-ssh='ghr clone git@github.com:'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias c='code-insiders'
