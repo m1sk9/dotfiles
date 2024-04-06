@@ -9,7 +9,7 @@ TERM = "alacritty"
 size = 12.7
 
 [font.normal]
-family = "0xProtoNerdFontMono"
+family = "0xProto Nerd Font Mono"
 
 [shell]
 program = "/opt/homebrew/bin/fish"
