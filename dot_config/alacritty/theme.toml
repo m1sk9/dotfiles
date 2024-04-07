@@ -1,75 +1,28 @@
+# Colors (Ayu Light)
+
+# Default colors - taken from ayu-colors
 [colors.primary]
-background = "#EFF1F5"
-foreground = "#4C4F69"
-dim_foreground = "#4C4F69"
-bright_foreground = "#4C4F69"
+background = '#FCFCFC'
+foreground = '#5C6166'
 
-[colors.cursor]
-text = "#EFF1F5"
-cursor = "#DC8A78"
-
-[colors.vi_mode_cursor]
-text = "#EFF1F5"
-cursor = "#7287FD"
-
-[colors.search.matches]
-foreground = "#EFF1F5"
-background = "#6C6F85"
-
-[colors.search.focused_match]
-foreground = "#EFF1F5"
-background = "#40A02B"
-
-[colors.footer_bar]
-foreground = "#EFF1F5"
-background = "#6C6F85"
-
-[colors.hints.start]
-foreground = "#EFF1F5"
-background = "#DF8E1D"
-
-[colors.hints.end]
-foreground = "#EFF1F5"
-background = "#6C6F85"
-
-[colors.selection]
-text = "#EFF1F5"
-background = "#DC8A78"
-
+# Normal colors - taken from ayu-iTerm
 [colors.normal]
-black = "#5C5F77"
-red = "#D20F39"
-green = "#40A02B"
-yellow = "#DF8E1D"
-blue = "#1E66F5"
-magenta = "#EA76CB"
-cyan = "#179299"
-white = "#ACB0BE"
+black   = '#010101'
+red     = '#e7666a'
+green   = '#80ab24'
+yellow  = '#eba54d'
+blue    = '#4196df'
+magenta = '#9870c3'
+cyan    = '#51b891'
+white   = '#c1c1c1'
 
+# Bright colors - pastel lighten 0.1 <normal> except black lighten with 0.2
 [colors.bright]
-black = "#6C6F85"
-red = "#D20F39"
-green = "#40A02B"
-yellow = "#DF8E1D"
-blue = "#1E66F5"
-magenta = "#EA76CB"
-cyan = "#179299"
-white = "#BCC0CC"
-
-[colors.dim]
-black = "#5C5F77"
-red = "#D20F39"
-green = "#40A02B"
-yellow = "#DF8E1D"
-blue = "#1E66F5"
-magenta = "#EA76CB"
-cyan = "#179299"
-white = "#ACB0BE"
-
-[[colors.indexed_colors]]
-index = 16
-color = "#FE640B"
-
-[[colors.indexed_colors]]
-index = 17
-color = "#DC8A78"
+black   = '#343434'
+red     = '#ee9295'
+green   = '#9fd32f'
+yellow  = '#f0bc7b'
+blue    = '#6daee6'
+magenta = '#b294d2'
+cyan    = '#75c7a8'
+white   = '#dbdbdb'
