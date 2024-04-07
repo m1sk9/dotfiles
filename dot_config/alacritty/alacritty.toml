@@ -16,4 +16,3 @@ program = "/opt/homebrew/bin/fish"
 
 [window]
 decorations = "full"
-decorations_theme_variant = "Dark"
