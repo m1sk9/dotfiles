@@ -1,28 +1,28 @@
-# Colors (Ayu Light)
+# Colors (Ayu Dark)
 
-# Default colors - taken from ayu-colors
+# Default colors
 [colors.primary]
-background = '#FCFCFC'
-foreground = '#5C6166'
+background = '#0A0E14'
+foreground = '#B3B1AD'
 
-# Normal colors - taken from ayu-iTerm
+# Normal colors
 [colors.normal]
-black   = '#010101'
-red     = '#e7666a'
-green   = '#80ab24'
-yellow  = '#eba54d'
-blue    = '#4196df'
-magenta = '#9870c3'
-cyan    = '#51b891'
-white   = '#c1c1c1'
+black   = '#01060E'
+red     = '#EA6C73'
+green   = '#91B362'
+yellow  = '#F9AF4F'
+blue    = '#53BDFA'
+magenta = '#FAE994'
+cyan    = '#90E1C6'
+white   = '#C7C7C7'
 
-# Bright colors - pastel lighten 0.1 <normal> except black lighten with 0.2
+# Bright colors
 [colors.bright]
-black   = '#343434'
-red     = '#ee9295'
-green   = '#9fd32f'
-yellow  = '#f0bc7b'
-blue    = '#6daee6'
-magenta = '#b294d2'
-cyan    = '#75c7a8'
-white   = '#dbdbdb'
+black   = '#686868'
+red     = '#F07178'
+green   = '#C2D94C'
+yellow  = '#FFB454'
+blue    = '#59C2FF'
+magenta = '#FFEE99'
+cyan    = '#95E6CB'
+white   = '#FFFFFF'
