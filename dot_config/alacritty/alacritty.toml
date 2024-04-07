@@ -6,7 +6,7 @@ import = [
 TERM = "alacritty"
 
 [font]
-size = 12.7
+size = 14
 
 [font.normal]
 family = "0xProto Nerd Font Mono"
