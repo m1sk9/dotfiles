@@ -1,7 +1,7 @@
 [user]
 	name = m1sk9
 	email = me@m1sk9.dev
-	signingKey = 9B22BDAF34B4A1F3
+	signingKey = 7DDA05D9074F2F8E
 [push]
 	default = current
 [pull]
