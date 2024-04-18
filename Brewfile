@@ -66,7 +66,6 @@ cask "jetbrains-toolbox"
 cask "notion"
 cask "notion-calendar"
 cask "obs"
-cask "obsidian"
 cask "postman"
 cask "raycast"
 cask "spotify"
@@ -80,8 +79,6 @@ mas "LINE", id: 539883307
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Word", id: 462054704
 mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Outlook", id: 985367838
-mas "Tailscale", id: 1475387142
 mas "RunCat", id: 1429033973
 
 cask_args appdir: "~/Applications", require_sha: true
