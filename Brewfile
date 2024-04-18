@@ -73,6 +73,7 @@ cask "thunderbird-daily"
 cask "wireshark"
 cask "visual-studio-code-insiders"
 cask "linear-linear"
+cask "zed-preview"
 
 ## Mas
 mas "LINE", id: 539883307
