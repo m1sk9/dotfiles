@@ -4,6 +4,7 @@ alias lg='lazygit'
 alias ld='lazydocker'
 alias c='code-insiders'
 alias v='vim'
+alias z='zed-preview'
 
 alias ls='eza'
 alias l='eza -abghHliS'
