@@ -41,6 +41,7 @@ brew "tokei"
 brew "topgrade"
 brew "wimlib"
 brew "wget"
+brew "ripgrep"
 brew "rust-analyzer"
 
 ### Deps Formula (DON'T REMOVE!)
