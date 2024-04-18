@@ -10,6 +10,7 @@ alias ls='eza'
 alias l='eza -abghHliS'
 alias cat='bat'
 alias find='fd'
+alias grep='ripgrep'
 
 # setting path
 set -x PATH "$DENO_INSTALL/bin:$PATH"
