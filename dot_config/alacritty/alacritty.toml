@@ -6,7 +6,7 @@ import = [
 TERM = "alacritty"
 
 [font]
-size = 13.5
+size = 14
 
 [font.normal]
 family = "JetBrainsMonoNL NFM"
@@ -16,3 +16,4 @@ program = "/opt/homebrew/bin/fish"
 
 [window]
 decorations = "full"
+opacity = 0.8
