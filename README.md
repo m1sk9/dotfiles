@@ -30,7 +30,7 @@ I love the Rust and I'm a Rustacean. 🦀
 > You must be logged into 1Password and 1Password CLI to access these file entities. After logging in, run `chezmoi apply`.
 
 
-### 1. Install Command Line Tools
+**1. Install Command Line Tools**
 
 ```sh
 xcode-select --install
@@ -41,19 +41,19 @@ xcode-select --install
 > 
 > [XCode Resources -- Apple Developer](https://developer.apple.com/xcode/resources/)
 
-### 2. Install Homebrew
+**2. Install Homebrew**
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### 3. Install chezmoi
+**3. Install chezmoi**
 
 ```sh
 brew install chezmoi
 ```
 
-### 4. Initialize chezmoi
+**4. Initialize chezmoi**
 
 ```sh
 # HTTPS
@@ -62,7 +62,7 @@ chezmoi init https://github.com/m1sk9/dotfiles.git
 chezmoi init git@github.com:m1sk9/dotfiles.git
 ```
 
-### 5. Apply the dotfiles.
+**5. Apply the dotfiles.**
 
 ```sh
 chezmoi apply
