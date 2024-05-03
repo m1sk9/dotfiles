@@ -23,6 +23,8 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
+[rerere]
+        enabled = true
 [gpg]
 	program = gpg
 [alias]
