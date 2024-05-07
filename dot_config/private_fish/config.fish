@@ -2,12 +2,11 @@
 alias gr='ghr'
 alias lg='lazygit'
 alias ld='lazydocker'
-
-alias g='git'
 alias v='vim'
 alias z='zed-preview'
 alias c='code-insiders'
 
+alias g='git'
 alias ls='eza'
 alias l='eza -abghHliS'
 alias cat='bat'
