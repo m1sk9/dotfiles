@@ -1,10 +1,12 @@
 # setting alias
-alias clone='ghr clone'
+alias gr='ghr'
 alias lg='lazygit'
 alias ld='lazydocker'
-alias c='code-insiders'
+
+alias g='git'
 alias v='vim'
 alias z='zed-preview'
+alias c='code-insiders'
 
 alias ls='eza'
 alias l='eza -abghHliS'
