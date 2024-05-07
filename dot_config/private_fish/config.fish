@@ -1,10 +1,13 @@
 # setting alias
-alias gr='ghr'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias v='vim'
 alias z='zed-preview'
 alias c='code-insiders'
+
+alias gr='ghr'
+alias clone='ghr clone'
+alias gc='ghr cd'
 
 alias g='git'
 alias ls='eza'
@@ -31,6 +34,7 @@ set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 starship init fish | source
+ghr shell fish | source
 gpg-connect-agent /bye
 
 ## fish other settings
