@@ -1,6 +1,4 @@
-import = [
-  "~/.config/alacritty/theme.toml"
-]
+import = ["~/.config/alacritty/theme.toml"]
 
 [env]
 TERM = "alacritty"
@@ -17,3 +15,7 @@ program = "/opt/homebrew/bin/fish"
 [window]
 decorations = "full"
 opacity = 0.8
+dynamic_padding = true
+
+[cursor.style]
+shape = "Beam"

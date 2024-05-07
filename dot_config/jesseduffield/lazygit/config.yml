@@ -1,6 +1,7 @@
+# https://github.com/jesseduffield/lazygit/tree/master/docs
+
 gui:
   showIcons: false
-  windowsSize: "full"
   showRandomTip: false
   language: 'en'
 
