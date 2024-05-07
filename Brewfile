@@ -2,7 +2,6 @@
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "minacle/chntpw"
 tap "s6n-jp/tap"
 tap "sidneys/homebrew"
