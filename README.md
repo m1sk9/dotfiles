@@ -15,6 +15,6 @@ m1sk9's dotfiles.
 
 ## Features
 
-- **Editor & IDE**: [Visual Studio Code](https://code.visualstudio.com/), [zed](https://zed.dev/), [JetBrains IDE](https://www.jetbrains.com/)
+- **Editor & IDE**: [Visual Studio Code](https://code.visualstudio.com/), [Zed](https://zed.dev/), [JetBrains IDE](https://www.jetbrains.com/)
 - **Termial**: [Alacritty](https://alacritty.org/)
 - **Shell**: [fish](https://fishshell.com/)
