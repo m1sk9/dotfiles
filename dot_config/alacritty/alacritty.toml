@@ -16,6 +16,3 @@ program = "/opt/homebrew/bin/fish"
 decorations = "full"
 opacity = 0.8
 dynamic_padding = true
-
-[cursor.style]
-shape = "Beam"
