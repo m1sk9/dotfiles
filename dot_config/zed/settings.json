@@ -28,7 +28,7 @@
     },
 
     // editor
-    "vim_mode": true, // TODO: enable vim mode?
+    "vim_mode": false,
     "tab_size": 4,
     "terminal": {
         "shell": "system",
