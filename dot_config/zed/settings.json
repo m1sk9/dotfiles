@@ -8,7 +8,7 @@
     "buffer_font_size": 16,
 
     // ui and theme
-    "theme": "Rosé Pine Dawn",
+    "theme": "Rosé Pine",
     "cursor_blink": false,
     "show_call_status_icon": false,
     "collaboration_panel": {
@@ -28,7 +28,7 @@
     },
 
     // editor
-    "vim_mode": false, // TODO: enable vim mode?
+    "vim_mode": true, // TODO: enable vim mode?
     "tab_size": 4,
     "terminal": {
         "shell": "system",

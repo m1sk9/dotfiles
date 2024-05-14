@@ -36,17 +36,3 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 starship init fish | source
 ghr shell fish | source
 gpg-connect-agent /bye
-
-## fish other settings
-set -g fish_greeting # disable fish greeting (welcome message)
-
-# display the current status of the system :) (easter eggs)
-set -x RANDOM_NUMBER (random 1 100)
-if test $RANDOM_NUMBER -lt 5
-    fastfetch --color magenta --logo windows
-else if test $RANDOM_NUMBER -lt 10
-    fastfetch --color magenta --logo arch
-else
-    fastfetch --color magenta
-end
-alias fastfetch='fastfetch --config none' # change default config to none
