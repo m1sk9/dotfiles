@@ -1,7 +1,7 @@
 # setting alias
 alias lg='lazygit'
 alias ld='lazydocker'
-alias v='vim'
+alias v='nvim'
 alias z='zed-preview'
 alias c='code-insiders'
 
