@@ -1,4 +1,4 @@
-require ('options')
+require ('core.options')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -13,16 +13,25 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('plugins', {
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "netrw",
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-      },
-    },
+require("lazy").setup({ { import = "plugins" }, { import = "plugins.themes" } })
+require('trouble').setup()
+
+require('nvim-tree').setup({
+  sort_by = 'case_sensitive',
+  view = {
+    adaptive_size = true,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
   },
 })
+require("nvim-tree.api").tree.toggle(false, true)
 
+require('lualine').setup({
+  options = { theme = 'auto' },
+})
+
+vim.cmd[[colorscheme rose-pine]]

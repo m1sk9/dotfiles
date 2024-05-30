@@ -28,7 +28,7 @@
     },
 
     // editor
-    "vim_mode": false,
+    "vim_mode": true,
     "tab_size": 4,
     "terminal": {
         "shell": "system",

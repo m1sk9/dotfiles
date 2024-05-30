@@ -4,6 +4,7 @@ alias ld='lazydocker'
 alias v='nvim'
 alias z='zed-preview'
 alias c='code-insiders'
+alias vim='nvim'
 
 alias gr='ghr'
 alias clone='ghr clone'
