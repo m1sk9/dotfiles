@@ -1,3 +1,4 @@
+require ('core.keymap')
 require ('core.options')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -13,7 +14,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "plugins" }, { import = "plugins.themes" } })
+require("lazy").setup({
+    { import = "plugins" },
+    { import = "plugins.themes" },
+    { import = "plugins.ui" },
+})
 require('trouble').setup()
 
 require('nvim-tree').setup({
