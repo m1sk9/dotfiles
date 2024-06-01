@@ -17,7 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.themes" },
-    { import = "plugins.ui" },
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
