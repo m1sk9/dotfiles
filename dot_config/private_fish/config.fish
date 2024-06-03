@@ -36,4 +36,5 @@ set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 eval "$(/opt/homebrew/bin/brew shellenv)"
 starship init fish | source
 ghr shell fish | source
+mise activate fish | source
 gpg-connect-agent /bye
