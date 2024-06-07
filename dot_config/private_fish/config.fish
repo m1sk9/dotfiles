@@ -27,7 +27,7 @@ set -x PATH "$PATH:/usr/local/bin"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
 set -x DENO_INSTALL "$HOME/.deno"
 set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x GHR_ROOT "$HOME/projects"
+set -x GHR_ROOT "$HOME/Projects"
 set -x STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
