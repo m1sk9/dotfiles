@@ -70,7 +70,7 @@ cask "raycast"
 cask "spotify"
 cask "thunderbird-daily"
 cask "visual-studio-code-insiders"
-cask "vlc@nightly"
+cask "vlc"
 cask "wireshark"
 cask "zed-preview"
 
