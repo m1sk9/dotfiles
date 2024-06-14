@@ -42,6 +42,7 @@ brew "wget"
 brew "wimlib"
 brew "minacle/chntpw/chntpw"
 brew "s6n-jp/tap/ghr"
+brew "zellij"
 
 # cask
 cask "1password"
