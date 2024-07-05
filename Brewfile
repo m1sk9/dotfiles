@@ -85,5 +85,5 @@ mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "Tailscale", id: 1475387142
-mas "Ice Cubes for Mastodon", id: -2145018708
+mas "Ice Cubes for Mastodon", id: 2145018708
 
