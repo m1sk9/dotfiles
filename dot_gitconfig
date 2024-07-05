@@ -7,7 +7,7 @@
 [pull]
 	ff = only
 	rebase = false
-  default = current
+    default = current
 [init]
 	defaultbranch = main
 [core]
@@ -39,7 +39,11 @@
 [alias]
 	a = add
 	s = status
-	sw = switch
 	l = log --oneline --graph --decorate
 	ls = log --show-signature
-
+    sw = switch
+    st = status -sb
+    co = checkout
+    br = branch
+    ft = fetch
+    cm = commit -m
