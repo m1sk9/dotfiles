@@ -7,6 +7,7 @@
 [pull]
 	ff = only
 	rebase = false
+  default = current
 [init]
 	defaultbranch = main
 [core]
@@ -24,15 +25,9 @@
 [tag]
 	gpgsign = true
 [rerere]
-        enabled = true
+  enabled = true
 [gpg]
 	program = gpg
-[alias]
-	a = add
-	s = status
-	sw = switch
-	l = log --oneline --graph --decorate
-	ls = log --show-signature
 [rebase]
 	updateRefs = true
 [fetch]
@@ -41,3 +36,10 @@
 	showUntrackedFiles = all
 [merge]
 	conflictStyle = diff3
+[alias]
+	a = add
+	s = status
+	sw = switch
+	l = log --oneline --graph --decorate
+	ls = log --show-signature
+
