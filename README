@@ -9,7 +9,7 @@ using:
 - Browser: Mozilla Firefox Nightly
 - Email Client: Mozilla Thunderbird Daily
 - Terminal: Alacritty
-    - Shell: Fish
+- Shell: Fish
 - Editor: Visual Studio Code, Zed, NeoVim
 - IDE: JetBrains IDE
 - Other:

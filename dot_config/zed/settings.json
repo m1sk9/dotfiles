@@ -35,6 +35,7 @@
         "font_family": "JetBrainsMono Nerd Font Mono",
         "font_size": 14
     },
+    "soft_wrap": "none",
 
     // note: Should be contolled by the project settings
     "format_on_save": "off",
