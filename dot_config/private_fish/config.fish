@@ -21,6 +21,7 @@ alias grep='rg'
 set -x PATH "$DENO_INSTALL/bin:$PATH"
 set -x PATH "$HOME/.deno/bin:$PATH"
 set -x PATH "$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+set -x PATH "$PATH:/opt/homebrew/bin"
 set -x PATH "$PATH:/usr/local/bin"
 
 # setting environment variables

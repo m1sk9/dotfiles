@@ -25,7 +25,7 @@
 [tag]
 	gpgsign = true
 [rerere]
-  enabled = true
+    enabled = true
 [gpg]
 	program = gpg
 [rebase]

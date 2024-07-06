@@ -11,7 +11,7 @@ family = "JetBrainsMonoNL NFM"
 
 [shell]
 program = "/opt/homebrew/bin/fish"
-args = ["-l", "-c", "zellij attach --index 0 --create"]
+# args = ["-l", "-c", "zellij attach --index 0 --create"]
 
 [window]
 decorations = "full"

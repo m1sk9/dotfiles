@@ -1,7 +1,5 @@
 # tap
-tap "homebrew/autoupdate"
 tap "homebrew/bundle"
-tap "minacle/chntpw"
 tap "s6n-jp/tap"
 tap "sidneys/homebrew"
 tap "jdx/tap"
@@ -34,13 +32,9 @@ brew "rust-analyzer"
 brew "ripgrep"
 brew "sbt"
 brew "starship"
-brew "tfenv"
 brew "tokei"
 brew "topgrade"
 brew "jdx/tap/usage"
-brew "wget"
-brew "wimlib"
-brew "minacle/chntpw/chntpw"
 brew "s6n-jp/tap/ghr"
 brew "zellij"
 
@@ -63,7 +57,6 @@ cask "google-japanese-ime"
 cask "gimp@dev"
 cask "gitify"
 cask "jetbrains-toolbox"
-cask "linear-linear"
 cask "notion"
 cask "notion-calendar"
 cask "obs"
@@ -86,4 +79,3 @@ mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "Tailscale", id: 1475387142
 mas "Ice Cubes for Mastodon", id: 2145018708
-

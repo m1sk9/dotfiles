@@ -1,3 +1,2 @@
 [misc]
-disable = ["pnpm", "chezmoi", "yarn"]
-
+disable = ["chezmoi", "pip3", "npm", "pnpm", "yarn", "bun"]
