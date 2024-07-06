@@ -21,7 +21,6 @@ brew "git"
 brew "gnupg"
 brew "lazygit"
 brew "neovim"
-brew "mas"
 brew "mise"
 brew "onefetch"
 brew "ollama"
@@ -35,7 +34,6 @@ brew "tokei"
 brew "topgrade"
 brew "jdx/tap/usage"
 brew "s6n-jp/tap/ghr"
-brew "zellij"
 
 # cask
 cask "1password"
@@ -71,10 +69,3 @@ cask "vlc"
 cask "wireshark"
 cask "zed-preview"
 
-# mas
-mas "LINE", id: 539883307
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Word", id: 462054704
-mas "Tailscale", id: 1475387142
-mas "Ice Cubes for Mastodon", id: 2145018708

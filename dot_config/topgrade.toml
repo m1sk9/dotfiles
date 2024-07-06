@@ -1,2 +1,2 @@
 [misc]
-disable = ["chezmoi", "pip3", "npm", "pnpm", "yarn", "bun"]
+disable = ["chezmoi", "pip3", "pnpm", "yarn", "bun", "bun_packages"]
