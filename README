@@ -1,0 +1,22 @@
+setup:
+```sh
+chezmoi init git@github.com:m1sk9/dotfiles.git
+chezmoi apply
+```
+
+using:
+
+- Browser: Mozilla Firefox Nightly
+- Email Client: Mozilla Thunderbird Daily
+- Terminal: Alacritty
+    - Shell: Fish
+- Editor: Visual Studio Code, Zed, NeoVim
+- IDE: JetBrains IDE
+- Other:
+    - DNS: NextDNS
+    - VPN: Tailscale
+    - Password Manager: 1Password
+    - Music: Spotify
+- PC:
+    - Laptop (Main): MacBook Air M2 2022 (macOS Sonoma, 13.6-inch, 16GB RAM, 512GB SSD)
+    - Desktop: self-created (Windows 11, Ryzen 5 5600X + GTX 1660 Super, 16GB RAM)
