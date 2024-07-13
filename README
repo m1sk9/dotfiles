@@ -18,6 +18,10 @@ Using:
     - VPN: Tailscale
     - Password Manager: 1Password
     - Music: Spotify
-- PC:
+    - Mastodon Client: 
+        - Desktop: Elk
+        - Mobile: IceCubes
+- Device:
     - Laptop (Main): MacBook Air M2 2022 (macOS Sonoma, 13.6-inch, 16GB RAM, 512GB SSD)
     - Desktop: self-created (Windows 11, Ryzen 5 5600X + GTX 1660 Super, 16GB RAM)
+    - Mobile: iPhone 15
