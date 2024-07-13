@@ -1,0 +1,55 @@
+// Zed settings
+// https://zed.dev/docs/configuring-zed
+{
+    // font
+    "ui_font_size": 15,
+    "buffer_font_size": 15.5,
+    "buffer_font_family": "0xProto Nerd Font Mono",
+    "ui_font_features": {
+        "liga": true,
+        "calt": true,
+        "clig": true,
+        "kern": true
+    },
+
+    // ui and theme
+    "theme": "Yozakura theme",
+    "always_treat_brackets_as_autoclosed": true,
+    "cursor_blink": false,
+    "show_call_status_icon": false,
+    "collaboration_panel": {
+        "button": false
+    },
+    "toolbar": {
+        "selections_menu": true,
+        "breadcrumbs": true,
+        "quick_actions": true
+    },
+    "chat_panel": {
+        "button": false
+    },
+    "assistant": {
+        "enabled": false,
+        "button": false
+    },
+
+    // copilot
+    "copilot": {
+        "disabled_globs": ["*.md", "*.txt"]
+    },
+    // editor
+    "vim_mode": false,
+    "tab_size": 4,
+    "soft_wrap": "none",
+    "terminal": {
+        "shell": "system",
+        "font_family": "JetBrainsMono Nerd Font Mono",
+        "font_size": 14
+    },
+    // other
+    "base_keymap": "VSCode",
+    "autosave": "on_focus_change",
+    "auto_update": true,
+    "use_autoclose": true,
+    "confirm_quit": false
+}
