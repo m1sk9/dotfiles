@@ -1,28 +1,33 @@
-# Colours (Monokai Charcoal)
+# (Github Dark Tritanopia) Colors for Alacritty
 
-# Default Colours
+# Default colors
 [colors.primary]
-background = '#000000'
-foreground = '#FFFFFF'
+background = '#0d1117'
+foreground = '#c9d1d9'
 
-# Normal Colours
+# Cursor colors
+[colors.cursor]
+text = '#0d1117'
+cursor = '#c9d1d9'
+
+# Normal colors
 [colors.normal]
-black = '#1a1a1a'
-red = '#f4005f'
-green = '#98e024'
-yellow = '#fa8419'
-blue = '#9d65ff'
-magenta = '#f4005f'
-cyan = '#58d1eb'
-white = '#c4c5b5'
+black = '#484f58'
+red = '#ff7b72'
+green = '#58a6ff'
+yellow = '#d29922'
+blue = '#58a6ff'
+magenta = '#bc8cff'
+cyan = '#39c5cf'
+white = '#b1bac4'
 
-# Bright Colours
+# Bright colors
 [colors.bright]
-black = '#625e4c'
-red = '#f4005f'
-green = '#98e024'
-yellow = '#e0d561'
-blue = '#9d65ff'
-magenta = '#f4005f'
-cyan = '#58d1eb'
-white = '#f6f6ef'
+black = '#6e7681'
+red = '#ffa198'
+green = '#79c0ff'
+yellow = '#e3b341'
+blue = '#79c0ff'
+magenta = '#bc8cff'
+cyan = '#39c5cf'
+white = '#b1bac4'
