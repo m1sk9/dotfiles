@@ -50,3 +50,4 @@ require('mason-lspconfig').setup_handlers {
   end,
 }
 
+vim.cmd[[colorscheme rose-pine]]

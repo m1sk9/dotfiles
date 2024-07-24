@@ -1,18 +1,19 @@
 # setting alias
 alias lg='lazygit'
-alias ld='lazydocker'
 alias v='nvim'
-alias z='zed-preview'
-alias c='code-insiders'
+alias ze='zed-preview'
+alias co='code-insiders'
 alias vim='nvim'
 
 alias gr='ghr'
-alias clone='ghr clone'
 alias gc='ghr cd'
+alias clone='ghr clone'
 
+alias c='bat'
 alias g='git'
 alias ls='eza'
 alias l='eza -abghHliS'
+alias p='pbcopy'
 alias cat='bat'
 alias find='fd'
 alias grep='rg'
@@ -25,6 +26,7 @@ set -x PATH "$PATH:/opt/homebrew/bin"
 set -x PATH "$PATH:/usr/local/bin"
 
 # setting environment variables
+set -x EDITOR "/opt/homebrew/bin/nvim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
 set -x DENO_INSTALL "$HOME/.deno"
 set -x XDG_CONFIG_HOME "$HOME/.config"
