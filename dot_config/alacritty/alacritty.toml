@@ -1,3 +1,7 @@
+import = [
+    "~/.config/alacritty/theme.yml"
+]
+
 [env]
 TERM = "alacritty"
 
