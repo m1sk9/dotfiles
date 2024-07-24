@@ -1,17 +1,15 @@
-# import = ["~/.config/alacritty/theme.toml"]
-
 [env]
 TERM = "alacritty"
 
 [font]
-size = 13.5
+size = 13
 
 [font.normal]
-family = "JetBrainsMonoNL NFM"
+family = "0xProto Nerd Font Mono"
+style = "Regular"
 
 [shell]
 program = "/opt/homebrew/bin/fish"
-# args = ["-l", "-c", "zellij attach --index 0 --create"]
 
 [window]
 decorations = "full"
