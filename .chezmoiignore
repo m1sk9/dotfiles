@@ -2,3 +2,4 @@ README
 LICENSE
 .chezmoi.toml_tmpl
 .chezmoiignore
+scripts/

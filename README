@@ -5,6 +5,8 @@ chezmoi init git@github.com:m1sk9/dotfiles.git
 chezmoi apply
 ```
 
+(Arch Linux: ./scripts/setup-archlinux.sh )
+
 Using:
 
 - Browser: Mozilla Firefox Nightly
