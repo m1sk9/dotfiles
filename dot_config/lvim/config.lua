@@ -4,9 +4,9 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
---- Theme
 lvim.plugins = {
-  { "rose-pine/neovim", name = "rose-pine" }
+  { "rose-pine/neovim", name = "rose-pine" },
+  { "github/copilot.vim" }
 }
 
 lvim.colorscheme = "rose-pine"
