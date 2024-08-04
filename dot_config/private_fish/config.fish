@@ -24,6 +24,7 @@ set -x PATH "$HOME/.deno/bin:$PATH"
 set -x PATH "$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 set -x PATH "$PATH:/opt/homebrew/bin"
 set -x PATH "$PATH:/usr/local/bin"
+set -x PATH "$PATH:$HOME/.local/bin"
 
 # setting environment variables
 set -x EDITOR "/opt/homebrew/bin/nvim"
