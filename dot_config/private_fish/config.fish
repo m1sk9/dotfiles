@@ -1,9 +1,9 @@
 # setting alias
 alias lg='lazygit'
-alias v='lvim'
+alias v='nvim'
 alias ze='zed-preview'
 alias co='code-insiders'
-alias vim='lvim'
+alias vim='nvim'
 
 alias gr='ghr'
 alias gc='ghr cd'
