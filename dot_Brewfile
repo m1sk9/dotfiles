@@ -57,5 +57,4 @@ cask "spotify"
 cask "thunderbird@daily"
 cask "tailscale"
 cask "visual-studio-code@insiders"
-cask "zed-preview"
 
