@@ -51,4 +51,4 @@ require('mason-lspconfig').setup_handlers {
   end,
 }
 
-vim.cmd[[colorscheme rose-pine]]
+vim.cmd[[colorscheme github_dark_colorblind]]

@@ -17,3 +17,10 @@ program = "/opt/homebrew/bin/fish"
 [window]
 decorations = "full"
 dynamic_padding = true
+
+[cursor]
+blink_interval = 500
+
+[cursor.style]
+shape = "Beam"
+blinking = "On"
