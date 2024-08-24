@@ -10,6 +10,8 @@ alias grep='rg'
 set -x PATH "$PATH:/opt/homebrew/bin"
 set -x PATH "$PATH:/usr/local/bin"
 set -x PATH "$PATH:$HOME/.local/bin"
+set -x PATH "$PATH:$HOME/.cargo/bin" # Rust
+set -x PATH "$PATH:$HOME/.deno/bin" # Deno
 
 set -x EDITOR "/opt/homebrew/bin/nvim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
