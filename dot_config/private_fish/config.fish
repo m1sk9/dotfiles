@@ -8,6 +8,7 @@ alias find='fd'
 alias grep='rg'
 
 set -x PATH "$PATH:/opt/homebrew/bin"
+set -x PATH "$PATH:/usr/bin"
 set -x PATH "$PATH:/usr/local/bin"
 set -x PATH "$PATH:$HOME/.local/bin"
 set -x PATH "$PATH:$HOME/.cargo/bin" # Rust
