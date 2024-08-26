@@ -7,19 +7,18 @@ alias ll='eza -abghHliS'
 alias find='fd'
 alias grep='rg'
 
-set -x PATH "$PATH:/opt/homebrew/bin"
-set -x PATH "$PATH:/usr/bin"
-set -x PATH "$PATH:/usr/local/bin"
-set -x PATH "$PATH:$HOME/.local/bin"
-set -x PATH "$PATH:$HOME/.cargo/bin" # Rust
-set -x PATH "$PATH:$HOME/.deno/bin" # Deno
-
 set -x EDITOR "/opt/homebrew/bin/nvim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x GHR_ROOT "$HOME/Projects"
 set -x STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
-set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
+
+fish_add_path /opt/homebrew/bin # NOTE: /opt/homebrew/bin を先に設定しないと `git` などがシステム側を使うようになってしまう
+fish_add_path /usr/bin
+fish_add_path /usr/local/bin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.deno/bin
 
 # setting fish
 
