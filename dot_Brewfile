@@ -4,6 +4,7 @@ tap "s6n-jp/tap"
 tap "sidneys/homebrew"
 tap "jdx/tap"
 tap "gromgit/fuse"
+tap "koekeishiya/formulae"
 
 # brew
 brew "bat"
@@ -24,9 +25,11 @@ brew "mise"
 brew "pinentry-mac"
 brew "ripgrep"
 brew "starship"
+brew "koekeishiya/formulae/skhd"
 brew "jdx/tap/usage"
 brew "s6n-jp/tap/ghr"
 brew "unar"
+brew "koekeishiya/formulae/yabai"
 
 # cask
 cask "1password@nightly"
