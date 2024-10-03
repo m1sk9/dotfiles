@@ -51,4 +51,6 @@ require('mason-lspconfig').setup_handlers {
   end,
 }
 
+vim.opt.guicursor = "n-v-c-sm:ver25"
+
 vim.cmd[[colorscheme github_dark_colorblind]]
