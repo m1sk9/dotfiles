@@ -63,3 +63,11 @@ cask "tailscale"
 cask "visual-studio-code@insiders"
 cask "utm@beta"
 
+# joke
+brew "sl"
+brew "figlet"
+brew "lolcat"
+brew "asciiquarium"
+brew "cmatrix"
+brew "nyancat"
+
