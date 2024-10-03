@@ -63,5 +63,4 @@ cask "telegram"
 cask "tailscale"
 cask "visual-studio-code@insiders"
 cask "utm@beta"
-cask "macfuse"
 
