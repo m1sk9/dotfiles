@@ -35,7 +35,7 @@ alt - 0x2F: yabai -m display --focus next \
 
 # Toggle FullScreen
 
-alt - z: yabai -m window --toggle zoom-fullscreen
+alt - f: yabai -m window --toggle zoom-fullscreen
 
 # Mirror
 
@@ -47,6 +47,6 @@ alt - x: yabai -m space --mirror x-axis
 alt - r: yabai -m space --rotate 90
 alt - s: yabai -m window --toggle split
 alt - b: yabai -m space --balance
-alt - f: yabai -m window --toggle float; \
+alt - z: yabai -m window --toggle float; \
   yabai -m window --grid 4:4:1:1:2:2
 
