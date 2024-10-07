@@ -4,9 +4,17 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # window rules
-yabai -m rule --add app="^Discord Canary$" space=social grid=1:1:0:0:1:1 manage=off
+yabai -m rule --add app="^Discord Canary$" manage=off
+yabai -m rule --add app="^LINE$" manage=off
+yabai -m rule --add app="^Thunderbird Daily$" manage=off
+yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^CleanShot X$" manage=off
+yabai -m rule --add app="^Figma$" manage=off
 yabai -m rule --add app="^DeepL$" manage=off
-yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility)$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Archive Utility$" manage=off
 
 # signals
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
@@ -16,7 +24,7 @@ yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m q
 yabai -m config                              \
     external_bar                off:41:0     \
     mouse_follows_focus         on           \
-    focus_follows_mouse         autoraise    \
+    focus_follows_mouse         autofocus    \
     window_placement            second_child \
     window_topmost              off          \
     window_shadow               off          \
