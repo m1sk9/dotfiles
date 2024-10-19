@@ -1,13 +1,13 @@
 [user]
-	name = m1sk9
-	email = me@m1sk9.dev
+	name = Sho Sakuma
+	email = me@m1s.dev
 	signingKey = CA63532083280BF4
 [push]
 	default = current
 [pull]
 	ff = only
 	rebase = false
-    default = current
+  default = current
 [init]
 	defaultbranch = main
 [core]
@@ -25,7 +25,7 @@
 [tag]
 	gpgsign = true
 [rerere]
-    enabled = true
+  enabled = true
 [gpg]
 	program = gpg
 [rebase]
