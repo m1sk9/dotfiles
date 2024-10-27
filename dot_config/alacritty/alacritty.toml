@@ -1,6 +1,3 @@
-import = [
-    "~/.config/alacritty/theme.toml"
-]
 
 [env]
 TERM = "alacritty"
@@ -11,7 +8,7 @@ size = 13.5
 [font.normal]
 family = "JetBrainsMonoNL NFM"
 
-[shell]
+[terminal.shell]
 program = "/opt/homebrew/bin/fish"
 
 [window]
@@ -25,3 +22,11 @@ blink_interval = 500
 [cursor.style]
 shape = "Beam"
 blinking = "On"
+
+[general]
+import = [
+    "~/.config/alacritty/theme.toml"
+]
+
+[terminal]
+
