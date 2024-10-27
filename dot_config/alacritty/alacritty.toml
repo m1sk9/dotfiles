@@ -1,4 +1,3 @@
-
 [env]
 TERM = "alacritty"
 
@@ -28,5 +27,4 @@ import = [
     "~/.config/alacritty/theme.toml"
 ]
 
-[terminal]
 
