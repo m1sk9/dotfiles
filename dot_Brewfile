@@ -55,6 +55,7 @@ cask "spotify"
 cask "safe-exam-browser"
 cask "thunderbird@daily"
 cask "tailscale"
+cask "tor-browser"
 cask "visual-studio-code@insiders"
 cask "utm@beta"
 
