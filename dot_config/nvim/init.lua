@@ -1,6 +1,8 @@
+-- Load the core modules
 require ('core.keymap')
 require ('core.options')
 
+-- lazy.nvim setup
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -20,6 +22,7 @@ require("lazy").setup({
     { import = "plugins.neo-tree" }
 })
 
+-- LSP setup
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ctx)
     local set = vim.keymap.set
@@ -43,6 +46,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- Mason setup
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('mason-lspconfig').setup_handlers {
@@ -51,6 +55,43 @@ require('mason-lspconfig').setup_handlers {
   end,
 }
 
-vim.opt.guicursor = "n-v-c-sm:ver25"
+-- NvimTree setup
+vim.api.nvim_set_var('loaded_netrw', 1)
+vim.api.nvim_set_var('loaded_netrwPlugin', 1)
 
-vim.cmd[[colorscheme github_dark_colorblind]]
+local function open_nvim_tree()
+  require("nvim-tree.api").tree.open()
+end
+vim.api.nvim_create_user_command('Ex', function() vim.cmd.NvimTreeToggle() end, {})
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
+-- Visual setup
+vim.opt.termguicolors = true
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
+require('rose-pine').setup({
+  styles = {
+    bold = true,
+    italic = true,
+    transparency = false,
+  },
+})
+vim.cmd[[colorscheme rose-pine-moon]]

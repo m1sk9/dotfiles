@@ -58,6 +58,7 @@ cask "tailscale"
 cask "tor-browser"
 cask "visual-studio-code@insiders"
 cask "utm@beta"
+cask "zed@preview"
 
 # joke
 brew "sl"
