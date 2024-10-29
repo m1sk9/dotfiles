@@ -55,6 +55,34 @@ require('mason-lspconfig').setup_handlers {
   end,
 }
 
+-- NvimTree setup
+vim.api.nvim_set_var('loaded_netrw', 1)
+vim.api.nvim_set_var('loaded_netrwPlugin', 1)
+
+local function open_nvim_tree()
+  require("nvim-tree.api").tree.open()
+end
+vim.api.nvim_create_user_command('Ex', function() vim.cmd.NvimTreeToggle() end, {})
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
 -- Visual setup
 vim.opt.termguicolors = true
 vim.opt.winblend = 0
@@ -63,7 +91,7 @@ require('rose-pine').setup({
   styles = {
     bold = true,
     italic = true,
-    transparency = true,
+    transparency = false,
   },
 })
 vim.cmd[[colorscheme rose-pine-moon]]
