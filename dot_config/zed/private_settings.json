@@ -47,11 +47,16 @@
         "disabled_globs": ["*.md", "*.txt"]
     },
     // editor
-    "vim_mode": true,
+    "vim_mode": false,
     "tab_size": 4,
     "soft_wrap": "none",
     "terminal": {
-        "shell": "system",
+        "shell": {
+            "with_arguments": {
+                "program": "/opt/homebrew/bin/fish",
+                "args": []
+            }
+        },
         "font_family": "JetBrainsMono Nerd Font Mono",
         "font_size": 14
     },
