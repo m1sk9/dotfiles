@@ -1,6 +1,8 @@
+-- Load the core modules
 require ('core.keymap')
 require ('core.options')
 
+-- lazy.nvim setup
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -20,6 +22,7 @@ require("lazy").setup({
     { import = "plugins.neo-tree" }
 })
 
+-- LSP setup
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ctx)
     local set = vim.keymap.set
@@ -43,6 +46,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- Mason setup
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('mason-lspconfig').setup_handlers {
@@ -51,6 +55,15 @@ require('mason-lspconfig').setup_handlers {
   end,
 }
 
-vim.opt.guicursor = "n-v-c-sm:ver25"
-
-vim.cmd[[colorscheme github_dark_colorblind]]
+-- Visual setup
+vim.opt.termguicolors = true
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
+require('rose-pine').setup({
+  styles = {
+    bold = true,
+    italic = true,
+    transparency = true,
+  },
+})
+vim.cmd[[colorscheme rose-pine-moon]]
