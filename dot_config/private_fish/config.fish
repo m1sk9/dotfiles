@@ -6,7 +6,7 @@ alias ls='eza'
 alias l='eza -abghHliS'
 alias find='fd'
 alias grep='rg'
-alias code='code-insiders'
+alias zed='zed-preview'
 
 set -x EDITOR "/opt/homebrew/bin/nvim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
