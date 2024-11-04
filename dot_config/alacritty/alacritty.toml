@@ -1,8 +1,11 @@
+[general]
+import = ["~/.config/alacritty/theme.toml"]
+
 [env]
 TERM = "alacritty"
 
 [font]
-size = 13.5
+size = 13
 
 [font.normal]
 family = "JetBrainsMonoNL NFM"
@@ -11,20 +14,18 @@ family = "JetBrainsMonoNL NFM"
 program = "/opt/homebrew/bin/fish"
 
 [window]
-decorations = "full"
-dynamic_padding = true
 opacity = 0.8
+decorations = "buttonless"
+padding = { x = 10, y = 10 }
+dynamic_padding = true
+blur = true
 
 [cursor]
 blink_interval = 500
 
 [cursor.style]
 shape = "Beam"
-blinking = "On"
+blinking = "Always"
 
-[general]
-import = [
-    "~/.config/alacritty/theme.toml"
-]
-
-
+[mouse]
+hide_when_typing = true

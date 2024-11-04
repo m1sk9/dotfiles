@@ -25,28 +25,21 @@ ctrl + shift - down: yabai -m window --resize bottom:0:20 || yabai -m window --r
 ctrl + shift - up: yabai -m window --resize top:0:-20 || yabai -m window --resize bottom:0:-20
 
 # Focus Display
-
-## alt + 左右矢印でも focus を switch できるように
-
 alt - 0x2B: yabai -m display --focus prev \
   && yabai -m display --focus stack.prev
 alt - 0x2F: yabai -m display --focus next \
   && yabai -m display --focus stack.next
 
 # Toggle FullScreen
-
 alt - f: yabai -m window --toggle zoom-fullscreen
 
 # Mirror
-
 alt - y: yabai -m space --mirror y-axis
 alt - x: yabai -m space --mirror x-axis
 
 # Rotate & Split & Balance & Toggle
-
 alt - r: yabai -m space --rotate 90
 alt - s: yabai -m window --toggle split
 alt - b: yabai -m space --balance
 alt - z: yabai -m window --toggle float; \
   yabai -m window --grid 4:4:1:1:2:2
-

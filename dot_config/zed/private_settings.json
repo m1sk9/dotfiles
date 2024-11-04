@@ -2,8 +2,8 @@
 // https://zed.dev/docs/configuring-zed
 {
     // font
-    "ui_font_size": 15,
-    "buffer_font_size": 15.5,
+    "ui_font_size": 13.5,
+    "buffer_font_size": 13.5,
     "buffer_font_family": "0xProto Nerd Font Mono",
     "ui_font_features": {
         "liga": true,
@@ -13,7 +13,7 @@
     },
 
     // ui and theme
-    "theme": "Kanagawa",
+    "theme": "Aura Dark",
     "always_treat_brackets_as_autoclosed": true,
     "cursor_blink": false,
     "show_call_status_icon": false,
@@ -46,7 +46,9 @@
     "copilot": {
         "disabled_globs": ["*.md", "*.txt"]
     },
+
     // editor
+    "format_on_save": "off",
     "vim_mode": false,
     "tab_size": 4,
     "soft_wrap": "none",
@@ -60,7 +62,7 @@
         "font_family": "JetBrainsMono Nerd Font Mono",
         "font_size": 14
     },
-    // other
+
     "base_keymap": "VSCode",
     "autosave": "on_focus_change",
     "auto_update": true,

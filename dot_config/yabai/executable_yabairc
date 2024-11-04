@@ -4,17 +4,14 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # window rules
-yabai -m rule --add app="^Preview$" manage=off
-yabai -m rule --add app="^LINE$" manage=off
-yabai -m rule --add app="^Thunderbird Daily$" manage=off
-yabai -m rule --add app="^Raycast$" manage=off
-yabai -m rule --add app="^1Password$" manage=off
-yabai -m rule --add app="^CleanShot X$" manage=off
-yabai -m rule --add app="^Figma$" manage=off
-yabai -m rule --add app="^DeepL$" manage=off
-yabai -m rule --add app="^Calculator$" manage=off
-yabai -m rule --add app="^System Settings$" manage=off
-yabai -m rule --add app="^Archive Utility$" manage=off
+yabai -m rule --add app="IntelliJ IDEA Ultimate.*" title="Preferences" manage=off
+yabai -m rule --add app="WebStorm.*" title="Preferences" manage=off
+
+yabai -m rule --add app="Raycast" manage=off mouse_follows_focus=off
+yabai -m rule --add app="CleanShot X" manage=off mouse_follows_focus=off
+yabai -m rule --add app="DeepL" manage=off mouse_follows_focus=off
+yabai -m rule --add app="Calculator" manage=off mouse_follows_focus=off
+yabai -m rule --add app="System Settings" manage=off mouse_follows_focus=off
 
 # global settings
 yabai -m config                              \
@@ -23,32 +20,18 @@ yabai -m config                              \
     focus_follows_mouse         autoraise    \
     window_placement            second_child \
     window_topmost              off          \
-    window_shadow               off          \
-    window_animation_duration   0.25         \
-    window_opacity_duration     0.25         \
-    active_window_opacity       0.90         \
-    normal_window_opacity       0.50         \
+    window_shadow               on           \
     window_opacity              on           \
-    insert_feedback_color       0xaad75f5f   \
-    active_window_border_color  0xBF775759   \
-    normal_window_border_color  0x7f353535   \
-    window_border_width         4            \
-    window_border_radius        12           \
-    window_border_blur          on           \
-    window_border_hidpi         on           \
+    window_opacity              on           \
     window_border               on           \
     split_ratio                 0.50         \
     split_type                  auto         \
     auto_balance                off          \
-    top_padding                 10           \
-    left_padding                10           \
-    right_padding               10           \
-    bottom_padding              10           \
-    window_gap                  10           \
+    top_padding                 8            \
+    left_padding                8            \
+    right_padding               8            \
+    bottom_padding              8            \
+    window_gap                  8            \
     layout                      bsp          \
-    mouse_modifier              fn           \
-    mouse_action1               move         \
-    mouse_action2               resize       \
-    mouse_drop_action           swap
 
 echo "yabai configuration loaded.."
