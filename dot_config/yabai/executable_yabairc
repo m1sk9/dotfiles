@@ -7,6 +7,7 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 yabai -m rule --add app="IntelliJ IDEA Ultimate.*" title="Preferences" manage=off
 yabai -m rule --add app="WebStorm.*" title="Preferences" manage=off
 
+yabai -m rule --add app="Discord Canary" manage=off mouse_follows_focus=off
 yabai -m rule --add app="Raycast" manage=off mouse_follows_focus=off
 yabai -m rule --add app="CleanShot X" manage=off mouse_follows_focus=off
 yabai -m rule --add app="DeepL" manage=off mouse_follows_focus=off
