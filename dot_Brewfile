@@ -29,7 +29,7 @@ brew "koekeishiya/formulae/yabai"
 brew "s6n-jp/tap/ghr"
 
 cask "1password-cli"
-cask "1password@nightly"
+cask "1password"
 cask "alacritty"
 cask "cleanshot"
 cask "deepl"
