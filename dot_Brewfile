@@ -58,3 +58,4 @@ cask "tailscale"
 cask "thunderbird@daily"
 cask "zed@preview"
 cask "vlc@nightly"
+
