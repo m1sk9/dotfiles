@@ -1,30 +1,30 @@
 [colors.primary]
-background = '#15141b'
-foreground = '#edecee'
-
-[colors.normal]
-black = '#110f18'
-red = '#ff6767'
-green = '#61ffca'
-yellow = '#ffca85'
-blue = '#a277ff'
-magenta = '#a277ff'
-cyan = '#61ffca'
-white = '#edecee'
-
-[colors.bright]
-black = '#4d4d4d'
-red = '#ff6767'
-green = '#61ffca'
-yellow = '#ffca85'
-blue = '#a277ff'
-magenta = '#a277ff'
-cyan = '#61ffca'
-white = '#edecee'
-
-[colors.selection]
-text = 'CellForeground'
-background = '#29263c'
+background = "#0D0D0F"  # 深い漆黒
+foreground = "#E6E6E8"  # 鋼鉄のような明るいグレー
 
 [colors.cursor]
-cursor = '#a277ff'
+cursor = "#FF3333"  # 血のような赤
+
+[colors.selection]
+text = "CellForeground"
+background = "#1A1A1F"  # ダークグレー
+
+[colors.normal]
+black = "#080809"       # 漆黒
+red = "#FF3333"        # 鮮血の赤
+green = "#33FF66"      # 有毒な緑
+yellow = "#FF6633"     # 炎のようなオレンジ
+blue = "#3366FF"       # 電気的な青
+magenta = "#FF33CC"    # ネオンピンク
+cyan = "#33FFCC"       # 放射性物質のような青緑
+white = "#E6E6E8"      # メタリックな白
+
+[colors.bright]
+black = "#333338"      # インダストリアルグレー
+red = "#FF4D4D"        # より明るい赤
+green = "#4DFF7A"      # より明るい緑
+yellow = "#FF794D"     # より明るいオレンジ
+blue = "#4D7AFF"       # より明るい青
+magenta = "#FF4DD6"    # より明るいピンク
+cyan = "#4DFFD6"       # より明るい青緑
+white = "#FFFFFF"      # 純白
