@@ -13,7 +13,7 @@
     },
 
     // ui and theme
-    "theme": "Everforest Dark",
+    "theme": "Aquarium",
     "always_treat_brackets_as_autoclosed": true,
     "cursor_blink": false,
     "show_call_status_icon": false,
