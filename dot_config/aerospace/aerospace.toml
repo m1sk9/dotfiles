@@ -132,6 +132,14 @@ shift-down = ['volume set 0', 'mode main']
 
 # ---------
 
+## Disable Firefox Nighly Picture-in-Picture
+[[on-window-detected]]
+if.app-id = "org.mozilla.nightly"
+if.window-title-regex-substring = "Picture-in-Picture"
+run = "layout floating"
+
+# ---------
+
 ## Workspace 1: Firefox and 1Password
 [[on-window-detected]]
 if.app-id = "org.mozilla.nightly"
