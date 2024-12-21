@@ -132,7 +132,7 @@ shift-down = ['volume set 0', 'mode main']
 
 # ---------
 
-## Disable Firefox Nighly Picture-in-Picture
+## Disable Firefox Nightly Picture-in-Picture
 [[on-window-detected]]
 if.app-id = "org.mozilla.nightly"
 if.window-title-regex-substring = "Picture-in-Picture"
