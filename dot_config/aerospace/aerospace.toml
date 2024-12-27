@@ -138,6 +138,11 @@ if.app-id = "org.mozilla.nightly"
 if.window-title-regex-substring = "Picture-in-Picture"
 run = "layout floating"
 
+## Disable Unity
+[[on-window-detected]]
+if.app-id = "com.unity3d.UnityEditor5.x"
+run = "layout floating"
+
 # ---------
 
 ## Workspace 1: Firefox and 1Password
