@@ -154,14 +154,13 @@ run = "move-node-to-workspace 1"
 if.app-id = "com.hnc.DiscordCanary"
 run = "move-node-to-workspace 2"
 
-## Workspace 3: Development (Zed, Alacritty)
+## Workspace 3: Development (Zed, Ghostty)
 [[on-window-detected]]
 if.app-id = "dev.zed.Zed-Preview"
 run = "move-node-to-workspace 3"
 
-# TODO: If change terminal (stop using alacritty), change app-id
 [[on-window-detected]]
-if.app-id = "org.alacritty"
+if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace 3"
 
 ## Workspace 4: Spotify
@@ -174,7 +173,7 @@ run = "move-node-to-workspace 4"
 if.app-id = "md.obsidian"
 run = "move-node-to-workspace 5"
 
-## Workspace 6: Thuderbird Daliy
+## Workspace 6: Thunderbird Daliy
 [[on-window-detected]]
 if.app-id = "org.mozilla.thunderbird-daily"
 run = "move-node-to-workspace 6"
