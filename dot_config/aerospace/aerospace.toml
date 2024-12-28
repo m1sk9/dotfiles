@@ -143,6 +143,11 @@ run = "layout floating"
 if.app-id = "com.unity3d.UnityEditor5.x"
 run = "layout floating"
 
+## Disable 1Password
+[[on-window-detected]]
+if.app-id = "com.1password.1password"
+run = "layout floating"
+
 # ---------
 
 ## Workspace 1: Firefox and 1Password
