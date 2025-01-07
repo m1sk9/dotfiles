@@ -28,6 +28,7 @@ brew "ripgrep"
 brew "starship"
 brew "s6n-jp/tap/ghr"
 brew "yt-dlp"
+brew "hadolint"
 
 cask "1password-cli"
 cask "1password"
