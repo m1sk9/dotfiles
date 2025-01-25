@@ -22,35 +22,33 @@ yabai -m config                              \
     window_gap                  8            \
     layout                      bsp          \
 
-# space 1: terminals
-yabai -m rule --add app="Ghostty" space=^1
+# space 1: Terminals
+# yabai -m rule --add app="Ghostty" space=^1
 
-# space 2: web
-yabai -m rule --add app="Firefox" space=^2
-yabai -m rule --add app="Firefox Nightly" space=^2
-yabai -m rule --add app="Safari" space=^2
+# space 2: Development
+# yabai -m rule --add app="IntelliJ IDEA Ultimate.*" space=^2
+# yabai -m rule --add app="IntelliJ IDEA Ultimate.*" title="Preferences" space=^2 manage=off
+# yabai -m rule --add app="RustRover.*" space=^2
+# yabai -m rule --add app="RustRover.*" title="Preferences" space=^2 manage=off
+# yabai -m rule --add app="WebStorm.*" space=^2
+# yabai -m rule --add app="WebStorm.*" title="Preferences" space=^2 manage=off
+# yabai -m rule --add app="Aqua.*" space=^2
+# yabai -m rule --add app="Aqua.*" title="Preferences" space=^2 manage=off
+# yabai -m rule --add app="Zed Preview" space=^2
 
-# space 3: Development (Zed Preview)
-yabai -m rule --add app="Zed Preview" space=^3
+# space 3: Web
+# yabai -m rule --add app="Firefox" space=^3
+# yabai -m rule --add app="Firefox Nightly" space=^3
+# yabai -m rule --add app="Safari" space=^3
 
-# space 4: Development (IDEs)
-yabai -m rule --add app="IntelliJ IDEA Ultimate.*" space=^4
-yabai -m rule --add app="IntelliJ IDEA Ultimate.*" title="Preferences" space=^4 manage=off
-yabai -m rule --add app="RustRover.*" space=^4
-yabai -m rule --add app="RustRover.*" title="Preferences" space=^4 manage=off
-yabai -m rule --add app="WebStorm.*" space=^4
-yabai -m rule --add app="WebStorm.*" title="Preferences" space=^4 manage=off
-yabai -m rule --add app="Aqua.*" space=^4
-yabai -m rule --add app="Aqua.*" title="Preferences" space=^4 manage=off
+# space 4: Discord
+# yabai -m rule --add app="Discord Canary.*" space=^4
 
-# space 5: Discord
-yabai -m rule --add app="Discord Canary.*" space=^5
-
-# space 6: Stack
-yabai -m rule --add app="DataGrip.*" space=^6
-yabai -m rule --add app="DataGrip.*" title="Preferences" space=^6 manage=off
-yabai -m rule --add app="Spotify" space=^6
-yabai -m rule --add app="LINE.*" space=^6
+# space 5: Stack
+# yabai -m rule --add app="DataGrip.*" space=^5
+# yabai -m rule --add app="DataGrip.*" title="Preferences" space=^5 manage=off
+# yabai -m rule --add app="Spotify" space=^5
+# yabai -m rule --add app="LINE.*" space=^5
 
 # Disable window management
 yabai -m rule --add app="Raycast" manage=off
@@ -59,6 +57,5 @@ yabai -m rule --add app="DeepL" manage=off
 yabai -m rule --add app="Calculator" manage=off
 yabai -m rule --add app="System Settings" manage=off
 yabai -m rule --add app="Activity Monitor" manage=off
-
 
 echo "yabai configuration loaded..."
