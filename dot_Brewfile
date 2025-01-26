@@ -29,15 +29,16 @@ brew "koekeishiya/formulae/skhd"
 brew "s6n-jp/tap/ghr"
 
 cask "1password"
+cask "alacritty"
 cask "cleanshot"
 cask "discord@canary"
-# Note: Nightly is sluggish, so use the stable version for a while.
 cask "firefox"
 cask "firefox@nightly"
 cask "font-0xproto-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-noto-sans-jp"
-cask "ghostty"
+# note: Ghostty. Sleep.
+# cask "ghostty"
 cask "proton-mail-bridge"
 cask "prismlauncher"
 cask "jetbrains-toolbox"

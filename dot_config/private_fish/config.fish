@@ -31,3 +31,5 @@ starship init fish | source
 ghr shell fish | source
 mise activate fish | source
 gpg-connect-agent /bye
+
+export LANG=en_US.UTF-8
