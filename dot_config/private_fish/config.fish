@@ -1,7 +1,6 @@
 alias lg='lazygit'
-alias vim='nvim'
-alias vi='nvim'
-alias v='nvim'
+alias vi='vim'
+alias v='vim'
 alias g='git'
 alias cat='bat'
 alias ls='eza'
@@ -11,7 +10,7 @@ alias grep='rg'
 alias zed='zed-preview'
 alias z='zed'
 
-set -x EDITOR "/opt/homebrew/bin/nvim"
+set -x EDITOR "/usr/bin/vim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x GHR_ROOT "$HOME/Projects"

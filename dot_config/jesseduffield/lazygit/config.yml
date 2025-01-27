@@ -1,8 +1,7 @@
 # https://github.com/jesseduffield/lazygit/tree/master/docs
 gui:
-  showIcons: false
   showRandomTip: false
-  language: 'en'
+  language: "en"
   timeFormat: "2006-01-02 Mon 15:04:05 MST"
   nerdFontsVersion: "3"
 
@@ -16,20 +15,19 @@ refresher:
   refreshInterval: 5
   fetchInterval: 360
 
-# カスタマイズコマンド
 customCommands:
-  - key: 'u'
-    context: 'files'
-    description: 'Stash unstaged files'
-    command: 'git stash save --include-untracked'
-  - key: 'r'
-    context: 'status'
-    description: 'Add remote url'
+  - key: "u"
+    context: "files"
+    description: "Stash unstaged files"
+    command: "git stash save --include-untracked"
+  - key: "r"
+    context: "status"
+    description: "Add remote url"
     command: 'git remote add origin "{{index .PromptResponses 0}}" '
     prompts:
-      - type: 'input'
-        title: 'remote url'
-  - key: '<c-c>'
-    context: 'commits'
-    description: 'Cancel commit'
-    command: 'git reset --soft HEAD^'
+      - type: "input"
+        title: "remote url"
+  - key: "<c-c>"
+    context: "commits"
+    description: "Cancel commit"
+    command: "git reset --soft HEAD^"

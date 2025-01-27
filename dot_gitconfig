@@ -7,7 +7,7 @@
 [pull]
 	ff = only
 	rebase = false
-  default = current
+    default = current
 [init]
 	defaultbranch = main
 [core]

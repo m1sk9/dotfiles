@@ -1,71 +1,80 @@
-// Zed settings
 // https://zed.dev/docs/configuring-zed
 {
-    // font
-    "ui_font_size": 13.5,
-    "buffer_font_size": 13.5,
-    "buffer_font_family": "0xProto Nerd Font Mono",
-    "ui_font_features": {
-        "liga": true,
-        "calt": true,
-        "clig": true,
-        "kern": true
+  "theme": "Catppuccin Mocha - No Italics",
+  "active_pane_modifiers": {
+    "inactive_opacity": 1.0,
+    "border_size": 0.5,
+    "magnification": 1.0
+  },
+  "autosave": "on_focus_change",
+  "restore_on_startup": "none",
+  "base_keymap": "VSCode",
+  "buffer_font_family": "0xProto Nerd Font",
+  "buffer_font_size": 14,
+  "buffer_font_fallbacks": ["Hiragino Sans"],
+  "ui_font_size": 14,
+  "centered_layout": {
+    "left_padding": 0.5,
+    "right_padding": 0.5
+  },
+  "inline_completions": {
+    "disabled_globs": [".env", "*.md"]
+  },
+  "tabs": {
+    "close_position": "right",
+    "file_icons": false,
+    "git_status": true
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "check": {
+        "extraArgs": ["--target-dir", "target/ra"]
+      },
+      "initialization_options": {
+        "check": {
+          "command": "check"
+        }
+      }
+    }
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "edit_debounce_ms": 600,
+    "scroll_debounce_ms": 40,
+    "show_background": true
+  },
+  "format_on_save": "on",
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "show_commit_summary": true
+    }
+  },
+  "journal": {
+    "hour_format": "hour24"
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "selections_menu": true,
+    "quick_actions": true
+  },
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "/opt/homebrew/bin/fish",
+        "args": []
+      }
     },
-
-    // ui and theme
-    "theme": "Tokyo Night",
-    "always_treat_brackets_as_autoclosed": true,
-    "cursor_blink": false,
-    "show_call_status_icon": false,
-    "centered_layout": {
-        "left_padding": 0.5,
-        "right_padding": 0.5
-    },
-    "collaboration_panel": {
-        "button": false
-    },
+    "font_family": "0xProto Nerd Font",
+    "font_size": 14,
     "toolbar": {
-        "selections_menu": true,
-        "breadcrumbs": true,
-        "quick_actions": true
-    },
-    "chat_panel": {
-        "button": false
-    },
-    "assistant": {
-        "default_model": {
-            "provider": "copilot_chat",
-            "model": "gpt-4o"
-        },
-        "version": "2",
-        "enabled": true,
-        "button": true
-    },
-
-    // copilot
-    "copilot": {
-        "disabled_globs": ["*.md", "*.txt"]
-    },
-
-    // editor
-    "format_on_save": "off",
-    "vim_mode": false,
-    "tab_size": 4,
-    "soft_wrap": "none",
-    "terminal": {
-        "shell": {
-            "with_arguments": {
-                "program": "/opt/homebrew/bin/fish",
-                "args": []
-            }
-        },
-        "font_family": "JetBrainsMono Nerd Font Mono",
-        "font_size": 14
-    },
-
-    "base_keymap": "VSCode",
-    "autosave": "on_focus_change",
-    "auto_update": true,
-    "use_autoclose": true,
-    "confirm_quit": false
+      "breadcrumbs": false
+    }
+  }
 }
