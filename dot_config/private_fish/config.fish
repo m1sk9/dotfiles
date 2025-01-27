@@ -9,6 +9,7 @@ alias find='fd'
 alias grep='rg'
 alias zed='zed-preview'
 alias z='zed'
+alias cdg='ghr cd'
 
 set -x EDITOR "/usr/bin/vim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
