@@ -55,7 +55,7 @@
     "scroll_debounce_ms": 40,
     "show_background": true
   },
-  "format_on_save": "on",
+  "format_on_save": "off",
   "git": {
     "inline_blame": {
       "enabled": true,
