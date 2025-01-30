@@ -7,6 +7,15 @@
     "magnification": 1.0
   },
   "autosave": "on_focus_change",
+  "assistant": {
+    "default_model": {
+     "provider": "copilot_chat",
+     "model": "gpt-4o"
+    },
+    "version": "2",
+    "enabled": true,
+    "button": true
+  },
   "restore_on_startup": "none",
   "base_keymap": "VSCode",
   "buffer_font_family": "0xProto Nerd Font",
