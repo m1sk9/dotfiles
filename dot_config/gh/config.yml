@@ -1,5 +1,5 @@
 git_protocol: ssh
-editor: nvim
+editor: vim
 prompt: enabled
 pager:
 http_unix_socket:
