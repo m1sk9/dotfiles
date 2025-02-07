@@ -1,0 +1,11 @@
+font-family = "Maple Mono CN"
+font-size = 13.5
+theme = "/Applications/Ghostty.app/Contents/Resources/ghostty/themes/Horizon"
+mouse-hide-while-typing = true
+background-opacity = 0.8
+window-padding-x = 10
+window-padding-y = 10
+window-theme = dark
+macos-titlebar-proxy-icon = hidden
+confirm-close-surface = false
+copy-on-select = true
