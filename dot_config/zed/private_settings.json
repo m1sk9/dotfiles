@@ -1,6 +1,5 @@
 // https://zed.dev/docs/configuring-zed
 {
-  "theme": "Kanagawa - Wave",
   "active_pane_modifiers": {
     "inactive_opacity": 1.0,
     "border_size": 0.5,
@@ -18,7 +17,7 @@
   },
   "restore_on_startup": "none",
   "base_keymap": "VSCode",
-  "buffer_font_family": "0xProto Nerd Font",
+  "buffer_font_family": "0xProto",
   "buffer_font_size": 14,
   "buffer_font_fallbacks": ["Hiragino Sans"],
   "ui_font_size": 14,
@@ -80,7 +79,8 @@
         "args": []
       }
     },
-    "font_family": "0xProto Nerd Font",
+    "font_family": "Maple Mono CN",
+    "font_fallbacks": ["JetBrainsMono Nerd Font"],
     "font_size": 14,
     "toolbar": {
       "breadcrumbs": false
