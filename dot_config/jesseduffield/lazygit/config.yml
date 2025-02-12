@@ -1,20 +1,18 @@
 # https://github.com/jesseduffield/lazygit/tree/master/docs
 gui:
   showRandomTip: false
+  showBottomLine: false
+  showCommandLog: false
   language: "en"
   timeFormat: "2006-01-02 Mon 15:04:05 MST"
-  nerdFontsVersion: "3"
-
 git:
   autoFetch: true
   autoRefresh: true
   branchLogCmd: "git log --show-signature --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
   allBranchesLogCmd: "git log --show-signature --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
-
 refresher:
   refreshInterval: 5
   fetchInterval: 360
-
 customCommands:
   - key: "u"
     context: "files"
