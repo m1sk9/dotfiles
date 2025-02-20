@@ -1,0 +1,8 @@
+[
+  {
+    "use_key_equivalents": true,
+    "bindings": {
+      "shift shift": "pane::DeploySearch"
+    }
+  }
+]
