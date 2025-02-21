@@ -7,7 +7,6 @@ alias ls='eza'
 alias l='eza -abghHliS'
 alias find='fd'
 alias grep='rg'
-alias zed='zed-preview'
 alias z='zed'
 alias cdg='ghr cd'
 
