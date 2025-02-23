@@ -8,6 +8,7 @@ tap "sidneys/homebrew"
 
 brew "bat"
 brew "chezmoi"
+brew "cmake"
 brew "eza"
 brew "fd"
 brew "fish"
