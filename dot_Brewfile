@@ -31,6 +31,7 @@ brew "koekeishiya/formulae/skhd"
 brew "s6n-jp/tap/ghr"
 
 cask "1password"
+cask "spacedrive"
 cask "cleanshot"
 cask "discord@canary"
 cask "firefox"
