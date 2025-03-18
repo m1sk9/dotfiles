@@ -18,7 +18,7 @@
   "restore_on_startup": "none",
   "base_keymap": "VSCode",
   "buffer_font_family": "Explex35 Console NF",
-  "buffer_font_size": 15,
+  "buffer_font_size": 14.5,
   "buffer_font_features": {
       "calt": false
   },
@@ -81,7 +81,7 @@
         "args": []
       }
     },
-    "font_family": "Explex Console NF",
+    "font_family": "Explex35 Console NF",
     "font_size": 14.5,
     "toolbar": {
       "breadcrumbs": false
