@@ -17,7 +17,7 @@
   },
   "restore_on_startup": "none",
   "base_keymap": "VSCode",
-  "buffer_font_family": "Maple Mono CN",
+  "buffer_font_family": "Explex Console NF",
   "buffer_font_size": 14.5,
   "buffer_font_features": {
       "calt": false
@@ -81,7 +81,7 @@
         "args": []
       }
     },
-    "font_family": "Maple Mono CN",
+    "font_family": "Explex Console NF",
     "font_size": 14,
     "toolbar": {
       "breadcrumbs": false
