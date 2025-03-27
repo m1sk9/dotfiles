@@ -5,6 +5,7 @@ tap "jdx/tap"
 tap "s6n-jp/tap"
 tap "koekeishiya/formulae"
 tap "sidneys/homebrew"
+tap "nikitabobko/tap"
 
 brew "bat"
 brew "chezmoi"
