@@ -59,7 +59,7 @@ alt-b = 'workspace B'
 alt-c = 'workspace C'
 alt-d = 'workspace D'
 alt-e = 'workspace E'
-alt-f = 'workspace F'
+# alt-f = 'workspace F'
 alt-g = 'workspace G'
 alt-i = 'workspace I'
 alt-m = 'workspace M'
@@ -113,7 +113,8 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-shift-semicolon = 'mode service'
-alt-ctrl-f = 'fullscreen'
+# alt-ctrl-f = 'fullscreen'
+alt-f = 'fullscreen'
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
@@ -132,9 +133,14 @@ shift-down = ['volume set 0', 'mode main']
 
 # ---------
 
-## Disable Firefox Nightly Picture-in-Picture
+## Disable Firefox Picture-in-Picture
 [[on-window-detected]]
 if.app-id = "org.mozilla.nightly"
+if.window-title-regex-substring = "Picture-in-Picture"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "org.mozilla.firefox"
 if.window-title-regex-substring = "Picture-in-Picture"
 run = "layout floating"
 
@@ -153,6 +159,10 @@ run = "layout floating"
 ## Workspace 1: Firefox and 1Password
 [[on-window-detected]]
 if.app-id = "org.mozilla.nightly"
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = "org.mozilla.firefox"
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
@@ -200,4 +210,3 @@ run = "move-node-to-workspace D"
 [[on-window-detected]]
 if.app-id = "com.jetbrains.datagrip"
 run = "move-node-to-workspace D"
-
