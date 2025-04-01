@@ -47,6 +47,7 @@
       }
     }
   },
+  "language_servers": ["!biome"],
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": true,
@@ -88,3 +89,4 @@
     }
   }
 }
+
