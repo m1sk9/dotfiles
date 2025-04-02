@@ -176,7 +176,7 @@ run = "move-node-to-workspace 2"
 
 ## Workspace 3: Development (Zed, Ghostty)
 [[on-window-detected]]
-if.app-id = "dev.zed.Zed-Preview"
+if.app-id = "dev.zed.Zed"
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
