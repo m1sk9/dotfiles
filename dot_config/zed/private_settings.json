@@ -75,6 +75,9 @@
     "selections_menu": true,
     "quick_actions": true
   },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
   "terminal": {
     "shell": {
       "with_arguments": {
