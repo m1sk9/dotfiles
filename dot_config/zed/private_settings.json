@@ -41,8 +41,8 @@
         "extraArgs": ["--target-dir", "target/ra"]
       },
       "initialization_options": {
-        "check": {
-          "command": "check"
+        "checkOnSave": {
+          "command": "clippy" // rust-analyzer.checkOnSave.command
         }
       }
     }
@@ -92,4 +92,3 @@
     }
   }
 }
-
