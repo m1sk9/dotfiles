@@ -28,7 +28,7 @@
     "right_padding": 0.5
   },
   "edit_predictions": {
-    "disabled_globs": [".env", "*.md"]
+    "disabled_globs": [".env"]
   },
   "tabs": {
     "close_position": "right",
