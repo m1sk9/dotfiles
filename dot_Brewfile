@@ -54,3 +54,5 @@ cask "tailscale"
 cask "thunderbird@daily"
 cask "vlc"
 cask "zed"
+
+cask "visual-studio-code"
