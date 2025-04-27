@@ -47,7 +47,7 @@
       }
     }
   },
-  "language_servers": ["!biome", "rust-analyzer"],
+  "language_servers": ["!biome", "rust-analyzer", "clangd"],
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": true,
