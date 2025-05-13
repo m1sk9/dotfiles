@@ -42,7 +42,7 @@
       },
       "initialization_options": {
         "checkOnSave": {
-          "command": "clippy" // rust-analyzer.checkOnSave.command
+          "command": "clippy"
         }
       }
     }

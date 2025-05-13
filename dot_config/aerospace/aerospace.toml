@@ -149,9 +149,9 @@ run = "layout floating"
 if.app-id = "com.unity3d.UnityEditor5.x"
 run = "layout floating"
 
-## Disable 1Password
+## Disable Bitwarden
 [[on-window-detected]]
-if.app-id = "com.1password.1password"
+if.app-id = "com.bitwarden.desktop"
 run = "layout floating"
 
 # ---------
@@ -161,30 +161,14 @@ run = "layout floating"
 if.app-id = "org.mozilla.nightly"
 run = "move-node-to-workspace 1"
 
-[[on-window-detected]]
-if.app-id = "org.mozilla.firefox"
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = "com.1password.1password"
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = "com.bitwarden.desktop"
-run = "move-node-to-workspace 1"
-
 ## Workspace 2: Discord
 [[on-window-detected]]
 if.app-id = "com.hnc.DiscordCanary"
 run = "move-node-to-workspace 2"
 
-## Workspace 3: Development (Zed, Ghostty)
+## Workspace 3: Development (Zed)
 [[on-window-detected]]
 if.app-id = "dev.zed.Zed"
-run = "move-node-to-workspace 3"
-
-[[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace 3"
 
 ## Workspace 4: Spotify
@@ -197,10 +181,10 @@ run = "move-node-to-workspace 4"
 if.app-id = "md.obsidian"
 run = "move-node-to-workspace 5"
 
-## Workspace 6: Thunderbird Daliy
+# Workspace Q: Ghostty
 [[on-window-detected]]
-if.app-id = "org.mozilla.thunderbird-daily"
-run = "move-node-to-workspace 6"
+if.app-id = "com.mitchellh.ghostty"
+run = "move-node-to-workspace Q"
 
 ## Workspace D: JetBrains IDE
 [[on-window-detected]]
