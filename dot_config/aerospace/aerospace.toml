@@ -144,11 +144,6 @@ if.app-id = "org.mozilla.firefox"
 if.window-title-regex-substring = "Picture-in-Picture"
 run = "layout floating"
 
-## Disable Unity
-[[on-window-detected]]
-if.app-id = "com.unity3d.UnityEditor5.x"
-run = "layout floating"
-
 ## Disable Bitwarden
 [[on-window-detected]]
 if.app-id = "com.bitwarden.desktop"
@@ -181,10 +176,26 @@ run = "move-node-to-workspace 4"
 if.app-id = "md.obsidian"
 run = "move-node-to-workspace 5"
 
+## Workspace 6: ProtonMail
+[[on-window-detected]]
+if.app-id = "ch.protonmail.desktop"
+run = "move-node-to-workspace 6"
+
+## Workspace 7: Notion Calendar
+[[on-window-detected]]
+if.app-id = "com.cron.electron"
+run = "move-node-to-workspace 7"
+
 # Workspace Q: Ghostty
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace Q"
+
+# Workspace W: Firefox (Univercity Profile)
+[[on-window-detected]]
+if.app-id = "org.mozilla.nightly"
+if.window-title-regex-substring = "University"
+run = "move-node-to-workspace W"
 
 ## Workspace D: JetBrains IDE
 [[on-window-detected]]
