@@ -7,37 +7,5 @@ browser:
 version: "1"
 aliases:
   st: status
-  # issue
-  i: issue
-  ic: issue create
-  il: issue list
-  is: issue status
-  icl: issue close
-  ico: issue comment
-  ie: issue edit
-  iv: issue view
-  # pr
-  p: pr
   pc: pr create
-  pl: pr list
-  ps: pr status
-  pcl: pr close
-  pco: pr comment
-  pe: pr edit
-  pv: pr view
-  pm: pr merge
-  pre: pr review
-  # repo
-  r: repo
-  rc: repo create
-  rl: repo list
-  rv: repo view
-  rf: repo fork
-  re: repo edit
-  rs: repo sync
-  # browse
   b: browse
-  bs: browse --settings
-  bw: browse --wiki
-  bp: browse --projects
-  br: browse --repo
