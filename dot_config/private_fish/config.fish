@@ -26,7 +26,6 @@ fish_add_path $HOME/.deno/bin
 # setting fish
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-starship init fish | source
 ghr shell fish | source
 mise activate fish | source
 gpg-connect-agent /bye
