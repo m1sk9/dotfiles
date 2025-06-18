@@ -29,4 +29,3 @@ customCommands:
     context: "commits"
     description: "Cancel commit"
     command: "git reset --soft HEAD^"
-
