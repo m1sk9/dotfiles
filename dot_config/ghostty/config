@@ -1,6 +1,8 @@
 font-family = "PlemolJP35 Console NF"
 font-size = 13.5
 font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
 theme = "/Applications/Ghostty.app/Contents/Resources/ghostty/themes/Horizon"
 mouse-hide-while-typing = true
 background-opacity = 0.8
