@@ -1,0 +1,18 @@
+cd
+ls
+chezmoi apply
+lg
+lazygit
+lg
+cd Projects/github.com/m1sk9/babyrite/
+ls
+ls *.rs
+ls *.md
+bat Cargo.toml
+cat Cargo.toml
+code ./
+cd 
+cd .config/nushell/
+ls
+cat config.nu
+code ./
