@@ -1,14 +1,9 @@
 alias lg='lazygit'
-alias vi='vim'
-alias v='vim'
-alias g='git'
 alias cat='bat'
 alias ls='eza'
 alias l='eza -abghHliS'
 alias find='fd'
 alias grep='rg'
-alias z='zed'
-alias cdg='ghr cd'
 
 set -x EDITOR "/usr/bin/vim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
@@ -24,7 +19,7 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.deno/bin
 
 # setting fish
-
+starship init fish | source
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ghr shell fish | source
 mise activate fish | source

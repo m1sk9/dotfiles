@@ -2,3 +2,4 @@ LICENSE
 .chezmoi.toml_tmpl
 .chezmoiignore
 .gitattributes
+./dot_config/nushell/history.txt
