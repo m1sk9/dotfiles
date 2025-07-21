@@ -19,6 +19,7 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.deno/bin
 
 # setting fish
+starship init fish | source
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ghr shell fish | source
 mise activate fish | source

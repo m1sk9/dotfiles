@@ -20,6 +20,7 @@ brew "mise"
 brew "pinentry-mac"
 brew "protobuf"
 brew "ripgrep"
+brew "starship"
 brew "s6n-jp/tap/ghr"
 
 cask "bitwarden"
