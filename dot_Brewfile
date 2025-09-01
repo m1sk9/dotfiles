@@ -25,6 +25,7 @@ brew "s6n-jp/tap/ghr"
 
 cask "cleanshot"
 cask "discord@canary"
+cask "figma"
 cask "firefox"
 cask "firefox@nightly"
 cask "firefox@developer-edition"
