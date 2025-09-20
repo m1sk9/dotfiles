@@ -6,7 +6,7 @@ gui:
   language: "en"
   timeFormat: "2006-01-02 Mon 15:04:05 MST"
 git:
-  autoFetch: true
+  autoFetch: false
   autoRefresh: true
   branchLogCmd: "git log --show-signature --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
   allBranchesLogCmds:
