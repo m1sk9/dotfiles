@@ -43,8 +43,6 @@ cask "obsidian"
 cask "tailscale-app"
 cask "proton-mail"
 cask "proton-pass"
-cask "proton-drive"
-cask "notion"
 cask "visual-studio-code"
 cask "zed"
 
