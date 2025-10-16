@@ -26,6 +26,7 @@ brew "starship"
 brew "s6n-jp/tap/ghr"
 
 cask "1password"
+cask "bitwarden"
 cask "cleanshot"
 cask "discord"
 cask "figma"
