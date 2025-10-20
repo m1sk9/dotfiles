@@ -11,6 +11,9 @@
     "button": true,
     "model_parameters": []
   },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
   "collaboration_panel": {
     "button": false
   },
@@ -42,7 +45,7 @@
   },
   "terminal": {
     "toolbar": {
-      "breadcrumbs": true
+      "breadcrumbs": false
     },
     "font_size": 13.0,
     "button": true,
@@ -51,10 +54,6 @@
   },
   "status_bar": {
     "cursor_position_button": true
-  },
-  "search": {
-    "whole_word": true,
-    "case_sensitive": true
   },
   "diagnostics": {
     "inline": {
