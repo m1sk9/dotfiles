@@ -1,0 +1,91 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    "button": true,
+    "model_parameters": []
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "button": true
+  },
+  "project_panel": {
+    "folder_icons": false,
+    "file_icons": true,
+    "dock": "left"
+  },
+  "use_system_window_tabs": false,
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "tab_bar": {
+    "show": true
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_sign_in": true,
+    "show_user_picture": true,
+    "show_onboarding_banner": false,
+    "show_branch_icon": true
+  },
+  "debugger": {
+    "button": true
+  },
+  "terminal": {
+    "toolbar": {
+      "breadcrumbs": true
+    },
+    "font_size": 13.0,
+    "button": true,
+    "font_features": null,
+    "shell": "system"
+  },
+  "status_bar": {
+    "cursor_position_button": true
+  },
+  "search": {
+    "whole_word": true,
+    "case_sensitive": true
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
+  "show_whitespaces": "all",
+  "minimap": {
+    "show": "always"
+  },
+  "toolbar": {
+    "code_actions": true,
+    "agent_review": true,
+    "selections_menu": true,
+    "quick_actions": true,
+    "breadcrumbs": true
+  },
+  "auto_signature_help": true,
+  "vim_mode": false,
+  "ui_font_weight": 400.0,
+  "buffer_font_family": "PlemolJP35 Console NF",
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false
+  },
+  "when_closing_with_no_tabs": "keep_window_open",
+  "ui_font_size": 14.0,
+  "buffer_font_size": 14.0,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha"
+  }
+}
