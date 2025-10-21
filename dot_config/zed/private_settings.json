@@ -11,6 +11,7 @@
     "button": true,
     "model_parameters": []
   },
+  "autosave": "on_focus_change",
   "features": {
     "edit_prediction_provider": "copilot"
   },
