@@ -42,3 +42,6 @@ cask "tailscale-app"
 cask "proton-mail"
 cask "proton-pass"
 cask "zed@preview"
+
+# Fuck PHP
+brew "php@8.2"
