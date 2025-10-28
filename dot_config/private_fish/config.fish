@@ -27,4 +27,4 @@ gpg-connect-agent /bye
 export LANG=en_US.UTF-8
 
 # Display fastfetch
-fastfetch --structure Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:CPU:GPU:Memory:Swap:Disk:LocalIp:Battery:PowerAdapter:Locale:Break:Break --color "#F2AEDE" --logo macos
+fastfetch --structure Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:CPU:GPU:Memory:Swap:Disk:LocalIp:Battery:PowerAdapter:Locale:Break:Break --color "#F2AEDE" --logo none
