@@ -26,6 +26,7 @@ brew "s6n-jp/tap/ghr"
 
 cask "cleanshot"
 cask "discord@canary"
+cask "firefox@nightly"
 cask "font-noto-sans-jp"
 cask "font-plemol-jp-nf"
 cask "ghostty"
