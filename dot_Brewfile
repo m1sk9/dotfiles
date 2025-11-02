@@ -25,7 +25,7 @@ brew "ripgrep"
 brew "s6n-jp/tap/ghr"
 
 cask "cleanshot"
-cask "discord@canary"
+cask "discord"
 cask "firefox@nightly"
 cask "font-noto-sans-jp"
 cask "font-plemol-jp-nf"
@@ -40,7 +40,7 @@ cask "obsidian"
 cask "tailscale-app"
 cask "proton-mail"
 cask "proton-pass"
-cask "zed@preview"
+cask "zed"
 
 # Fuck PHP
 brew "php@8.2"
