@@ -4,7 +4,6 @@ alias ls='eza'
 alias l='eza -abghHliS'
 alias find='fd'
 alias grep='rg'
-alias zed='zed-preview'
 
 set -x EDITOR "/usr/bin/vim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
