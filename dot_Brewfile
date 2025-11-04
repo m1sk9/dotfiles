@@ -42,5 +42,4 @@ cask "proton-mail"
 cask "proton-pass"
 cask "zed"
 
-# Fuck PHP
 brew "php@8.2"
