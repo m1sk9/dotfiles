@@ -41,5 +41,6 @@ cask "tailscale-app"
 cask "proton-mail"
 cask "proton-pass"
 cask "zed"
+cask "zoom"
 
 brew "php@8.2"
