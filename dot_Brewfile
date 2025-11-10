@@ -44,4 +44,6 @@ cask "proton-pass"
 cask "zed"
 cask "zoom"
 
+brew "postgresql"
+
 brew "php@8.2"
