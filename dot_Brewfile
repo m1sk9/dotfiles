@@ -26,7 +26,6 @@ brew "s6n-jp/tap/ghr"
 
 cask "brave-browser"
 cask "cleanshot"
-cask "chatgpt"
 cask "codex"
 cask "claude-code"
 cask "discord"
