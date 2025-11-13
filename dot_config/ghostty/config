@@ -7,7 +7,6 @@ font-feature = -liga
 font-feature = -calt
 font-feature = -dlig
 font-size = 13.5
-macos-icon = holographic
 macos-secure-input-indication = false
 macos-titlebar-proxy-icon = hidden
 mouse-hide-while-typing = true
