@@ -24,7 +24,7 @@ brew "protobuf"
 brew "ripgrep"
 brew "s6n-jp/tap/ghr"
 
-cask "brave-browser@dev"
+cask "brave-browser"
 cask "cleanshot"
 cask "chatgpt"
 cask "chatgpt-atlas"
