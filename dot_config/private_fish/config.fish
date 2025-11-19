@@ -8,7 +8,7 @@ alias grep='rg'
 set -x EDITOR "/usr/bin/vim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
 set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x GHR_ROOT "$HOME/Projects"
+set -x GHR_ROOT "$HOME/Repositories"
 
 fish_add_path /opt/homebrew/bin
 fish_add_path /usr/bin
