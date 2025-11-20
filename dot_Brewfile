@@ -47,6 +47,7 @@ cask "tailscale-app"
 cask "proton-mail"
 cask "proton-pass"
 cask "zed"
+cask "vlc"
 cask "zoom"
 
 brew "postgresql"
