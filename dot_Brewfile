@@ -26,7 +26,6 @@ brew "protobuf"
 brew "ripgrep"
 brew "s6n-jp/tap/ghr"
 
-cask "activitywatch"
 cask "cleanshot"
 cask "claude-code"
 cask "discord"
