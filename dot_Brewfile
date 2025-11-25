@@ -27,6 +27,7 @@ brew "ripgrep"
 brew "s6n-jp/tap/ghr"
 
 cask "cleanshot"
+cask "claude"
 cask "claude-code"
 cask "discord"
 cask "firefox@nightly"
