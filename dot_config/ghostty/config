@@ -12,6 +12,7 @@ macos-titlebar-proxy-icon = hidden
 mouse-hide-while-typing = true
 mouse-hide-while-typing = true
 theme = Catppuccin Mocha
+term = xterm-256color
 window-width = 100
 window-height = 100
 window-padding-x = 10
