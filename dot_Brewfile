@@ -3,6 +3,7 @@ tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
 tap "s6n-jp/tap"
 
+brew "awscli"
 brew "bat"
 brew "btop"
 brew "chezmoi"
