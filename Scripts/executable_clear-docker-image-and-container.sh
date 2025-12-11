@@ -7,6 +7,7 @@
 
 # Optional parameters:
 # @raycast.icon 🐳
+# @raycast.needsConfirmation true
 
 # Documentation:
 # @raycast.author m1sk9
