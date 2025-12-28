@@ -28,7 +28,6 @@ brew "postgresql"
 brew "protobuf"
 brew "ripgrep"
 brew "s6n-jp/tap/ghr"
-brew "yt-dlp"
 brew "wireshark"
 
 cask "claude"
