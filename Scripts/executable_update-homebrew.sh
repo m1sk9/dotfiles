@@ -13,6 +13,8 @@
 # @raycast.author m1sk9
 # @raycast.authorURL https://m1sk9.dev
 
+chezmoi apply --force
+
 brew update
 brew bundle --zap --file '~/.Brewfile'
 brew bundle cleanup --zap --force --file '~/.Brewfile'
