@@ -28,3 +28,11 @@ if [ -n "$(docker images -q)" ]; then
 else
   echo "No images to remove."
 fi
+
+# Remove all volumes
+if [ -n "$(docker volume ls -q)" ]; then
+  docker volume rm $(docker volume ls -q)
+  echo "All volumes have been removed."
+else
+  echo "No volumes to remove."
+fi
