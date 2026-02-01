@@ -4,6 +4,9 @@ alias ls='eza'
 alias l='eza -abghHliS'
 alias find='fd'
 alias grep='rg'
+alias cd='z'
+alias cdi='zi'
+alias cdg='ghr cd'
 
 set -x EDITOR "/usr/bin/vim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
@@ -20,6 +23,7 @@ fish_add_path $HOME/.deno/bin
 # setting fish
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ghr shell fish | source
+zoxide init fish | source
 mise activate fish | source
 gpg-connect-agent /bye
 
