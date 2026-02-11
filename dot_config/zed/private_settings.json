@@ -7,15 +7,15 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "enable_language_server": false,
   "agent": {
     "button": true,
     "model_parameters": []
   },
   "autosave": "on_focus_change",
-  "features": {
-    "edit_prediction_provider": "copilot"
-  },
   "collaboration_panel": {
     "button": false
   },
