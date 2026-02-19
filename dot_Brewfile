@@ -35,6 +35,7 @@ brew "wireshark"
 
 cask "azookey"
 cask "claude"
+cask "comet"
 cask "claude-code"
 cask "copilot-cli"
 cask "cleanshot"
