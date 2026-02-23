@@ -11,6 +11,7 @@ macos-secure-input-indication = false
 macos-titlebar-proxy-icon = hidden
 mouse-hide-while-typing = true
 mouse-hide-while-typing = true
+maximize = true
 theme = Catppuccin Mocha
 term = xterm-256color
 window-width = 100
