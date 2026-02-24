@@ -113,7 +113,6 @@
       "Bash(xargs:*)",
       "Bash(eval:*)",
       "Bash(exec:*)",
-      "Bash(source:*)",
       "Bash(.:*)"
     ]
   },
