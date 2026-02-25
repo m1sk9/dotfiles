@@ -1,5 +1,6 @@
 ---
 description: staged な変更を分析して適切なコミットメッセージを生成する
+allowed-tools: Bash(git diff --staged), Bash(git diff *)
 ---
 
 staged な変更内容を `git diff --staged` で取得し，適切なコミットメッセージを生成してください．

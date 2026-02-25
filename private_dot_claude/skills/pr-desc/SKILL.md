@@ -1,5 +1,7 @@
 ---
 description: PR の説明マークダウンを生成してクリップボードにコピーする
+disable-model-invocation: true
+allowed-tools: Bash(git *)
 ---
 
 現在のブランチと base ブランチの差分を分析して，GitHub PR の説明マークダウンを生成し，クリップボードにコピーしてください．

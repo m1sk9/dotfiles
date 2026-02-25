@@ -1,5 +1,6 @@
---
+---
 description: 不要なコメントを削除し、重要なコメントにラベルを付与
+argument-hint: [file or directory]
 ---
 
 # タスク: 不要なコメントの削除と整理

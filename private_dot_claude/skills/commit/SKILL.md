@@ -1,5 +1,8 @@
 ---
 description: 編集したファイルをコミット・プッシュする
+disable-model-invocation: true
+argument-hint: [files...]
+allowed-tools: Bash(git *)
 ---
 
 # タスク: 変更ファイルのコミットとプッシュ
