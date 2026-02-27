@@ -12,8 +12,11 @@
   },
   "enable_language_server": false,
   "agent": {
-    "button": true,
+    "button": false,
     "model_parameters": []
+  },
+  "chat_panel": {
+    "button": false
   },
   "autosave": "on_focus_change",
   "collaboration_panel": {
