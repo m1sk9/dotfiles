@@ -28,7 +28,7 @@ Once initialization is complete, use Homebrew to install the application.
 brew bundle --zap --file ‘~/.Brewfile’
 ```
 
-After completing all setups, switch the URL in your Git repository config to SSH. (I dislike HTTPS authentication via PAT, so I use SSH authentication. Otherwise, operations like pull will fail.)
+After completing all setups, switch the URL in your Git repository config to SSH. (I hate HTTPS authentication via PAT, so I use SSH authentication. Otherwise, operations like pull will fail.)
 
 ```bash
 vim .git/config
