@@ -1,6 +1,6 @@
 # dotfiles
 
-Dotfiles for setting up m1sk9's development environment.
+dotfiles for setting up m1sk9's development environment.
 
 Supports macOS and can be set up using [chezmoi](https://github.com/twpayne/chezmoi).
 
