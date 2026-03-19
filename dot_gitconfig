@@ -1,7 +1,7 @@
 [user]
 	name = Sho Sakuma
 	email = me@m1sk9.dev
-	signingKey = CA63532083280BF4
+	signingKey = 9700B737B52570D7B78394E52DF1A76B8DC2D6E3
 [push]
 	default = current
 [pull]
