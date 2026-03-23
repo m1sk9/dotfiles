@@ -10,7 +10,7 @@ disk: 100
 
 # Size of the memory in GiB to be allocated to the virtual machine.
 # Default: 2
-memory: 4
+memory: 6
 
 # Architecture of the virtual machine (x86_64, aarch64, host).
 #
@@ -35,7 +35,7 @@ modelRunner: ""
 # Set custom hostname for the virtual machine.
 # Default: colima
 #          colima-profile_name for other profiles
-hostname: colima
+hostname: dev-m1sk9-lap1-docker
 
 # Kubernetes configuration for the virtual machine.
 kubernetes:
@@ -170,6 +170,7 @@ vmType: vz
 portForwarder: ssh
 
 # Utilise rosetta for amd64 emulation (requires m1 mac and vmType `vz`)
+# NOTE: rosetta は有効にしない。binfmt による emulation を使用する。
 # Default: false
 rosetta: false
 
