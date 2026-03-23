@@ -7,13 +7,23 @@ font-feature = -liga
 font-feature = -calt
 font-feature = -dlig
 font-size = 13
+quick-terminal-position = top
+quick-terminal-screen = main
+quick-terminal-size = 50%
+quick-terminal-animation-duration = 0.2
+quick-terminal-autohide = true
+quick-terminal-space-behavior = move
 notify-on-command-finish = always
 notify-on-command-finish-action = bell,notify
 macos-secure-input-indication = false
 macos-titlebar-proxy-icon = hidden
 mouse-hide-while-typing = true
 mouse-hide-while-typing = true
+mouse-reporting = false
+macos-titlebar-style = tabs
+macos-window-buttons = hidden
 maximize = true
+macos-icon = retro
 split-inherit-working-directory = true
 theme = Catppuccin Mocha
 term = xterm-256color
@@ -26,3 +36,9 @@ window-padding-y = 10
 window-theme = dark
 keybind = shift+enter=text:\x1b\r
 keybind = cmd+c=copy_to_clipboard:plain
+keybind = cmd+i=text:cdi\n
+keybind = ctrl+cmd+a=text:zi\n
+keybind = ctrl+cmd+s=text:lazygit\n
+keybind = ctrl+cmd+c=text:claude\n
+keybind = ctrl+cmd+r=toggle_readonly
+keybind = global:cmd+grave_accent=toggle_quick_terminal
