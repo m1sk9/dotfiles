@@ -120,6 +120,14 @@
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "guard-and-guide" }]
+      }
+    ]
+  },
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
