@@ -1,0 +1,28 @@
+auto-update-channel = stable
+confirm-close-surface = false
+copy-on-select = true
+cursor-style-blink = false
+font-family = "PlemolJP35 Console NF"
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
+font-size = 13
+notify-on-command-finish = always
+notify-on-command-finish-action = bell,notify
+macos-secure-input-indication = false
+macos-titlebar-proxy-icon = hidden
+mouse-hide-while-typing = true
+mouse-hide-while-typing = true
+maximize = true
+split-inherit-working-directory = true
+theme = Catppuccin Mocha
+term = xterm-256color
+tab-inherit-working-directory = false
+window-inherit-working-directory = false
+window-width = 100
+window-height = 100
+window-padding-x = 10
+window-padding-y = 10
+window-theme = dark
+keybind = shift+enter=text:\x1b\r
+keybind = cmd+c=copy_to_clipboard:plain
