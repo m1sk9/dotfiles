@@ -1,7 +1,4 @@
 auto-update-channel = stable
-background-image = ~/.config/ghostty/walls/a_close_up_of_purple_flowers.jpg
-background-image-fit = cover
-background-image-opacity = 0.5
 confirm-close-surface = false
 copy-on-select = true
 cursor-style-blink = false
