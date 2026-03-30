@@ -77,9 +77,19 @@ allowed-tools: Bash(git *)
 3. `git push` で現在のブランチにプッシュする
 
 ### 署名について：
-- Claude Code の設定 `includeCoAuthoredBy` に従ってください
-- この設定が有効な場合，Claude Code が自動的に Co-authored-by トレーラーを付与します
-- コミットコマンドに署名に関するオプションを手動で追加する必要はありません
+- コミットメッセージの末尾に必ず以下のトレーラーを含めてください：
+  ```
+  Co-Authored-By: Claude <noreply@anthropic.com>
+  ```
+- HEREDOC を使ってメッセージを渡す場合は，空行を挟んでトレーラーを追加してください：
+  ```bash
+  git commit -m "$(cat <<'EOF'
+  feat: add something
+
+  Co-Authored-By: Claude <noreply@anthropic.com>
+  EOF
+  )"
+  ```
 
 ## 7. 完了報告
 
