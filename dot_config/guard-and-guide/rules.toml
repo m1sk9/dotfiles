@@ -180,3 +180,41 @@ message = "Use of 'rsync' is prohibited. Use 'cp' for local copies. For remote s
 matcher = "Bash"
 regex = '\bxargs\b'
 message = "Use of 'xargs' is prohibited. Use pipes or shell loops instead."
+
+# =============================================================================
+# Sensitive file protection (Read / Write / Edit)
+# =============================================================================
+
+# --- .env files ---
+
+[[rules]]
+matcher = "Read"
+regex = '(^|/)\.env(\.[^/]*)?$'
+message = "Reading '.env' files is prohibited. If you need to check environment variables, ask the user to share only the necessary values."
+
+[[rules]]
+matcher = "Write"
+regex = '(^|/)\.env(\.[^/]*)?$'
+message = "Writing to '.env' files is prohibited. Ask the user to edit the file directly."
+
+[[rules]]
+matcher = "Edit"
+regex = '(^|/)\.env(\.[^/]*)?$'
+message = "Editing '.env' files is prohibited. Ask the user to edit the file directly."
+
+# --- Secret / credential files ---
+
+[[rules]]
+matcher = "Read"
+regex = '(^|/)(\.secrets?|credentials?|secret[\._-]|.*[\._-]secret)(\..*)?$'
+message = "Reading secret/credential files is prohibited. Ask the user to share only the necessary values."
+
+[[rules]]
+matcher = "Write"
+regex = '(^|/)(\.secrets?|credentials?|secret[\._-]|.*[\._-]secret)(\..*)?$'
+message = "Writing to secret/credential files is prohibited. Ask the user to edit the file directly."
+
+[[rules]]
+matcher = "Edit"
+regex = '(^|/)(\.secrets?|credentials?|secret[\._-]|.*[\._-]secret)(\..*)?$'
+message = "Editing secret/credential files is prohibited. Ask the user to edit the file directly."
