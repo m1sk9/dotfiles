@@ -1,5 +1,5 @@
 ---
-model: sonnet
+model: opus
 tools:
   - Bash(git *)
   - Bash(gh *)
