@@ -5,6 +5,7 @@
     "pr": "Generated with Claude Code"
   },
   "cleanupPeriodDays": 20,
+  "effortLevel": "high",
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "github@claude-plugins-official": true,
@@ -136,6 +137,7 @@
     ]
   },
   "skipAutoPermissionPrompt": true,
+  "showThinkingSummaries": true,
   "spinnerTipsEnabled": true,
   "statusLine": {
     "type": "command",
