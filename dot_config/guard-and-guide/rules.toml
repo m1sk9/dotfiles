@@ -174,6 +174,13 @@ matcher = "Bash"
 regex = '\brsync\b'
 message = "Use of 'rsync' is prohibited. Use 'cp' for local copies. For remote sync, ask the user to execute it."
 
+# --- Package manager dependency addition → ask the user ---
+
+[[rules]]
+matcher = "Bash"
+regex = '\b(npm|yarn|pnpm|bun)\s+add\b'
+message = "Adding dependencies via npm/yarn/pnpm/bun is prohibited. Ask the user to execute it."
+
 # --- xargs → use pipes or loops ---
 
 [[rules]]
