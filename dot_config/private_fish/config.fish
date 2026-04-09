@@ -28,5 +28,10 @@ gpg-connect-agent /bye
 
 export LANG=en_US.UTF-8
 
+# Disable adaptive thinking for Claude to speed up responses
+function claude
+    env CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1 command claude $argv
+end
+
 # Display fastfetch
 fastfetch --structure Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:CPU:GPU:Memory:Swap:Disk:LocalIp:Battery:PowerAdapter:Locale:Break:Break --color "#F2AEDE" --logo none
