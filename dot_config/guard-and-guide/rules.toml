@@ -99,7 +99,12 @@ message = "Use of task schedulers is prohibited. Ask the user to execute it."
 
 [[rules]]
 matcher = "Bash"
-regex = '\b(systemctl|launchctl|service)\b'
+regex = '\b(systemctl|launchctl)\b'
+message = "Service management commands are prohibited. Ask the user to execute it."
+
+[[rules]]
+matcher = "Bash"
+regex = '(?:^|[;&|])\s*service\b'
 message = "Service management commands are prohibited. Ask the user to execute it."
 
 # --- Remote connections ---
