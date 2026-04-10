@@ -6,6 +6,3 @@ if not command -q rustc
     # Add cargo to PATH for the current session
     set -gx PATH $HOME/.cargo/bin $PATH
 end
-
-# Install guard-and-guide
-cargo install --git https://github.com/kawarimidoll/guard-and-guide --tag 26.3.22

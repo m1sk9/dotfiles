@@ -14,14 +14,6 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "guard-and-guide" }]
-      }
-    ]
-  },
   "permissions": {
     "allow": [
       "Bash(ag:*)",
