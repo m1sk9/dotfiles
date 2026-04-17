@@ -31,7 +31,7 @@ brew "s6n-jp/tap/ghr"
 brew "zoxide"
 
 cask "claude"
-cask "claude-code"
+# cask "claude-code"
 cask "cleanshot"
 cask "discord@canary"
 cask "deepl"
