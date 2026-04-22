@@ -15,7 +15,6 @@ keybind = ctrl+cmd+r=toggle_readonly
 keybind = ctrl+cmd+s=text:lazygit\n
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = shift+enter=text:\x1b\r
-macos-icon = retro
 macos-secure-input-indication = false
 macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = tabs
