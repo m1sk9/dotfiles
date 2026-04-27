@@ -1,5 +1,7 @@
 ---
-model: opus
+name: fix-ci
+description: 指定された PR で失敗している GitHub Actions CI を調査し，修正可能な失敗を修正する
+model: sonnet
 tools:
   - Bash(gh *)
   - Read

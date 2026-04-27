@@ -1,5 +1,7 @@
 ---
-model: sonnet
+name: commit-msg
+description: staged な変更を分析し，Conventional Commits 形式のコミットメッセージ案を 2-3 件提示する
+model: haiku
 tools:
   - Bash(git diff --staged)
   - Bash(git diff *)

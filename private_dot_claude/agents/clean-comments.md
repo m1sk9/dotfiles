@@ -1,5 +1,7 @@
 ---
-model: sonnet
+name: clean-comments
+description: 対象ファイルから不要なコメントを削除し，重要なコメントに TODO/FIXME/NOTE 等のラベルを付与する
+model: haiku
 tools:
   - Read
   - Edit

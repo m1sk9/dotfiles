@@ -1,4 +1,6 @@
 ---
+name: fix-copilot-review
+description: PR の GitHub Copilot レビューコメントをトリアージし，妥当な指摘を適用してコミットする
 model: opus
 tools:
   - Bash(gh *)

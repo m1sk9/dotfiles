@@ -1,4 +1,6 @@
 ---
+name: fix-git-conflict
+description: 現在のブランチを origin/main に rebase し，発生したコンフリクトを解消する
 model: opus
 tools:
   - Bash(git *)

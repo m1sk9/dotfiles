@@ -1,5 +1,7 @@
 ---
-model: opus
+name: fix-dependabot
+description: リポジトリの Dependabot アラートを取得し，重大度の高い順に脆弱性を修正する
+model: sonnet
 tools:
   - Bash(gh *)
   - Bash(npm *)
