@@ -7,74 +7,80 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "git_panel": {
+    "dock": "left",
+  },
   "edit_predictions": {
-    "provider": "copilot"
+    "provider": "copilot",
   },
   "enable_language_server": false,
   "agent": {
+    "dock": "right",
     "button": false,
-    "model_parameters": []
+    "model_parameters": [],
   },
   "chat_panel": {
-    "button": false
+    "button": "never",
   },
   "autosave": "on_focus_change",
   "collaboration_panel": {
-    "button": false
+    "dock": "left",
+    "button": false,
   },
   "outline_panel": {
-    "button": true
+    "dock": "left",
+    "button": true,
   },
   "project_panel": {
     "folder_icons": false,
     "file_icons": true,
-    "dock": "left"
+    "dock": "left",
   },
   "use_system_window_tabs": false,
   "tabs": {
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
   },
   "tab_bar": {
-    "show": true
+    "show": true,
   },
   "title_bar": {
+    "show_branch_status_icon": true,
     "show_menus": false,
     "show_sign_in": true,
     "show_user_picture": true,
     "show_onboarding_banner": false,
-    "show_branch_icon": true
   },
   "debugger": {
-    "button": true
+    "button": true,
   },
   "terminal": {
     "toolbar": {
-      "breadcrumbs": false
+      "breadcrumbs": false,
     },
     "font_size": 13.0,
     "button": true,
     "font_features": null,
-    "shell": "system"
+    "shell": "system",
   },
   "status_bar": {
-    "cursor_position_button": true
+    "cursor_position_button": true,
   },
   "diagnostics": {
     "inline": {
-      "enabled": true
-    }
+      "enabled": true,
+    },
   },
   "show_whitespaces": "all",
   "minimap": {
-    "show": "always"
+    "show": "always",
   },
   "toolbar": {
     "code_actions": true,
     "agent_review": true,
     "selections_menu": true,
     "quick_actions": true,
-    "breadcrumbs": true
+    "breadcrumbs": true,
   },
   "auto_signature_help": true,
   "vim_mode": false,
@@ -82,7 +88,7 @@
   "buffer_font_family": "PlemolJP35 Console NF",
   "telemetry": {
     "diagnostics": true,
-    "metrics": false
+    "metrics": false,
   },
   "when_closing_with_no_tabs": "keep_window_open",
   "ui_font_size": 14.0,
@@ -90,6 +96,6 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Catppuccin Mocha"
-  }
+    "dark": "Catppuccin Mocha",
+  },
 }
