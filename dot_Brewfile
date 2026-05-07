@@ -1,8 +1,10 @@
 tap "gromgit/fuse"
 tap "koekeishiya/formulae"
+tap "hyperscale-consulting/hyperscale"
 tap "nikitabobko/tap"
 tap "s6n-jp/tap"
 
+brew "awseal"
 brew "bat"
 brew "btop"
 brew "chezmoi"
