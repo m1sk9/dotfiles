@@ -5,6 +5,7 @@ tap "nikitabobko/tap"
 tap "s6n-jp/tap"
 
 brew "awseal"
+brew "age"
 brew "bat"
 brew "btop"
 brew "chezmoi"
