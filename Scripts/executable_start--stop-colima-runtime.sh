@@ -13,6 +13,10 @@
 # @raycast.author m1sk9
 # @raycast.authorURL https://m1sk9.dev
 
+# Raycast (bash) は fish の環境変数を継承しないため、ここで明示する。
+# これがないと colima が ~/.colima を作成し XDG/chezmoi 管理設定が無視される。
+export COLIMA_HOME="$HOME/.config/colima"
+
 if colima status > /dev/null 2>&1; then
     # Colima が稼働中の場合は停止
     echo "Colima is running. Stopping..."
