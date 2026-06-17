@@ -11,6 +11,7 @@ set -x EDITOR "/usr/bin/vim"
 set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x GHR_ROOT "$HOME/Repositories"
+set -x DOCKER_HOST "unix://$HOME/.colima/default/docker.sock"
 
 fish_add_path /opt/homebrew/bin
 fish_add_path /usr/bin
