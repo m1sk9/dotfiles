@@ -12,6 +12,11 @@ allowed-tools: Bash(git *), Bash(gemini *), Bash(gh *), Read, Write, Task
 > [!IMPORTANT]
 > このスキルのコマンドは Claude が Bash ツール（zsh）で実行する前提で書いてある．コマンド置換は fish 専用の `(cmd)` ではなく `$(cmd)` を使うこと．
 
+> [!NOTE]
+> **設計思想（なぜこの構成か）**
+> このパイプラインは「別モデル（Gemini）が finder，Claude が検証者」という役割分担で独立シグナルを確保している．Claude が書いたコードを Claude が検証すると盲点が相関して取りこぼし（recall）が増えるため，finder は必ず Gemini に担わせる．
+> 取りこぼし対策は手順 3 の **multi-lens（correctness / security / spec）** で稼ぎ，誤検知対策（precision）は手順 3.6 の **Subagent 検証**で稼ぐ．検証層は severity を動かさず妥当性判定に徹し，severity は手順 3.7 で orchestrator がルーブリックで較正する（検証者の hedging が深刻度を歪めるのを防ぐ）．
+
 ## 1. PR 番号の取得
 
 引数 `$ARGUMENTS` で PR 番号が指定されている場合はそれを使用してください．
@@ -75,45 +80,66 @@ fi
 
 `EMPTY:` が出力された場合は，レビュー対象がない旨を報告して停止してください．
 
-## 3. diff を Gemini CLI にレビューさせる
+## 2.5. 仕様・PR 文脈を収集する（recall 強化）
 
-`/tmp/gemini_input.md` を素材に，幻覚と深刻度の誤較正を抑える指示つきでレビューさせ，**インライン投稿のため結果を JSON で** `/tmp/gemini_review.json` に保存してください：
+コードと diff だけでは「要件を満たしているか」が判断できず，仕様適合性の指摘（例: サイズ上限の未実装による課金リスク）が構造的に出ません．PR 本文とリンク Issue を素材として収集し，後段の `spec` lens に渡します（`<PR番号>` は手順 1 の番号に置換）：
 
 ```sh
-gemini -y --model gemini-3.1-pro-preview -p "$(cat <<'PROMPT'
-あなたはシニアソフトウェアエンジニアです。後続の素材をコードレビューしてください。
+PR=<PR番号>
+CONTEXT=/tmp/gemini_context.md
+{
+  echo "# PR コンテキスト（満たすべき要件・仕様の参考。コードではなく『何を満たすべきか』の根拠）"
+  echo
+  gh pr view "$PR" --json title,body --jq '"## PR: " + .title + "\n\n" + (.body // "(本文なし)")'
+  # クローズ対象としてリンクされた Issue ＋ 本文で参照された #番号 を収集して取得
+  REFS=$( { gh pr view "$PR" --json closingIssuesReferences --jq '.closingIssuesReferences[].number'; gh pr view "$PR" --json body --jq '.body // ""' | grep -oE '#[0-9]+' | tr -d '#'; } | sort -un )
+  for n in $REFS; do
+    echo
+    gh issue view "$n" --json number,title,body --jq '"## Linked Issue #" + (.number|tostring) + ": " + .title + "\n\n" + (.body // "(本文なし)")' 2>/dev/null || true
+  done
+} > "$CONTEXT"
+wc -l "$CONTEXT"
+```
+
+> [!NOTE]
+> PR 本文も Issue も無い場合は `$CONTEXT` がほぼ空になる．その場合 `spec` lens は「明示された要件が無い」前提で動き，推測で要件をでっち上げず findings を空にしてよい．
+
+## 3. diff を Gemini CLI に複数の観点（lens）でレビューさせる
+
+単一の汎用プロンプトでは attack-surface や仕様適合の指摘が出にくく，取りこぼし（recall）が生じます．そこで**観点（lens）ごとに独立した Gemini 実行**を行い，後で統合します．lens は次の 3 つ：
+
+- `correctness`: バグ・ロジック誤り・正当性・性能劣化・リソースリーク
+- `security`: 攻撃面（injection・認証認可・データ露出・DoS / 課金濫用・path traversal・secret 露出 等）を敵対的に探す
+- `spec`: 手順 2.5 の要件に対し，diff が各要件を満たすか／未実装・仕様違反が無いかを問う
+
+まず全 lens 共通の指示をシェル変数に入れます．**finder の severity_hint はあくまで暫定**で，最終 severity は後段（手順 3.7）で再較正される点に注意：
+
+```sh
+COMMON=$(cat <<'PROMPT'
+あなたはシニアソフトウェアエンジニアです。後続の素材を、指定された観点に絞ってコードレビューしてください。
 
 【素材の読み方】
 - 各 "## FILE: <path>" 配下のコードブロックが「変更後のファイル全文」です。指摘の根拠は必ずこの全文を正とすること。
 - 各行の先頭には「行番号＋タブ」が付いています。これはエディタが付けた行番号でありコード本体ではありません。指摘の line にはこの行番号を使うこと。
 - 末尾の unified diff は「どこが変わったか」を示す参考です。diff のメタ行（+++ / --- / @@ / index / ファイルパス見出し）はコードではありません。コード本体と混同しないこと。
-
-【レビュー範囲 — これだけを見る】
-- バグ・ロジック誤り・正当性
-- セキュリティ
-- 確実に言えるパフォーマンス劣化・リソースリーク
 - 設計提案・命名・スタイル・好みの改善案は出さない。これはコードレビューであって設計レビューではない。
 
-【観点チェックリスト（該当が無ければスキップ。埋めるために捏造しない）】
-境界条件 / off-by-one、null・未初期化、エラーハンドリングと例外パス、並行性・ブロッキング I/O、リソース解放、認証認可、入力検証・injection、リトライ安全性・idempotency、外部 API のドメイン制約（数量・状態遷移など）。
-
 【判定規律 — 厳守】
-- 各指摘に深刻度 Critical/High/Medium/Low と確信度（高/中/低）を付ける。
-- Critical・High を付けてよいのは「確信度=高」かつ「根拠の行引用がある」指摘だけ。確信度が中以下の指摘は Medium 以下に置く。確証の無い指摘を上位に置かない。
 - すべての指摘に rationale として該当ファイル全文の実際の行を引用する。引用できない指摘は出さない。
-- 「コンパイル/構文エラー」「テストが落ちる」「実行時に失敗する」等の動作上の断定は、コードから論理的に確実に言える場合のみ。確実でなければ explanation の先頭に「推測:」を付け、深刻度は Medium 以下にする。
-- 観点を埋めるために指摘をでっち上げない。該当が無ければ findings を空配列にする。
-- 出力前に各指摘を自己検証する：引用した行が全文に実在するか、それが diff のメタ行でないか、深刻度と確信度の対応が上のルールに反していないか。反するものは削除するか格下げする。
+- severity_hint（Critical/High/Medium/Low）と confidence（高/中/低）はあくまで finder の暫定見積りである。最終的な深刻度は後段の検証で再較正されるので、確証が無いものを過大に見積もらない。
+- 「コンパイル/構文エラー」「テストが落ちる」「実行時に失敗する」等の動作上の断定は、コードから論理的に確実に言える場合のみ。確実でなければ explanation の先頭に「推測:」を付ける。
+- 観点を埋めるために指摘をでっち上げない。担当観点に該当が無ければ findings を空配列にする。
+- 出力前に各指摘を自己検証する：引用した行が全文に実在するか、それが diff のメタ行でないか。反するものは削除する。
 
 【出力形式 — JSON のみ】
 前置き・後置き・コードフェンス（```）を一切付けず、次の構造の JSON だけを出力すること：
 {
-  "summary": "全体所感（日本語・簡潔に。指摘が無ければ LGTM とだけ書く）",
+  "summary": "担当観点での全体所感（日本語・簡潔に。指摘が無ければ LGTM とだけ書く）",
   "findings": [
     {
       "path": "対象ファイルパス（## FILE: の値をそのまま）",
       "line": 42,
-      "severity": "Critical|High|Medium|Low",
+      "severity_hint": "Critical|High|Medium|Low",
       "confidence": "高|中|低",
       "summary": "一行要約",
       "rationale": "該当行の実際の引用（行番号プレフィックスは除く）",
@@ -121,36 +147,74 @@ gemini -y --model gemini-3.1-pro-preview -p "$(cat <<'PROMPT'
     }
   ]
 }
-- line は指摘箇所の行番号（各行頭の数字）。ファイル全体に関わる等で特定の行に紐づかない指摘は line を null にする。
+- line は指摘箇所の行番号（各行頭の数字）。特定の行に紐づかない指摘（未実装・ファイル全体に関わる等）は line を null にする。
 - 指摘が無くても {"summary": "...", "findings": []} を返す。
 PROMPT
 )
-
-$(cat /tmp/gemini_input.md)" > /tmp/gemini_review.json
-
-wc -l /tmp/gemini_review.json
 ```
 
-## 3.5. 指摘を 1 件ずつファイルに分割する
+次に lens ごとに実行します．`correctness` と `security` は `/tmp/gemini_input.md` を素材に：
 
-Gemini の出力は幻覚を含み得るため，投稿前に**各指摘を独立した Subagent で検証**します．その下準備として，`/tmp/gemini_review.json` の各 finding を 1 件 1 ファイルに切り出します．
+```sh
+gemini -y --model gemini-3.1-pro-preview -p "$COMMON
 
-1. `Read` で `/tmp/gemini_review.json` を読む．コードフェンスや余分な文章が混じっていれば，純粋な JSON 部分（最初の `{` から対応する最後の `}` まで）だけを採用する．JSON として解釈できない場合は，その旨を報告して停止する．
-2. `findings` が空配列なら，検証は不要．手順 4 に進み，LGTM として投稿する．
-3. `findings` が空でなければ，出力先ディレクトリを作る：
+【このパスの担当観点 = correctness（これだけを見る）】
+- バグ・ロジック誤り・正当性、確実に言えるパフォーマンス劣化・リソースリーク。
+- チェックリスト（該当が無ければスキップ）: 境界条件 / off-by-one、null・未初期化、エラーハンドリングと例外パス、並行性・ブロッキング I/O、リソース解放、リトライ安全性・idempotency、トランザクション境界、外部 API のドメイン制約（数量・状態遷移など）。
+
+$(cat /tmp/gemini_input.md)" > /tmp/gemini_review_correctness.json
+
+gemini -y --model gemini-3.1-pro-preview -p "$COMMON
+
+【このパスの担当観点 = security（これだけを見る・敵対的に考える）】
+- 「この変更を攻撃者がどう悪用できるか」を能動的に探す。受け身で読まず、悪用シナリオを起点に考える。
+- チェックリスト（該当が無ければスキップ）: 入力検証・injection（SQL / コマンド / Markdown / HTML 等）、認証認可の欠落・誤り、データ露出（内部 ID・storage key・secret）、SSRF・path traversal、リソース濫用・課金濫用（サイズ / 件数上限の欠如、presigned URL の悪用）、例外の握り潰しによる検証バイパス、idempotency の欠如による多重実行。
+
+$(cat /tmp/gemini_input.md)" > /tmp/gemini_review_security.json
+```
+
+`spec` は要件（手順 2.5）と実装の両方を素材に：
+
+```sh
+gemini -y --model gemini-3.1-pro-preview -p "$COMMON
+
+【このパスの担当観点 = spec（仕様適合性。これだけを見る）】
+- 下の「PR コンテキスト」に書かれた要件・仕様を一つずつ取り出し、変更後コードがそれを満たしているかを照合する。
+- 満たしていない／未実装／仕様と矛盾する点を findings にする。要件に紐づく実装箇所があれば line を付け、未実装で行が無い場合は line を null にする。
+- コンテキストに明示された要件が無い場合は、推測で要件をでっち上げず findings を空にする。
+
+===== PR コンテキスト（要件・仕様）=====
+$(cat /tmp/gemini_context.md)
+
+===== 実装（変更後コード）=====
+$(cat /tmp/gemini_input.md)" > /tmp/gemini_review_spec.json
+
+wc -l /tmp/gemini_review_correctness.json /tmp/gemini_review_security.json /tmp/gemini_review_spec.json
+```
+
+## 3.5. lens 横断で統合・重複排除し，指摘を 1 件ずつファイルに分割する
+
+3 つの lens の出力には重複が出るため，統合・重複排除してから検証します．
+
+1. `Read` で `/tmp/gemini_review_correctness.json`・`/tmp/gemini_review_security.json`・`/tmp/gemini_review_spec.json` を読む．各ファイルにコードフェンスや余分な文章が混じっていれば，純粋な JSON 部分（最初の `{` から対応する最後の `}` まで）だけを採用する．いずれかが JSON として解釈できない場合は，その lens を欠落として扱い（その旨を最終報告に残す），残りの lens で続行する．
+2. 全 findings を連結し，**重複排除**する：`path` が同じで，かつ `line` が同じ（または `rationale` が実質同一）の指摘は 1 件に統合する．統合時は最も具体的な `rationale` / `explanation` を残す．
+3. 各 finding に由来 lens を `category`（`correctness` / `security` / `spec`）として付与する．3 lens 分の `summary`（全体所感）は結合して保持しておく（手順 4 の全体コメントで使う）．
+4. 統合後の findings が空なら，検証は不要．手順 4 に進み LGTM として投稿する．
+5. 空でなければ出力先ディレクトリを作る：
 
 ```sh
 rm -rf /tmp/gemini_findings && mkdir -p /tmp/gemini_findings
 ```
 
-4. 各 finding を `Write` で `/tmp/gemini_findings/finding_NN.json`（`NN` は `01` から始まる連番）に書き出す．各ファイルには元の finding オブジェクトをそのまま入れ，追跡用に `index`（連番）を付与する：
+6. 各 finding を `Write` で `/tmp/gemini_findings/finding_NN.json`（`NN` は `01` から始まる連番）に書き出す．追跡用に `index`（連番）を付与する：
 
 ```json
 {
   "index": 1,
+  "category": "correctness|security|spec",
   "path": "...",
   "line": 42,
-  "severity": "...",
+  "severity_hint": "...",
   "confidence": "...",
   "summary": "...",
   "rationale": "...",
@@ -158,42 +222,57 @@ rm -rf /tmp/gemini_findings && mkdir -p /tmp/gemini_findings
 }
 ```
 
-## 3.6. 各指摘を Subagent で検証する（並列・自動 drop/downgrade）
+## 3.6. 各指摘を Subagent で「妥当性」だけ検証する（並列）
+
+> [!IMPORTANT]
+> 検証層は precision（幻覚除去）のためにあり，recall は手順 3 の multi-lens で稼ぐ．ここでは **severity を動かさず**，妥当性の判定と severity 較正に使う材料の収集に徹する（severity は手順 3.7 で orchestrator がルーブリックで較正する）．
 
 手順 3.5 で書き出した finding ファイルそれぞれに対し，**`Task` ツールで `Explore` 型（read-only）の Subagent を 1 件 1 つ起動**します．**全 Subagent を 1 メッセージ内でまとめて起動して並列実行**してください（finding が多い場合も同時起動でよい）．
 
 各 Subagent への指示（プロンプト）には次を含めること：
 
 - 検証対象の finding ファイルパス（例: `/tmp/gemini_findings/finding_03.json`）を渡し，まず `Read` で読ませる．
-- finding の `path` が指す**実ファイルを現物として `Read`** し，以下を検証させる：
-  1. `rationale` の引用が，対象ファイルの該当行付近に**実在**するか（一字一句一致でなくとも，引用が実コードに対応するか）．
-  2. その指摘が **diff のメタ行（`+++` / `---` / `@@` / `index` / パス見出し）の誤読**に由来する幻覚でないか．
-  3. 指摘内容がコード上**論理的に正しい**か（バグ・セキュリティ・性能劣化の主張として成立するか）．
-  4. `severity` と `confidence` の較正が妥当か（Critical/High は「確信度=高」かつ「実在する行引用あり」が条件．満たさなければ過大評価）．
+- finding の `path` が指す**実ファイルを現物として `Read`** し（`spec` 由来で `line=null` の指摘は，関連する実装ファイルを探して読む），以下を判定させる：
+  1. `rationale` の引用が実コードに対応するか（一字一句一致でなくとも可．**diff のメタ行の誤読**でないか）．
+  2. 指摘がコード上**論理的に成立する**か（バグ／攻撃／仕様違反として現実に起こり得るか）．
+- **severity は判定しない．** 代わりに severity 較正の材料となる信号を返す．
 - Subagent は**コードフェンスや前置きを一切付けず**，次の構造の JSON **のみ**を最終出力として返すこと：
 
 ```json
 {
   "index": 3,
-  "verdict": "keep | drop | downgrade",
-  "corrected_severity": "Critical|High|Medium|Low",
-  "reason": "判定理由（日本語・簡潔に）"
+  "valid": true,
+  "certainty": "高|中|低",
+  "exploitability": "yes|no|unknown",
+  "blast_radius": "broad|local|minimal",
+  "reason": "判定理由（日本語・簡潔に。妥当性の根拠。severity には言及しない）"
 }
 ```
 
-- `verdict` の基準：
-  - `drop`: 引用が実在しない／diff メタ行の誤読／主張が明らかに誤り（＝幻覚または無効）．
-  - `downgrade`: 指摘自体は成立するが severity が過大．`corrected_severity` に適正値を入れる．
-  - `keep`: そのまま有効．`corrected_severity` は元の severity と同じ値を入れる．
+- `valid`: 引用が実在し，かつ指摘が論理的に成立するなら `true`．幻覚・diff 誤読・主張が明らかに誤りなら `false`．
+- `certainty`: その指摘が現実に問題である確からしさ（実コードからの確証度）．
+- `exploitability`: 悪用・誤動作が実際にトリガ可能か（`security` / `correctness` で意味を持つ．該当しなければ `unknown`）．
+- `blast_radius`: 影響範囲（`broad`=データ破壊 / 全体波及 / 外部公開，`local`=一機能内，`minimal`=軽微）．
 
-全 Subagent の結果が出揃ったら，Claude（orchestrator）が集約する：
+## 3.7. 妥当性結果を集約し，severity をルーブリックで較正する
 
-- `verdict == "drop"` の finding は**投稿対象から除外**する．
-- `verdict == "downgrade"` の finding は `severity` を `corrected_severity` で**上書き**する．
-- `verdict == "keep"` はそのまま残す．
-- 除外・降格した件数とその理由は，手順 4 の全体コメント本文フッタ直前に「自動検証で除外/降格した指摘」節として簡潔に記録する（透明性のため）．
+全 Subagent の結果が出揃ったら，orchestrator（Claude）が集約する：
 
-このように検証を通過・補正した finding 集合を，以降の手順 4 の入力とする．
+1. `valid == false` の finding は**投稿対象から除外**する（幻覚・誤読・誤り）．
+2. 残った finding の severity を，検証で得た信号から次のルーブリックで決定する．**finder の `severity_hint` は無視し，このルーブリックを正とする**（検証者の hedging が severity を歪めるのを防ぐため）：
+
+| 条件 | severity |
+|---|---|
+| `certainty=低` | Low（`blast_radius=minimal` なら除外も検討） |
+| `certainty=中` | Medium |
+| `certainty=高` かつ `blast_radius` が `local`/`minimal` かつ `exploitability≠yes` | Medium |
+| `certainty=高` かつ `exploitability=yes` かつ `blast_radius=local` | High |
+| `certainty=高` かつ `blast_radius=broad` かつ `exploitability≠yes` | High |
+| `certainty=高` かつ `exploitability=yes` かつ `blast_radius=broad` | Critical |
+
+3. 較正後の severity を各 finding に確定値として持たせる．**除外件数・各 finding の最終 severity と certainty** は，手順 4 の全体コメント本文フッタ直前に「自動検証サマリ（除外 / 較正）」節として簡潔に記録する（透明性のため）．
+
+このように検証・較正した finding 集合を，以降の手順 4 の入力とする．
 
 ## 4. レビュー結果を PR に投稿する（インライン + 全体コメントのハイブリッド）
 
@@ -201,21 +280,21 @@ rm -rf /tmp/gemini_findings && mkdir -p /tmp/gemini_findings
 
 ### 4-1. 素材の読み込み
 
-1. 投稿対象の finding 集合は，手順 3.6 で**Subagent 検証を通過・補正したもの**を用いる（`summary` は `/tmp/gemini_review.json` のものをそのまま使う）．finding が空（手順 3.5 の段階で空，または全件 drop）なら LGTM として投稿する．
+1. 投稿対象の finding 集合は，手順 3.7 で**妥当性検証を通過し severity を較正したもの**を用いる（全体所感の `summary` は手順 3.5 で結合した 3 lens 分を使う）．finding が空（手順 3.5 で空，または全件除外）なら LGTM として投稿する．
 2. `Read` で `/tmp/gemini_diff_lines.txt` を読み，`path<TAB>line` の集合（インライン可能行）を把握する．
-3. 幻覚の除去は手順 3.6 で済んでいるため，ここでの再検証は不要．3.6 で除外・降格した件数は手順 4-3 のフッタ直前の節に記録する．
+3. 幻覚の除去と severity 較正は手順 3.6・3.7 で済んでいるため，ここでの再検証は不要．除外・較正の内訳は手順 4-3 のフッタ直前の節に記録する．
 
 ### 4-2. インラインと全体への振り分け
 
 各 finding を次の規則で振り分ける：
 
 - `line` が `null` でなく，かつ `path<TAB>line` が手順 4-1 の集合に**存在する** → **インラインコメント**にする．
-- それ以外（`line` が `null`，または diff 外の行＝集合に無い） → **全体コメント本文**の「diff 外の指摘」節に Markdown でまとめる．
+- それ以外（`line` が `null`，または diff 外の行＝集合に無い） → **全体コメント本文**の「diff 外の指摘」節に Markdown でまとめる（`spec` 由来の未実装指摘は多くがここに入る）．
 
-インラインコメントの `body` は次の形式：
+インラインコメントの `body` は次の形式（`<severity>` は手順 3.7 で較正した確定値）：
 
 ```
-**[<severity>]** 確信度:<confidence>｜<summary>
+**[<severity>]** <category>｜確信度:<certainty>｜<summary>
 
 根拠: `<rationale>`
 
@@ -236,7 +315,7 @@ rm -rf /tmp/gemini_findings && mkdir -p /tmp/gemini_findings
 }
 ```
 
-- `body`（全体コメント本文）には次を含める：ヘッダ（下記）＋ Gemini の `summary` ＋「diff 外の指摘」節（4-2 で振り分けた分．無ければ「diff 外の指摘なし」）＋ フッタ（自動生成の注意書き）．
+- `body`（全体コメント本文）には次を含める：ヘッダ（下記）＋ 3 lens を結合した `summary` ＋「diff 外の指摘」節（4-2 で振り分けた分．無ければ「diff 外の指摘なし」）＋「自動検証サマリ（除外 / 較正）」節（手順 3.7 の内訳）＋ フッタ（自動生成の注意書き）．
 - インライン対象が 1 件も無ければ `comments` は `[]` にする（`body` だけのレビューが投稿される）．
 
 ヘッダ／フッタの文面：
@@ -244,14 +323,14 @@ rm -rf /tmp/gemini_findings && mkdir -p /tmp/gemini_findings
 ```
 🤖 AI Code Review
 
-> Generated by: Gemini CLI (reviewer) + Claude Code (orchestrator)
+> Generated by: Gemini CLI (multi-lens reviewer) + Claude Code (orchestrator / verifier)
 > Model: gemini-3.1-pro-preview
-> Scope: main...HEAD（変更ファイル全文 + 参考 diff／インライン投稿対応）
+> Scope: main...HEAD（変更ファイル全文 + 参考 diff + PR/仕様文脈／correctness・security・spec の3観点）
 ```
 
 ```
 ---
-このレビューは自動生成されたものです．AI の指摘には誤検知が混じり得ます．最終判断は人間のレビュアーが行ってください．
+このレビューは自動生成されたものです．AI の指摘には誤検知が混じり得ます．逆に取りこぼし（recall）も残り得るため，最終判断は人間のレビュアーが行ってください．
 ```
 
 投稿（`<PR番号>` は手順 1 の番号に置換．`{owner}/{repo}` は `gh` がカレントリポジトリから自動補完する）：
