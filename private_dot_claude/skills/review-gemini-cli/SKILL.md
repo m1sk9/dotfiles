@@ -2,7 +2,7 @@
 description: 現在のブランチの PR の変更を Gemini CLI にレビューさせ，結果を PR レビューコメントとして投稿する
 disable-model-invocation: true
 argument-hint: [PR番号]
-allowed-tools: Bash(git *), Bash(gemini *), Bash(gh *), Read, Write
+allowed-tools: Bash(git *), Bash(gemini *), Bash(gh *), Read, Write, Task
 ---
 
 # タスク: Gemini CLI による PR コードレビュー
@@ -131,15 +131,79 @@ $(cat /tmp/gemini_input.md)" > /tmp/gemini_review.json
 wc -l /tmp/gemini_review.json
 ```
 
+## 3.5. 指摘を 1 件ずつファイルに分割する
+
+Gemini の出力は幻覚を含み得るため，投稿前に**各指摘を独立した Subagent で検証**します．その下準備として，`/tmp/gemini_review.json` の各 finding を 1 件 1 ファイルに切り出します．
+
+1. `Read` で `/tmp/gemini_review.json` を読む．コードフェンスや余分な文章が混じっていれば，純粋な JSON 部分（最初の `{` から対応する最後の `}` まで）だけを採用する．JSON として解釈できない場合は，その旨を報告して停止する．
+2. `findings` が空配列なら，検証は不要．手順 4 に進み，LGTM として投稿する．
+3. `findings` が空でなければ，出力先ディレクトリを作る：
+
+```sh
+rm -rf /tmp/gemini_findings && mkdir -p /tmp/gemini_findings
+```
+
+4. 各 finding を `Write` で `/tmp/gemini_findings/finding_NN.json`（`NN` は `01` から始まる連番）に書き出す．各ファイルには元の finding オブジェクトをそのまま入れ，追跡用に `index`（連番）を付与する：
+
+```json
+{
+  "index": 1,
+  "path": "...",
+  "line": 42,
+  "severity": "...",
+  "confidence": "...",
+  "summary": "...",
+  "rationale": "...",
+  "explanation": "..."
+}
+```
+
+## 3.6. 各指摘を Subagent で検証する（並列・自動 drop/downgrade）
+
+手順 3.5 で書き出した finding ファイルそれぞれに対し，**`Task` ツールで `Explore` 型（read-only）の Subagent を 1 件 1 つ起動**します．**全 Subagent を 1 メッセージ内でまとめて起動して並列実行**してください（finding が多い場合も同時起動でよい）．
+
+各 Subagent への指示（プロンプト）には次を含めること：
+
+- 検証対象の finding ファイルパス（例: `/tmp/gemini_findings/finding_03.json`）を渡し，まず `Read` で読ませる．
+- finding の `path` が指す**実ファイルを現物として `Read`** し，以下を検証させる：
+  1. `rationale` の引用が，対象ファイルの該当行付近に**実在**するか（一字一句一致でなくとも，引用が実コードに対応するか）．
+  2. その指摘が **diff のメタ行（`+++` / `---` / `@@` / `index` / パス見出し）の誤読**に由来する幻覚でないか．
+  3. 指摘内容がコード上**論理的に正しい**か（バグ・セキュリティ・性能劣化の主張として成立するか）．
+  4. `severity` と `confidence` の較正が妥当か（Critical/High は「確信度=高」かつ「実在する行引用あり」が条件．満たさなければ過大評価）．
+- Subagent は**コードフェンスや前置きを一切付けず**，次の構造の JSON **のみ**を最終出力として返すこと：
+
+```json
+{
+  "index": 3,
+  "verdict": "keep | drop | downgrade",
+  "corrected_severity": "Critical|High|Medium|Low",
+  "reason": "判定理由（日本語・簡潔に）"
+}
+```
+
+- `verdict` の基準：
+  - `drop`: 引用が実在しない／diff メタ行の誤読／主張が明らかに誤り（＝幻覚または無効）．
+  - `downgrade`: 指摘自体は成立するが severity が過大．`corrected_severity` に適正値を入れる．
+  - `keep`: そのまま有効．`corrected_severity` は元の severity と同じ値を入れる．
+
+全 Subagent の結果が出揃ったら，Claude（orchestrator）が集約する：
+
+- `verdict == "drop"` の finding は**投稿対象から除外**する．
+- `verdict == "downgrade"` の finding は `severity` を `corrected_severity` で**上書き**する．
+- `verdict == "keep"` はそのまま残す．
+- 除外・降格した件数とその理由は，手順 4 の全体コメント本文フッタ直前に「自動検証で除外/降格した指摘」節として簡潔に記録する（透明性のため）．
+
+このように検証を通過・補正した finding 集合を，以降の手順 4 の入力とする．
+
 ## 4. レビュー結果を PR に投稿する（インライン + 全体コメントのハイブリッド）
 
 ここからは Claude（orchestrator）が振り分けを行います．`gh pr review` ではなく **GitHub Reviews API** を 1 リクエストで叩き，diff 内の行はインラインコメント，それ以外は全体コメント本文にまとめて投稿します．
 
-### 4-1. 素材の読み込みと検証
+### 4-1. 素材の読み込み
 
-1. `Read` で `/tmp/gemini_review.json` を読む．先頭・末尾に ` ```json ` 等のコードフェンスや余分な文章が混じっていれば，純粋な JSON 部分（最初の `{` から対応する最後の `}` まで）だけを採用する．JSON として解釈できない場合は，その旨を報告して停止する（壊れた本文を投稿しない）．
+1. 投稿対象の finding 集合は，手順 3.6 で**Subagent 検証を通過・補正したもの**を用いる（`summary` は `/tmp/gemini_review.json` のものをそのまま使う）．finding が空（手順 3.5 の段階で空，または全件 drop）なら LGTM として投稿する．
 2. `Read` で `/tmp/gemini_diff_lines.txt` を読み，`path<TAB>line` の集合（インライン可能行）を把握する．
-3. 各 finding の `rationale`（引用行）が，対応する `path` の全文に実在するかを軽く確認する．**diff の誤読に由来する明らかな幻覚**（実ファイルと矛盾する断定）が混じる場合は，その finding を落とすか，全体コメント本文の冒頭にその旨を一文添える．
+3. 幻覚の除去は手順 3.6 で済んでいるため，ここでの再検証は不要．3.6 で除外・降格した件数は手順 4-3 のフッタ直前の節に記録する．
 
 ### 4-2. インラインと全体への振り分け
 
