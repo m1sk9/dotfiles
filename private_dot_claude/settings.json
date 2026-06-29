@@ -136,8 +136,8 @@
   },
   "spinnerTipsEnabled": true,
   "effortLevel": "high",
-  "tui": "fullscreen",
+  "tui": "default",
   "showThinkingSummaries": true,
-  "skipAutoPermissionPrompt": true,
-  "inputNeededNotifEnabled": true
+  "inputNeededNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
