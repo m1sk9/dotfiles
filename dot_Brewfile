@@ -1,10 +1,8 @@
 tap "gromgit/fuse"
 tap "koekeishiya/formulae"
-tap "hyperscale-consulting/hyperscale"
 tap "nikitabobko/tap"
 tap "s6n-jp/tap"
 
-brew "awseal"
 brew "age"
 brew "bat"
 brew "btop"
