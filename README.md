@@ -34,6 +34,16 @@ After completing all setups, switch the URL in your Git repository config to SSH
 vim .git/config
 ```
 
+## Special Thanks
+
+The following content is sourced from the references listed below. Thank you, as always, for the helpful information.
+
+All files (everyday): [Anthropic](https://www.anthropic.com) & [Claude](https://claude.ai/) ;)
+
+- `private_dot_claude/CLAUDE.md`
+  - **情報源の扱い**: Void戦士ちゃん (@voidwarriorchan) - [「日本語でAIが馬鹿にならないようにするSkill」](https://x.com/voidwarriorchan/status/2070841754815971773)
+- `private_dot_claude/executable_statusline.sh`: kawarimidoll - [「うちのClaude Codeのstatuslineモエス見てつーか見ろ♪」](https://zenn.dev/kawarimidoll/articles/00cfa200c12c5f)
+
 ## License
 
 These dotfiles are distributed under ["The Unlicense"](./LICENSE). Feel free to reference the config, but I take no responsibility.
