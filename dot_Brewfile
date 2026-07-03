@@ -1,6 +1,7 @@
 tap "gromgit/fuse"
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
+tap "vorssaint/tap"
 tap "s6n-jp/tap"
 tap "protonpass/tap"
 
