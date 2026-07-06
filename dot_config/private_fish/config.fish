@@ -5,6 +5,7 @@ alias l='eza -abghHliS'
 alias find='fd'
 alias grep='rg'
 alias c='claude'
+alias h='herdr'
 alias cd='z'
 
 set -x EDITOR "/usr/bin/vim"
