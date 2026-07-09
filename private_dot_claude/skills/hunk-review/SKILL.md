@@ -175,6 +175,14 @@ printf '%s\n' '{"comments":[{"filePath":"src/foo.ts","newLine":42,"summary":"適
 
 This is display-only — never gate the commit on it. If the user explicitly wants a pre-commit checkpoint, pause for confirmation after annotating.
 
+## Consuming user comments (reverse direction)
+
+The opposite flow: act on inline notes the **user** wrote in the TUI — the local analogue of PR review comments. This is what the `apply-hunk-comments` skill does.
+
+- `hunk session comment list --repo . --type user --json` returns the human notes. Take the `id` from the **JSON** (not the text listing) when you later need to remove one.
+- Apply valid notes to the working tree, then `hunk session comment rm --repo . <id>` to mark each handled. For skipped notes, leave the user's comment in place and add an agent note explaining why.
+- `hunk session reload --repo . -- diff` afterwards so the user sees the updated diff.
+
 ## Common errors
 
 - **"No visible diff file matches ..."** -- the file is not in the loaded review. Check `context`, then `reload` if needed.
