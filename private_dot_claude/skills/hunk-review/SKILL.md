@@ -143,6 +143,38 @@ Guidelines:
 - Keep comments focused: intent, structure, risks, or follow-ups
 - Don't comment on every hunk -- highlight what the user wouldn't spot themselves
 
+## Bootstrapping a session from a fix/edit skill (inside herdr)
+
+Fix/edit skills (`fix-review`, `clean-comments`, `fix-dependabot`, `fix-git-conflict`, ...) can open a Hunk session so the user can audit the agent's changes before committing. Launching a pane requires herdr, and **only the skill layer (main loop) can do it — a delegated subagent cannot launch panes**, it can only drive an already-live session.
+
+- Do this only when `HERDR_ENV=1`. Otherwise skip silently (no launch, no prompt to the user).
+- Reuse an existing session first: run `hunk session list --json` and match `repoRoot` to the current repo. If one already covers this repo, do nothing.
+- Otherwise split a pane off your own (focused) pane and launch `hunk diff`, then delegate:
+
+```bash
+OWN=$(herdr pane list | python3 -c 'import sys,json;print(next(p["pane_id"] for p in json.load(sys.stdin)["result"]["panes"] if p["focused"]))')
+NEW=$(herdr pane split "$OWN" --direction right --no-focus | python3 -c 'import sys,json;print(json.load(sys.stdin)["result"]["pane"]["pane_id"])')
+herdr pane run "$NEW" "hunk diff"
+```
+
+The subagent then annotates through the live session (below). Launching before the agent edits is fine — the agent's `reload -- diff` repopulates the view after editing.
+
+## Audit annotations from a fix agent
+
+When a subagent has applied edits and wants the user to review them before commit:
+
+1. `hunk session list` — if no live session for this repo, **skip the audit silently** (do not block the flow, do not launch — that is the skill layer's job).
+2. `hunk session reload --repo . -- diff` to load the working-tree changes (for post-rebase branch review use `-- diff origin/main...HEAD`).
+3. Push **one** `comment apply --stdin` batch mapping each change to its reason (`適用: …` / `スキップ: …` / `解消: …` etc.):
+
+```bash
+printf '%s\n' '{"comments":[{"filePath":"src/foo.ts","newLine":42,"summary":"適用: @reviewer の指摘（…）","rationale":"…"}]}' | hunk session comment apply --repo . --stdin
+```
+
+4. `hunk session navigate --repo . --next-comment` to land the user on the first note.
+
+This is display-only — never gate the commit on it. If the user explicitly wants a pre-commit checkpoint, pause for confirmation after annotating.
+
 ## Common errors
 
 - **"No visible diff file matches ..."** -- the file is not in the loaded review. Check `context`, then `reload` if needed.

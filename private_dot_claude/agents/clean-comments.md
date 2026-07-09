@@ -8,6 +8,7 @@ tools:
   - Write
   - Glob
   - Grep
+  - Bash(hunk session *)
 ---
 
 # ゴール
@@ -37,3 +38,7 @@ tools:
 | **FIXME** | バグ・修正が必要な箇所 |
 | **NOTE** | 重要な補足情報・設計判断の理由・API の制約・セキュリティ注意事項 |
 | **HACK** | 一時的な回避策・非標準的な実装 |
+
+# Hunk 監査（任意）
+
+Hunk セッションが live な場合（スキル層が起動する）、コミット前にユーザーが変更を確認できるよう inline 注記する。`hunk-review` スキルの「Audit annotations from a fix agent」に従い、`reload -- diff` → 各変更に「削除: 自明なコメント」「ラベル付与: NOTE …」等を `comment apply` バッチで注記 → `--next-comment`。**session が無ければ丸ごとスキップ**（起動はしない）。
