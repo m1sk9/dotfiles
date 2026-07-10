@@ -1,0 +1,13 @@
+{
+  "trustedtaps": [
+    "gromgit/fuse"
+  ],
+  "trustedformulae": [
+    "modem-dev/tap/hunk",
+    "protonpass/tap/pass-cli",
+    "s6n-jp/tap/ghr"
+  ],
+  "trustedcasks": [
+    "vorssaint/tap/vorssaint"
+  ]
+}
