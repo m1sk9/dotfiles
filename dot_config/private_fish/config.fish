@@ -15,7 +15,7 @@ set -x GHR_ROOT "$HOME/Repositories"
 # Colima の config dir を固定する (~/.colima の有無に関わらず最優先される)
 set -x COLIMA_HOME "$HOME/.config/colima"
 set -x DOCKER_HOST "unix://$COLIMA_HOME/default/docker.sock"
-# Homebrew の tap trust は非推奨 (will be removed) かつ trust.json が chezmoi と衝突して毎回警告が出るため無効化
+# Homebrew の tap trust は非推奨 (will be removed) で毎回警告が出るため無効化
 set -x HOMEBREW_NO_REQUIRE_TAP_TRUST 1
 
 fish_add_path /opt/homebrew/bin
