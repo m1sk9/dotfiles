@@ -1,5 +1,4 @@
 tap "modem-dev/tap"
-tap "vorssaint/tap"
 tap "s6n-jp/tap"
 tap "protonpass/tap"
 
@@ -66,5 +65,5 @@ cask "slack"
 cask "spotify"
 cask "tailscale-app"
 cask "vlc"
-cask "vorssaint/tap/vorssaint"
+cask "vorssaint"
 cask "zed"
