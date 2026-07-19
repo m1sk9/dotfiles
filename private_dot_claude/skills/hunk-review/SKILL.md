@@ -149,11 +149,10 @@ Fix/edit skills (`fix-review`, `clean-comments`, `fix-dependabot`, `fix-git-conf
 
 - Do this only when `HERDR_ENV=1`. Otherwise skip silently (no launch, no prompt to the user).
 - Reuse an existing session first: run `hunk session list --json` and match `repoRoot` to the current repo. If one already covers this repo, do nothing.
-- Otherwise split a pane off your own (focused) pane and launch `hunk diff`, then delegate:
+- Otherwise split a pane off your own pane and launch `hunk diff`, then delegate. Use `$HERDR_PANE_ID` from the environment for "your own pane" — **never** resolve it via `pane list`'s `focused` field, which tracks whichever pane the user currently has UI focus on. If the user switches to a different session (workspace/tab) while you are running, `focused` follows them there, and splitting off it launches Hunk in the wrong session entirely:
 
 ```bash
-OWN=$(herdr pane list | python3 -c 'import sys,json;print(next(p["pane_id"] for p in json.load(sys.stdin)["result"]["panes"] if p["focused"]))')
-NEW=$(herdr pane split "$OWN" --direction right --no-focus | python3 -c 'import sys,json;print(json.load(sys.stdin)["result"]["pane"]["pane_id"])')
+NEW=$(herdr pane split "$HERDR_PANE_ID" --direction right --no-focus | python3 -c 'import sys,json;print(json.load(sys.stdin)["result"]["pane"]["pane_id"])')
 herdr pane run "$NEW" "hunk diff"
 ```
 

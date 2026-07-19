@@ -45,13 +45,21 @@ important: ids can compact when tabs, panes, or workspaces are closed. do not tr
 
 ## discover yourself
 
-see what panes exist and which one is focused:
+your own pane id is already in the environment — herdr injects it, so you never need to guess:
+
+```bash
+echo "$HERDR_PANE_ID"
+```
+
+do not resolve "your own pane" from `pane list`'s `focused` field. `focused` tracks whichever pane the human currently has UI focus on — a different workspace, tab, or session entirely — and it can change out from under you while you are running. it does not track which pane your own process is running in.
+
+see what panes exist:
 
 ```bash
 herdr pane list
 ```
 
-the focused pane is yours. other panes are your neighbors.
+every pane other than `$HERDR_PANE_ID` is a neighbor.
 
 list workspaces:
 
