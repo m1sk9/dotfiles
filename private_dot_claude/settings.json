@@ -142,9 +142,9 @@
   "feedbackSurveyRate": 0,
   "spinnerTipsEnabled": true,
   "effortLevel": "high",
+  "advisorModel": "opus",
   "tui": "default",
   "showThinkingSummaries": true,
   "inputNeededNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "advisorModel": "sonnet"
+  "skipAutoPermissionPrompt": true
 }
