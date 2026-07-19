@@ -1,43 +1,20 @@
-alias lg='lazygit'
-alias cat='bat'
-alias ls='eza'
-alias l='eza -abghHliS'
-alias find='fd'
-alias grep='rg'
-alias c='claude'
-alias h='herdr'
-alias cd='z'
+if status is-interactive
+    alias lg='lazygit'
+    alias cat='bat'
+    alias ls='eza'
+    alias l='eza -abghHliS'
+    alias find='fd'
+    alias grep='rg'
+    alias c='claude'
+    alias h='herdr'
+    alias cd='z'
 
-set -x EDITOR "/usr/bin/vim"
-set -x SSH_AUTH_SOCK "$(/opt/homebrew/bin/gpgconf --list-dirs agent-ssh-socket)"
-set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x GHR_ROOT "$HOME/Repositories"
-# Colima の config dir を固定する (~/.colima の有無に関わらず最優先される)
-set -x COLIMA_HOME "$HOME/.config/colima"
-set -x DOCKER_HOST "unix://$COLIMA_HOME/default/docker.sock"
-# Homebrew の tap trust は非推奨 (will be removed) で毎回警告が出るため無効化
-set -x HOMEBREW_NO_REQUIRE_TAP_TRUST 1
+    zoxide init fish | source
 
-fish_add_path /opt/homebrew/bin
-fish_add_path /usr/bin
-fish_add_path /usr/local/bin
-fish_add_path $HOME/.local/bin
-fish_add_path $HOME/.cargo/bin
-fish_add_path $HOME/.deno/bin
+    # Why not 同期実行: agent はプロンプト表示前に起動している必要がなく ~14ms 待つ理由がないため
+    gpg-connect-agent /bye >/dev/null 2>&1 &
+    disown
 
-# setting fish
-eval "$(/opt/homebrew/bin/brew shellenv)"
-ghr shell fish | source
-zoxide init fish | source
-mise activate fish | source
-gpg-connect-agent /bye
-
-export LANG=en_US.UTF-8
-
-# Disable adaptive thinking for Claude to speed up responses
-function claude
-    env CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1 command claude $argv
+    # Display fastfetch
+    fastfetch --structure Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:CPU:GPU:Memory:Swap:Disk:LocalIp:Battery:PowerAdapter:Locale:Break:Break --color "#F2AEDE" --logo none
 end
-
-# Display fastfetch
-fastfetch --structure Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:CPU:GPU:Memory:Swap:Disk:LocalIp:Battery:PowerAdapter:Locale:Break:Break --color "#F2AEDE" --logo none

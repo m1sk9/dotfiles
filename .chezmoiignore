@@ -1,5 +1,4 @@
 LICENSE
-.chezmoi.toml_tmpl
 .chezmoiignore
 README.md
 CLAUDE.md
