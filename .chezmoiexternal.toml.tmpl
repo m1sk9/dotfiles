@@ -1,0 +1,12 @@
+# renovate: datasource=github-releases depName=briansmith80/claude-code-status-bar
+{{ $statusbarVersion := "v2.24.0" }}
+
+[".claude/statusline-command.sh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/briansmith80/claude-code-status-bar/{{ $statusbarVersion }}/statusline-command.sh"
+    refreshPeriod = "168h"
+
+[".claude/statusline.conf.example"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/briansmith80/claude-code-status-bar/{{ $statusbarVersion }}/statusline.conf.example"
+    refreshPeriod = "168h"

@@ -1,0 +1,15 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "github>m1sk9/renovate-config"
+    ],
+    "customManagers": [
+        {
+            "customType": "regex",
+            "managerFilePatterns": ["/^\\.chezmoiexternal\\.toml\\.tmpl$/"],
+            "matchStrings": [
+                "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)[\\s\\S]*?\\$statusbarVersion\\s*:=\\s*\"(?<currentValue>v\\d+\\.\\d+\\.\\d+)\""
+            ]
+        }
+    ]
+}
