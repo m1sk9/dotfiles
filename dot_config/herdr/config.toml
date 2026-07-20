@@ -11,7 +11,9 @@ manifest_check = true
 [[keys.command]]
 key = "prefix+ctrl+g"
 type = "popup"
-command = "/opt/homebrew/bin/lazygit"
+# Why not lazygit を直接: バイナリ直起動だと herdr server の PATH しか継承せず，
+# mise shims (pnpm 等) が通らず .husky/pre-commit が pnpm: command not found になる
+command = "/opt/homebrew/bin/fish -c /opt/homebrew/bin/lazygit"
 description = "run lazygit"
 width = "95%"
 height = "95%"
