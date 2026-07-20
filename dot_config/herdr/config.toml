@@ -1,8 +1,5 @@
 onboarding = false
 
-[theme]
-name = "catppuccin"
-
 [terminal]
 default_shell = "/opt/homebrew/bin/fish"
 
@@ -47,3 +44,7 @@ agent_panel_sort = "spaces"
 
 [experimental]
 pane_history = false
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
