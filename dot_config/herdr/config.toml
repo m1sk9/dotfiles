@@ -1,4 +1,5 @@
-    onboarding = false
+onboarding = false
+
 [theme]
 name = "catppuccin"
 
@@ -10,34 +11,39 @@ channel = "stable"
 version_check = true
 manifest_check = true
 
-[keys]
+[[keys.command]]
+key = "prefix+ctrl+g"
+type = "popup"
+command = "/opt/homebrew/bin/lazygit"
+description = "run lazygit"
+width = "95%"
+height = "95%"
 
 [[keys.command]]
-key = "prefix+alt+g"
+key = "prefix+ctrl+p"
 type = "popup"
-command = "lazygit"
-description = "run lazygit"
-width = "80%"
-height = "80%"
+command = "/opt/homebrew/bin/fish"
+description = "scratch shell"
+width = "95%"
+height = "95%"
+
+[[keys.command]]
+key = "prefix+ctrl+z"
+type = "shell"
+command = "/opt/homebrew/bin/zed $HERDR_ACTIVE_PANE_CWD"
+description = "open in zed"
+
+[[keys.command]]
+key = "prefix+ctrl+h"
+type = "popup"
+command = "/opt/homebrew/bin/hunk diff"
+description = "open hunk"
+width = "95%"
+height = "95%"
 
 [ui]
-
 mouse_scroll_lines = 3
-
 agent_panel_sort = "spaces"
-[ui.toast]
-
-[ui.toast.herdr]
-
-[ui.toast.clipboard]
-
-[ui.sound]
-
-[session]
-
-[remote]
 
 [experimental]
 pane_history = false
-
-[advanced]
