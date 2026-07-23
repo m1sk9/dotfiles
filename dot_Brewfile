@@ -35,6 +35,7 @@ brew "pinentry-mac"
 brew "protonpass/tap/pass-cli"
 brew "protobuf"
 brew "ripgrep"
+brew "rclone"
 brew "s6n-jp/tap/ghr"
 brew "zoxide"
 
