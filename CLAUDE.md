@@ -17,13 +17,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `*.tmpl` → Go テンプレートとして評価してから展開
 - `run_once_*` → `chezmoi apply` 時に一度だけ実行されるスクリプト
 
-`.chezmoiignore` に列挙されたファイル（`README.md`, `LICENSE`, `.zed`, `key.txt` など）は管理対象外で，リポジトリにはあるが `$HOME` には展開されない．
+管理対象外のファイルは `.chezmoiignore` に列挙されている．リポジトリにはあるが `$HOME` には展開されない．
 
-## 編集後のワークフロー
-
-1. このリポジトリ内のソースファイルを編集する．
-2. `chezmoi diff` で反映先との差分を確認する．
-3. `chezmoi apply` で実ファイルに反映する（`--force` で確認をスキップ）．
+## 自動コミットに関する注意
 
 `.chezmoi.toml.tmpl` で `git.autoCommit` / `git.autoPush` が `true` のため，`chezmoi` 経由の変更は自動でコミット・プッシュされうる．手動で `git` 操作する場合は二重コミットに注意すること．
 
@@ -35,11 +31,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Scripts/
 
 `executable_*.sh` は **Raycast Script Commands**．先頭コメントの `@raycast.*` メタデータが Raycast から認識される．Raycast (bash) は fish の環境変数を継承しないため，`COLIMA_HOME` 等は各スクリプト内で明示的に `export` している点に注意．
-
-主要スクリプト:
-- `executable_update-homebrew.sh` — `chezmoi apply` → `brew update`/`bundle`/`cleanup`/`upgrade` を一括実行．
-- `executable_start--stop-colima-runtime.sh` — Colima ランタイムのトグル．
-- `executable_cleanup_claude.sh` — `~/.claude` の残留データ整理（`--dry-run` 対応）．
 
 ## シェル環境
 
@@ -54,10 +45,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Claude Code 設定（private_dot_claude/）
 
-`~/.claude` 配下の設定そのものをこのリポジトリで管理している．
-- `settings.json` — Claude Code のグローバル設定．
-- `agents/` — カスタムサブエージェント定義（`.md`）．
-- `skills/` — カスタムスキル定義（各ディレクトリの `SKILL.md`）．
-- `CLAUDE.md`（このファイルとは別物）— ユーザーのグローバル指示．
+`~/.claude` 配下の設定そのものをこのリポジトリで管理している．`private_dot_claude/CLAUDE.md` はユーザーのグローバル指示であって，このファイルとは別物である（プロジェクト固有の記述を書くと全プロジェクトに漏れる）．
 
-agent と skill は対になっているものが多い（`fix-ci`, `fix-review`, `commit-msg` など）．片方を変更する際はもう片方との整合性を確認すること．
+agent と skill は対になっているものが多い（`fix-ci`, `fix-review`, `fix-dependabot` など）．片方を変更する際はもう片方との整合性を確認すること．

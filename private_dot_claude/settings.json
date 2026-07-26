@@ -6,6 +6,7 @@
     "pr": "Generated with Claude Code"
   },
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Bash(ag:*)",
       "Bash(bat:*)",
@@ -57,7 +58,6 @@
       "Bash(yarn:*)",
       "Bash(z:*)",
       "Bash(zoxide:*)",
-      "Bash(~/.claude/skills/review-claude-cli/review-prep.sh:*)",
       "WebFetch(domain:github.com)",
       "WebSearch"
     ],
@@ -126,23 +126,21 @@
       "Edit(**/*.key)"
     ]
   },
-  "model": "opusplan",
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "github@claude-plugins-official": true,
-    "jdtls-lsp@claude-plugins-official": true,
-    "kotlin-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": false,
+    "github@claude-plugins-official": false,
+    "jdtls-lsp@claude-plugins-official": false,
+    "kotlin-lsp@claude-plugins-official": false,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
   "feedbackSurveyRate": 0,
   "spinnerTipsEnabled": true,
   "effortLevel": "high",
-  "advisorModel": "opus",
   "tui": "default",
   "showThinkingSummaries": true,
   "inputNeededNotifEnabled": true,

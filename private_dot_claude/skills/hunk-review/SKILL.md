@@ -145,7 +145,7 @@ Guidelines:
 
 ## Bootstrapping a session from a fix/edit skill (inside herdr)
 
-Fix/edit skills (`fix-review`, `clean-comments`, `fix-dependabot`, `fix-git-conflict`, ...) can open a Hunk session so the user can audit the agent's changes before committing. Launching a pane requires herdr, and **only the skill layer (main loop) can do it — a delegated subagent cannot launch panes**, it can only drive an already-live session.
+Fix/edit skills (`fix-review`, `fix-ci`, `fix-dependabot`, `fix-git-conflict`, ...) can open a Hunk session so the user can audit the agent's changes before committing. Launching a pane requires herdr, and **only the skill layer (main loop) can do it — a delegated subagent cannot launch panes**, it can only drive an already-live session.
 
 - Do this only when `HERDR_ENV=1`. Otherwise skip silently (no launch, no prompt to the user).
 - Reuse an existing session first: run `hunk session list --json` and match `repoRoot` to the current repo. If one already covers this repo, do nothing.
