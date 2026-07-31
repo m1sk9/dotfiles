@@ -6,7 +6,6 @@
     "pr": "Generated with Claude Code"
   },
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Bash(ag:*)",
       "Bash(bat:*)",
@@ -124,7 +123,8 @@
       "Edit(**/credentials*)",
       "Edit(**/*.pem)",
       "Edit(**/*.key)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "statusLine": {
     "type": "command",
@@ -143,6 +143,7 @@
   "effortLevel": "high",
   "tui": "default",
   "showThinkingSummaries": true,
+  "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
   "skipAutoPermissionPrompt": true
 }
