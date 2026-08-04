@@ -1,0 +1,25 @@
+#!/usr/bin/env fish
+
+# MCP サーバー定義の source of truth は .chezmoitemplates/mcp-servers.json．
+#
+# Why not ファイルとして配置: user scope の MCP 定義先は ~/.claude.json のみで，
+# そこは numStartups や projects などの可変状態を含むため chezmoi の管理対象にできない．
+# CLI 経由で注入すれば状態ファイルには触らず定義だけを単一の source に保てる．
+#
+# Why not .mcp.json: project scope はそのリポジトリでしか読まれず，全プロジェクトで
+# 使いたい chrome-devtools には届かない．
+#
+# Why not obsidian を収容: Authorization ヘッダーの token を平文で置けないため，
+# age 暗号化と環境変数の供給経路を決めるまでは ~/.claude.json 側の定義を残す．
+
+if not command -q claude
+    echo "claude command not found; skipping MCP server configuration"
+    exit 0
+end
+
+{{ $servers := (includeTemplate "mcp-servers.json" . | fromJson).mcpServers -}}
+{{ range $name, $config := $servers }}
+# Why not add-json のみ: 既存エントリがあると add-json が失敗するため，先に落とす
+claude mcp remove {{ $name }} --scope user >/dev/null 2>&1
+claude mcp add-json {{ $name }} '{{ $config | toJson }}' --scope user
+{{ end -}}
