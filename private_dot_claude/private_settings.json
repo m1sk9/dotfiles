@@ -48,7 +48,6 @@
       "Bash(rustup:*)",
       "Bash(ssh dev-m1sk9-s1:*)",
       "Bash(touch:*)",
-      "Bash(tree:*)",
       "Bash(ts-node:*)",
       "Bash(tsc:*)",
       "Bash(tsx:*)",
@@ -145,5 +144,13 @@
   "showThinkingSummaries": true,
   "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "extraKnownMarketplaces": {
+    "mk": {
+      "source": {
+        "source": "github",
+        "repo": "mk-system/claude-plugins"
+      }
+    }
+  }
 }
