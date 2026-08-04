@@ -145,6 +145,7 @@
   "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
+  "disableClaudeAiConnectors": true,
   "extraKnownMarketplaces": {
     "mk": {
       "source": {
