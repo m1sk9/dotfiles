@@ -36,14 +36,3 @@
 	showUntrackedFiles = all
 [merge]
 	conflictStyle = diff3
-[alias]
-	a = add
-	s = status
-	l = log --oneline --graph --decorate
-	ls = log --show-signature
-	sw = switch
-	st = status -sb
-	co = checkout
-	br = branch
-	ft = fetch
-	cm = commit
