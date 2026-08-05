@@ -125,6 +125,8 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
+  "disableClaudeAiConnectors": true,
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
@@ -137,15 +139,6 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "feedbackSurveyRate": 0,
-  "spinnerTipsEnabled": true,
-  "effortLevel": "high",
-  "tui": "default",
-  "showThinkingSummaries": true,
-  "remoteControlAtStartup": false,
-  "inputNeededNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "disableClaudeAiConnectors": true,
   "extraKnownMarketplaces": {
     "mk": {
       "source": {
@@ -153,5 +146,14 @@
         "repo": "mk-system/claude-plugins"
       }
     }
-  }
+  },
+  "feedbackSurveyRate": 0,
+  "spinnerTipsEnabled": true,
+  "effortLevel": "high",
+  "tui": "default",
+  "showThinkingSummaries": true,
+  "theme": "dark-daltonized",
+  "remoteControlAtStartup": false,
+  "inputNeededNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
