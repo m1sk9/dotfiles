@@ -40,6 +40,9 @@ description = "open hunk"
 width = "95%"
 height = "95%"
 
+[worktrees]
+directory = "~/.local/share/chezmoi/.claude/worktree"
+
 [ui]
 mouse_scroll_lines = 3
 agent_panel_sort = "spaces"
