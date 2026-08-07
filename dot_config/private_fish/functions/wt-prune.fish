@@ -3,6 +3,11 @@
 # (~/Repositories/claude.ai) を走査し，upstream が削除済み
 # (= PR merge 後に remote branch が消えた) な checkout を実体ごと片付ける．
 function wt-prune --description "merge 済み・upstream 削除済みブランチの herdr worktree checkout を一括削除する"
+    set -l dry_run 0
+    if contains -- --dry-run $argv
+        set dry_run 1
+    end
+
     set -l root ~/Repositories/claude.ai
 
     if not test -d "$root"
@@ -26,6 +31,11 @@ function wt-prune --description "merge 済み・upstream 削除済みブラン�
 
             set -l track (git -C "$wt_dir" for-each-ref --format='%(upstream:track)' refs/heads/"$branch")
             if test "$track" = "[gone]"
+                if test $dry_run -eq 1
+                    echo "would remove: $wt_dir ($branch)"
+                    continue
+                end
+
                 set -l err (git -C "$wt_dir" worktree remove "$wt_dir" 2>&1)
                 if test $status -eq 0
                     echo "removed: $wt_dir ($branch)"
