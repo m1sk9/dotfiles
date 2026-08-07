@@ -41,7 +41,7 @@ width = "95%"
 height = "95%"
 
 [worktrees]
-directory = "~/.local/share/chezmoi/.claude/worktree"
+directory = "~/Repositories/claude.ai"
 
 [ui]
 mouse_scroll_lines = 3

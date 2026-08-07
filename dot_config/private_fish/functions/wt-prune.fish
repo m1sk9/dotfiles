@@ -1,9 +1,9 @@
 # Why not `git worktree prune`: それはメタデータの整合性を取るだけで，
 # checkout 先ディレクトリ自体は消さない．ここでは herdr の worktree 置き場
-# (~/.local/share/chezmoi/.claude/worktree) を走査し，upstream が削除済み
+# (~/Repositories/claude.ai) を走査し，upstream が削除済み
 # (= PR merge 後に remote branch が消えた) な checkout を実体ごと片付ける．
 function wt-prune --description "merge 済み・upstream 削除済みブランチの herdr worktree checkout を一括削除する"
-    set -l root ~/.local/share/chezmoi/.claude/worktree
+    set -l root ~/Repositories/claude.ai
 
     if not test -d "$root"
         echo "wt-prune: $root が存在しません"
