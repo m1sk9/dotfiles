@@ -6,6 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 このリポジトリは [chezmoi](https://github.com/twpayne/chezmoi) で管理する macOS 向け dotfiles の**ソースディレクトリ**である．`~/.local/share/chezmoi` に置かれ，`chezmoi apply` で実ファイル（`$HOME` 配下）に展開される．つまりここで編集するのはソースであって，反映先のファイルではない点に常に注意すること．
 
+## よく使うコマンド
+
+- `chezmoi diff` : ソースを変更した後，実際の展開結果との差分を確認する（apply 前に必ず確認）．
+- `chezmoi apply` : ソースを `$HOME` に反映する．`git.autoCommit`/`autoPush` が有効なため，自動コミット・プッシュが走りうる点に注意（下記「自動コミットに関する注意」参照）．
+- `chezmoi apply --dry-run --verbose` : 実ファイルを変更せずに適用結果だけを確認する．
+- `chezmoi execute-template < file.tmpl` : `.tmpl` ファイルのテンプレート展開結果だけを確認する（`run_onchange_*.tmpl` などの動作検証に有用）．
+- `chezmoi cd` : ソースディレクトリへ移動するサブシェルを開く．
+
 ## chezmoi のファイル命名規則（最重要）
 
 ファイル名のプレフィックスがそのまま反映先のパス・属性を決める．ファイルを新規作成・リネームする際は規則に従うこと．
@@ -48,3 +56,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 `~/.claude` 配下の設定そのものをこのリポジトリで管理している．`private_dot_claude/CLAUDE.md` はユーザーのグローバル指示であって，このファイルとは別物である（プロジェクト固有の記述を書くと全プロジェクトに漏れる）．
 
 agent と skill は対になっているものが多い（`fix-ci`, `fix-review`, `fix-dependabot` など）．片方を変更する際はもう片方との整合性を確認すること．
+
+## MCP サーバー設定
+
+user scope の MCP サーバー定義の source of truth は `.chezmoitemplates/mcp-servers.json` であり，`~/.claude.json` を直接編集・管理下には置いていない（`numStartups` や `projects` などの可変状態を含むため）．`run_onchange_configure-claude-mcp.fish.tmpl` がこの JSON を読み，`claude mcp remove` → `claude mcp add-json --scope user` で CLI 経由で注入する．MCP サーバーを追加・変更する際は `.chezmoitemplates/mcp-servers.json` を編集すること（詳細な理由は同スクリプト内の Why not コメントを参照）．
+
+## 依存バージョンの自動更新（Renovate）
+
+`.github/renovate.json` は `.chezmoiexternal.toml.tmpl` 内の `# renovate: datasource=... depName=...` コメントを正規表現で検出するカスタムマネージャーを持つ．外部ファイル（例: `statusbar` のダウンロード元バージョン）を追加・更新する際は，このコメント規約に従うことで Renovate の自動 PR 対象にできる．
