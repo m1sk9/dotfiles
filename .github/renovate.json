@@ -10,6 +10,14 @@
             "matchStrings": [
                 "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)[\\s\\S]*?\\$statusbarVersion\\s*:=\\s*\"(?<currentValue>v\\d+\\.\\d+\\.\\d+)\""
             ]
+        },
+        {
+            "customType": "regex",
+            "managerFilePatterns": ["/^dot_config/herdr/plugins/config/herdr-lazy/plugins\\.list$/"],
+            "matchStrings": [
+                "(?<depName>[\\w.-]+/[\\w.-]+)@(?<currentValue>v\\d+\\.\\d+\\.\\d+)"
+            ],
+            "datasourceTemplate": "github-releases"
         }
     ]
 }
