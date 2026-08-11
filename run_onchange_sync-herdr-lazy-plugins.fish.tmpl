@@ -4,8 +4,10 @@
 # source of truth として plugin の導入・pin を一括管理する．
 # https://github.com/natori-hrj/herdr-lazy
 #
-# Why herdr plugin action invoke: herdr-lazy 本体のバイナリパスはインストール毎の
-# hash を含み PATH にも乗らないため，直接実行より herdr 経由でのアクション実行が安定する．
+# Why .tmpl: run_onchange は自分自身の render 結果のハッシュでしか再実行を
+# 判定しない．plugins.list の中身をここに埋め込むことで，list が変わったら
+# このスクリプトも変わったことになり，chezmoi apply のたびに sync が走る．
+# plugins.list sha256: {{ include "dot_config/herdr/plugins/config/herdr-lazy/plugins.list" | sha256sum }}
 
 if not command -q herdr
     echo "herdr command not found; skipping plugin sync"
@@ -16,4 +18,43 @@ if not herdr plugin list 2>/dev/null | grep -q "^- herdr-lazy "
     herdr plugin install natori-hrj/herdr-lazy --yes
 end
 
-herdr plugin action invoke herdr-lazy.sync
+set -l invoke_json (herdr plugin action invoke sync --plugin herdr-lazy)
+set -l log_id (echo $invoke_json | python3 -c 'import sys, json; print(json.load(sys.stdin)["result"]["log"]["log_id"])' 2>/dev/null)
+
+if test -z "$log_id"
+    echo "herdr-lazy: could not read sync log_id; skipping lock copy-back"
+    exit 0
+end
+
+# sync はデーモン側で非同期に走るので，ログの status が確定するまで待つ．
+set -l waited 0
+set -l final_status ""
+while test $waited -lt 60
+    set final_status (herdr plugin log list --plugin herdr-lazy --limit 5 | python3 -c "
+import sys, json
+logs = json.load(sys.stdin)['result']['logs']
+for l in logs:
+    if l.get('log_id') == '$log_id':
+        print(l.get('status', ''))
+        break
+" 2>/dev/null)
+    if test "$final_status" = "succeeded" -o "$final_status" = "failed"
+        break
+    end
+    sleep 1
+    set waited (math $waited + 1)
+end
+
+if test "$final_status" != "succeeded"
+    echo "herdr-lazy: sync did not report success (status: $final_status); skipping lock copy-back"
+    exit 0
+end
+
+# sync は herdr の実行時 config-dir に plugins.lock を書く．resolved commit を
+# ドリフトさせないよう，chezmoi source 側にもコピーして次の commit 対象にする．
+set -l live_lock ~/.config/herdr/plugins/config/herdr-lazy/plugins.lock
+set -l source_lock "{{ .chezmoi.sourceDir }}/dot_config/herdr/plugins/config/herdr-lazy/plugins.lock"
+if test -f "$live_lock"
+    cp "$live_lock" "$source_lock"
+    echo "herdr-lazy: copied plugins.lock back into chezmoi source"
+end
