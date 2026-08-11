@@ -137,7 +137,8 @@
     "jdtls-lsp@claude-plugins-official": false,
     "kotlin-lsp@claude-plugins-official": false,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "stripe@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "mk": {
