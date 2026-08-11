@@ -40,6 +40,12 @@ description = "open hunk"
 width = "95%"
 height = "95%"
 
+[[keys.command]]
+key = "prefix+ctrl+l"
+type = "plugin_action"
+command = "herdr-lazy.manage"
+description = "manage herdr plugins"
+
 [worktrees]
 directory = "~/Repositories/claude.ai"
 
