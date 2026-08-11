@@ -1,0 +1,5 @@
+shell = "/opt/homebrew/bin/fish"
+
+[defaults]
+copy = [".env", ".env.local"]
+run = []
