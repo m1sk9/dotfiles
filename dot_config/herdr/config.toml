@@ -65,6 +65,19 @@ directory = "~/Repositories/claude.ai"
 mouse_scroll_lines = 3
 agent_panel_sort = "priority"
 
+# Why not 既定の [["state_icon", "workspace", "tab"], ["agent"]]: tab はタブ番号
+# ("1") しか出さず，agent は全行 "claude" になるので，どのセッションが何をして
+# いるのか一覧から読めない．Claude Code は会話の要約をターミナルタイトルに書く
+# ので，それを主役に据える．
+#
+# Why not 行の既定スタイルに任せる: 既定では 2 行目が沈んで tokyo-night の背景に
+# 埋もれる．読ませたいのは要約なので白を明示し，workspace は灰に落として添える．
+[ui.sidebar.agents]
+rows = [
+    ["state_icon", { token = "terminal_title_stripped", fg = "#ffffff" }],
+    [{ token = "workspace", fg = "#9aa5ce" }, "tab"],
+]
+
 [experimental]
 pane_history = false
 
