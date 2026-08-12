@@ -46,6 +46,18 @@ type = "plugin_action"
 command = "herdr-lazy.manage"
 description = "manage herdr plugins"
 
+[[keys.command]]
+key = "prefix+ctrl+f"
+type = "plugin_action"
+command = "herdr-file-viewer.open-file-viewer"
+description = "open file viewer in split"
+
+[[keys.command]]
+key = "prefix+ctrl+shift+f"
+type = "plugin_action"
+command = "herdr-file-viewer.open-file-viewer-tab"
+description = "open file viewer in tab"
+
 [worktrees]
 directory = "~/Repositories/claude.ai"
 

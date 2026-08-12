@@ -1,0 +1,22 @@
+# herdr-file-viewer — 外部コマンドの結線．
+# 設定できるキーの全体像はプラグイン同梱の config.example.toml を参照．
+#
+# Why not デフォルトのまま (glow / delta / bat をコマンド名で解決): herdr の
+# plugin pane は manifest の command をシェルを介さず直接 exec するため，pane の
+# PATH が /usr/bin:/bin:/usr/sbin:/sbin まで縮む（herdr 0.8.0 で実測）．3 つとも
+# /opt/homebrew/bin にあるので解決できず，全ビューがプレーンテキストに落ちる．
+# herdr 側に pane へ環境変数を渡す設定は無いため，ここで絶対パスに固定する．
+#
+# Why not $EDITOR に任せる: 同じ理由で pane に環境変数が届かず，editor は
+# プラットフォーム既定にフォールバックしてしまう．
+
+editor = "/opt/homebrew/bin/zed --wait"
+
+# Why not 同梱 palette をそのまま使う: デフォルトの markdown コマンドは実行
+# ファイルの ancestors から assets/markdown-style.json を探すが，コマンドを
+# 上書きするとその探索が効かず -s を自分で渡す必要がある．プラグインの導入先は
+# ハッシュ付きディレクトリで再インストール時に変わりうるので，palette は隣に
+# コピーしたものを指す．-w 0 はビューア側が pane 幅で置換する．
+markdown = "/opt/homebrew/bin/glow -s {{ .chezmoi.homeDir }}/.config/herdr/plugins/config/herdr-file-viewer/markdown-style.json -w 0 -"
+diff = "/opt/homebrew/bin/delta"
+syntax = "/opt/homebrew/bin/bat --color=always --style=numbers --paging=never --file-name={name} -"
