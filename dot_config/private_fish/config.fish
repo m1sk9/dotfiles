@@ -5,6 +5,7 @@ if status is-interactive
     alias l='eza -abghHliS'
     alias find='fd'
     alias grep='rg'
+    alias vim='nvim'
     alias c='claude'
     alias h='herdr'
     alias cd='z'
