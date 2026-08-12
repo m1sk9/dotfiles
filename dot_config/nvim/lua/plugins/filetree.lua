@@ -3,7 +3,8 @@
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+  -- 起動時に自動で開きたいので cmd 遅延ではなく VimEnter で読み込む
+  event = "VimEnter",
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "ファイルツリーの開閉" },
     { "<leader>E", "<cmd>NvimTreeFindFile<CR>", desc = "ツリーで現在のファイルを表示" },
@@ -36,4 +37,8 @@ return {
       dotfiles = false,
     },
   },
+  config = function(_, opts)
+    require("nvim-tree").setup(opts)
+    require("nvim-tree.api").tree.open()
+  end,
 }

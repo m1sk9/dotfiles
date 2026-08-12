@@ -31,7 +31,7 @@ require("lazy").setup({
   -- lua/plugins/ 配下の全ファイルを spec として読み込む．
   -- プラグインの追加はこのディレクトリに 1 ファイル置くだけで完結する
   spec = { { import = "plugins" } },
-  install = { colorscheme = { "tokyonight" } },
+  install = { colorscheme = { "gruvbox" } },
   -- Why not checker を有効化: 起動ごとに更新確認の通知が出ると入門時のノイズになる．
   -- 更新は :Lazy update を手で叩く
   checker = { enabled = false },

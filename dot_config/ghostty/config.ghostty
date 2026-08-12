@@ -1,6 +1,4 @@
 auto-update-channel = stable
-background-blur-radius = 20
-background-opacity = 0.85
 confirm-close-surface = false
 copy-on-select = true
 cursor-style-blink = false
@@ -33,7 +31,7 @@ quick-terminal-space-behavior = move
 split-inherit-working-directory = true
 tab-inherit-working-directory = false
 term = xterm-256color
-theme = TokyoNight Night
+theme = Gruvbox Dark Hard
 window-height = 100
 window-inherit-working-directory = false
 window-padding-x = 10

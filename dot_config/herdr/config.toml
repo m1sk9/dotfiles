@@ -70,17 +70,18 @@ agent_panel_sort = "priority"
 # いるのか一覧から読めない．Claude Code は会話の要約をターミナルタイトルに書く
 # ので，それを主役に据える．
 #
-# Why not 行の既定スタイルに任せる: 既定では 2 行目が沈んで tokyo-night の背景に
-# 埋もれる．読ませたいのは要約なので白を明示し，workspace は灰に落として添える．
+# Why not 行の既定スタイルに任せる: 既定では 2 行目が沈んで gruvbox の背景に
+# 埋もれる．読ませたいのは要約なので白を明示し，workspace は gruvbox の fg4 に
+# 落として添える．
 [ui.sidebar.agents]
 rows = [
     ["state_icon", { token = "terminal_title_stripped", fg = "#ffffff" }],
-    [{ token = "workspace", fg = "#9aa5ce" }, "tab"],
+    [{ token = "workspace", fg = "#a89984" }, "tab"],
 ]
 
 [experimental]
 pane_history = false
 
 [theme]
-name = "tokyo-night"
+name = "gruvbox"
 auto_switch = false
