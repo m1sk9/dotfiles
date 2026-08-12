@@ -7,7 +7,11 @@
 # CLI 経由で注入すれば状態ファイルには触らず定義だけを単一の source に保てる．
 #
 # Why not .mcp.json: project scope はそのリポジトリでしか読まれず，全プロジェクトで
-# 使いたい chrome-devtools には届かない．
+# 使いたい kitesurf には届かない．
+#
+# Why not chrome-devtools も user scope: kitesurf と同じ chrome-devtools-mcp なので
+# 両方を常時有効にするとツール定義が二重に載る．localhost を見るときだけ必要なので，
+# chrome-devtools はプロジェクト側 (.mcp.json または --scope local) で入れる．
 #
 # Why not obsidian を収容: Authorization ヘッダーの token を平文で置けないため，
 # age 暗号化と環境変数の供給経路を決めるまでは ~/.claude.json 側の定義を残す．

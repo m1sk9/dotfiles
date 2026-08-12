@@ -1,9 +1,12 @@
 {
   "mcpServers": {
-    "chrome-devtools": {
+    "kitesurf": {
       "type": "stdio",
       "command": "bunx",
-      "args": ["chrome-devtools-mcp", "--channel=dev"]
+      "args": [
+        "chrome-devtools-mcp",
+        "--wsEndpoint=wss://kitesurf.cloudflare.app/devtools/browser"
+      ]
     }
   }
 }
