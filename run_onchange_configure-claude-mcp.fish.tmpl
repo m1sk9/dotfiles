@@ -13,8 +13,10 @@
 # scope 優先順位 (local > project > user) で user 側が隠れ，ブラウザ MCP は常に
 # 1 つしか起動しない．その投入は fish の claude 関数 (--chrome) が持つ．
 #
-# Why not obsidian を収容: Authorization ヘッダーの token を平文で置けないため，
-# age 暗号化と環境変数の供給経路を決めるまでは ~/.claude.json 側の定義を残す．
+# Why not obsidian の token を平文で持つ: Authorization ヘッダーは age で暗号化した
+# .obsidian-token.age をテンプレート内で decrypt して埋める．ドット始まりのソース
+# ファイルは chezmoi が展開対象から外すので $HOME に平文は落ちない．run_onchange が
+# state に残すのも内容の SHA256 と実行時刻だけ (chezmoi state dump で確認済み)．
 
 if not command -q claude
     echo "claude command not found; skipping MCP server configuration"
