@@ -61,6 +61,8 @@ agent と skill は対になっているものが多い（`fix-ci`, `fix-review`
 
 user scope の MCP サーバー定義の source of truth は `.chezmoitemplates/mcp-servers.json` であり，`~/.claude.json` を直接編集・管理下には置いていない（`numStartups` や `projects` などの可変状態を含むため）．`run_onchange_configure-claude-mcp.fish.tmpl` がこの JSON を読み，`claude mcp remove` → `claude mcp add-json --scope user` で CLI 経由で注入する．MCP サーバーを追加・変更する際は `.chezmoitemplates/mcp-servers.json` を編集すること（詳細な理由は同スクリプト内の Why not コメントを参照）．
 
+ただしここに置いたものは全プロジェクトに載る．用途が限られる MCP・plugin は `dot_config/private_fish/functions/claude.fish` の `optional_local` 表に `<flag>:<kind>:<name>:<payload>` を足し，`claude --chrome` のように起動時フラグで local scope に投入する．ブラウザ MCP は user scope の `browser` (Kitesurf) と同名を local scope に入れて隠す設計なので，ローカル Chrome を使う側も名前は `browser` にすること（別名にすると同じ chrome-devtools-mcp が 2 つ起動する）．
+
 ## 依存バージョンの自動更新（Renovate）
 
 `.github/renovate.json` は `.chezmoiexternal.toml.tmpl` 内の `# renovate: datasource=... depName=...` コメントを正規表現で検出するカスタムマネージャーを持つ．外部ファイル（例: `statusbar` のダウンロード元バージョン）を追加・更新する際は，このコメント規約に従うことで Renovate の自動 PR 対象にできる．
