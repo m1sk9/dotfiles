@@ -1,7 +1,6 @@
 -- 有効化する言語サーバーはここに列挙する．
 -- 追加手順は Obsidian vault の Notes/Neovim 早見表.md に記載．
--- 現状は Neovim 設定自身を書くための lua_ls だけに絞っている
-local servers = { "lua_ls" }
+local servers = { "lua_ls", "rust_analyzer" }
 
 return {
   {
@@ -24,6 +23,16 @@ return {
             },
             diagnostics = { globals = { "vim" } },
             telemetry = { enable = false },
+          },
+        },
+      })
+
+      -- Why not checkOnSave.command (旧設定名): rust-analyzer が新しくなり
+      -- checkOnSave は常時 true 化された．check.command だけ指定すれば良い
+      vim.lsp.config("rust_analyzer", {
+        settings = {
+          ["rust-analyzer"] = {
+            check = { command = "clippy" },
           },
         },
       })
@@ -52,6 +61,17 @@ return {
           map("<leader>cf", function()
             vim.lsp.buf.format({ async = true })
           end, "フォーマット")
+
+          -- Why not 全 filetype に広げる: rustfmt のように保存時整形が
+          -- 前提のツールチェーンを持つのは今のところ Rust だけ
+          if vim.bo[args.buf].filetype == "rust" then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = args.buf,
+              callback = function()
+                vim.lsp.buf.format({ bufnr = args.buf, async = false })
+              end,
+            })
+          end
         end,
       })
     end,
