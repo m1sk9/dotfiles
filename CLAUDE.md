@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## よく使うコマンド
 
 - `chezmoi diff` : ソースを変更した後，実際の展開結果との差分を確認する（apply 前に必ず確認）．
-- `chezmoi apply` : ソースを `$HOME` に反映する．`git.autoCommit`/`autoPush` が有効なため，自動コミット・プッシュが走りうる点に注意（下記「自動コミットに関する注意」参照）．
+- `chezmoi apply` : ソースを `$HOME` に反映する．自動コミット・プッシュはされない点に注意（下記「自動コミットに関する注意」参照）．
 - `chezmoi apply --dry-run --verbose` : 実ファイルを変更せずに適用結果だけを確認する．
 - `chezmoi execute-template < file.tmpl` : `.tmpl` ファイルのテンプレート展開結果だけを確認する（`run_onchange_*.tmpl` などの動作検証に有用）．
 - `chezmoi cd` : ソースディレクトリへ移動するサブシェルを開く．
@@ -20,7 +20,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `dot_foo` → `~/.foo`（`dot_config/` → `~/.config/`）
 - `private_foo` → 権限 `0600` で展開（`private_dot_claude/` → `~/.claude/`）
-- `executable_foo` → 実行ビットを付与して展開（`Scripts/executable_*.sh`）
+- `executable_foo` → 実行ビットを付与して展開（`executable_homebrew.fish`）
 - `encrypted_foo.age` → age で復号して展開（`dot_awseal/encrypted_config.json.age`）
 - `*.tmpl` → Go テンプレートとして評価してから展開
 - `run_once_*` → `chezmoi apply` 時に一度だけ実行されるスクリプト
@@ -29,7 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 自動コミットに関する注意
 
-`.chezmoi.toml.tmpl` で `git.autoCommit` / `git.autoPush` が `true` のため，`chezmoi` 経由の変更は自動でコミット・プッシュされうる．手動で `git` 操作する場合は二重コミットに注意すること．
+`.chezmoi.toml.tmpl` で `git.autoCommit` / `git.autoPush` が `true` になっている．ただしこれが発火するのは `chezmoi add` / `chezmoi re-add` のようにソースディレクトリ自体を書き換えるコマンドの後だけで，`chezmoi apply` 単体では（ソース側に変更が無い限り）何もコミットされない．Edit/Write でソースファイルを直接編集した場合は，`chezmoi apply` を実行しても自動コミットは走らないので，`git add` → `git commit` → `git push` は都度手動で行うこと．
 
 `chezmoi diff` で差分確認した後の `chezmoi apply` は，確認を取らずに実行してよい．ただしファイル削除を伴う変更・暗号化ファイルや秘密情報が絡む変更など，破壊的・不可逆な変更が伴う場合は事前に確認を取ること．
 
@@ -39,9 +39,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `dot_awseal/encrypted_config.json.age` は [awseal](https://github.com/s6n-jp) の設定．**復号後の平文を誤って平文ファイルとしてコミットしないこと．**
 - `$HOME` に平文を落としたくない秘密は `encrypted_*` ではなく，ドット始まりのソースファイル（例: `.obsidian-token.age`）に置き，テンプレート内で ``{{ joinPath .chezmoi.sourceDir `<file>` | include | decrypt }}`` として使う．ドット始まりは chezmoi が展開対象から外すため，復号値はレンダリング結果にしか現れない．
 
-## Scripts/
+## Neovim（dot_config/nvim/）
 
-`executable_*.sh` は **Raycast Script Commands**．先頭コメントの `@raycast.*` メタデータが Raycast から認識される．Raycast (bash) は fish の環境変数を継承しないため，`COLIMA_HOME` 等は各スクリプト内で明示的に `export` している点に注意．
+`init.lua` は `options.lua` → `keymaps.lua` → lazy.nvim の順で読み込む（`keymaps.lua` が `vim.g.mapleader` を設定するため，これより後に lazy.nvim を読み込むとプラグイン側の `<leader>` マッピングが素の `<Space>` として登録されてしまう）．lazy.nvim 自体は `.chezmoiexternal.toml` 経由ではなく `init.lua` 内で git clone して自己管理する（バージョン固定は lazy.nvim 自身の `lazy-lock.json` に任せ，chezmoi external との二重管理を避けるため）．
+
+`lazy.setup({ spec = { { import = "plugins" } } })` により `lua/plugins/` 配下の全ファイルがプラグイン定義として読み込まれる．プラグインの追加はこのディレクトリに 1 ファイル置くだけで完結し，どこかに登録し直す必要はない．LSP サーバーの有効化は `plugins/lsp.lua` 冒頭の `servers` テーブルに追記，Treesitter パーサーの追加は `plugins/treesitter.lua` の `install()` 呼び出しにパーサー名を足す形になっている．詳細な追加手順は Obsidian vault の `Notes/Neovim 早見表.md` を参照．
 
 ## シェル環境
 
