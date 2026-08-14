@@ -24,7 +24,13 @@ height = "95%"
 [[keys.command]]
 key = "prefix+ctrl+p"
 type = "popup"
-command = "/opt/homebrew/bin/fish"
+# Why: popup はコマンドが exit するまで全入力 (Escape 含む) がそのまま子プロセスへ
+# 渡り，herdr 側にポップアップを閉じる機構が無い．popup コマンドには
+# HERDR_PANE_ID も渡らない (HERDR_ACTIVE_PANE_ID は背後の通常ペインの ID で別物)
+# ので herdr pane close は使えない．ただのシェルには自前の quit キーが無く exit
+# を打つしかなくなるので，F1 に exit を割り当てる．F1 は fish 既定でも
+# Ghostty 既定でも未使用
+command = "/opt/homebrew/bin/fish -C 'bind f1 exit'"
 description = "scratch shell"
 width = "95%"
 height = "95%"
