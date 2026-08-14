@@ -14,6 +14,26 @@ keybind = ctrl+cmd+c=text:claude\n
 keybind = ctrl+cmd+r=toggle_readonly
 keybind = ctrl+cmd+s=text:lazygit\n
 keybind = global:cmd+grave_accent=toggle_quick_terminal
+# Why: 既定で cmd+1..9 は Ghostty 自身のタブ切り替え (goto_tab / last_tab) に
+# 割り当て済みで，herdr に渡る前に消費されてしまう．herdr 側の switch_tab に
+# 使わせるため unbind してパススルーさせる．
+keybind = cmd+digit_1=unbind
+keybind = cmd+digit_2=unbind
+keybind = cmd+digit_3=unbind
+keybind = cmd+digit_4=unbind
+keybind = cmd+digit_5=unbind
+keybind = cmd+digit_6=unbind
+keybind = cmd+digit_7=unbind
+keybind = cmd+digit_8=unbind
+keybind = cmd+1=unbind
+keybind = cmd+2=unbind
+keybind = cmd+3=unbind
+keybind = cmd+4=unbind
+keybind = cmd+5=unbind
+keybind = cmd+6=unbind
+keybind = cmd+7=unbind
+keybind = cmd+8=unbind
+keybind = cmd+9=unbind
 keybind = shift+enter=text:\x1b\r
 macos-secure-input-indication = false
 macos-titlebar-proxy-icon = hidden

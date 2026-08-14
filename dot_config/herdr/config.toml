@@ -8,6 +8,9 @@ channel = "stable"
 version_check = true
 manifest_check = true
 
+[keys]
+switch_tab = "cmd+1..9"
+
 [[keys.command]]
 key = "prefix+ctrl+g"
 type = "popup"
