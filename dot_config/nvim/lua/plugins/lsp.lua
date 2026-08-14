@@ -1,6 +1,12 @@
 -- 有効化する言語サーバーはここに列挙する．
 -- 追加手順は Obsidian vault の Notes/Neovim 早見表.md に記載．
-local servers = { "lua_ls", "rust_analyzer" }
+--
+-- Why not tsgo: ネイティブバイナリで軽いが，LSP 機能自体が発展途上（README
+-- 上も in progress）で，かつ @typescript/native-preview を devDependency に
+-- 持つプロジェクトが実質存在しない．ts_ls は起動している typescript-language-
+-- server 自体は Node.js だが，型検査は各プロジェクトの typescript パッケージを
+-- 自動解決するため，バージョン・設定を完全にプロジェクト任せにできる
+local servers = { "lua_ls", "rust_analyzer", "ts_ls" }
 
 return {
   {
