@@ -84,7 +84,7 @@ return {
     version = "1.*",
     event = { "InsertEnter", "CmdlineEnter" },
     opts = {
-      keymap = { preset = "default" },
+      keymap = { preset = "super-tab" },
       completion = { documentation = { auto_show = true } },
       sources = { default = { "lsp", "path", "snippets", "buffer" } },
       -- Why not "rust": prebuilt バイナリが取得できない環境では Lua 実装に
