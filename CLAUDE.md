@@ -31,6 +31,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `.chezmoi.toml.tmpl` で `git.autoCommit` / `git.autoPush` が `true` のため，`chezmoi` 経由の変更は自動でコミット・プッシュされうる．手動で `git` 操作する場合は二重コミットに注意すること．
 
+`chezmoi diff` で差分確認した後の `chezmoi apply` は，確認を取らずに実行してよい．ただしファイル削除を伴う変更・暗号化ファイルや秘密情報が絡む変更など，破壊的・不可逆な変更が伴う場合は事前に確認を取ること．
+
 ## 暗号化
 
 - 暗号化方式は **age**．`encrypted_*.age` ファイルは復号鍵 `~/.config/chezmoi/key.txt` が無いと扱えない．
