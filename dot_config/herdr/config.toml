@@ -10,6 +10,8 @@ manifest_check = true
 
 [keys]
 switch_tab = "cmd+1..9"
+next_agent = "cmd+j"
+previous_agent = "cmd+k"
 
 [[keys.command]]
 key = "prefix+ctrl+g"
@@ -46,6 +48,18 @@ key = "prefix+ctrl+h"
 type = "popup"
 command = "/opt/homebrew/bin/hunk diff"
 description = "open hunk"
+width = "95%"
+height = "95%"
+
+[[keys.command]]
+key = "prefix+ctrl+s"
+type = "popup"
+# Why fish -c: strays が内部で claude を spawn するが，claude は
+# ~/.local/bin (fish_user_paths 経由) にあり，herdr server 自体の PATH には
+# 含まれない．バイナリ直起動だと "failed to spawn claude: No such file or
+# directory" になるため，lazygit と同じ理由で fish 経由にする
+command = "/opt/homebrew/bin/fish -c /opt/homebrew/bin/strays"
+description = "open strays"
 width = "95%"
 height = "95%"
 

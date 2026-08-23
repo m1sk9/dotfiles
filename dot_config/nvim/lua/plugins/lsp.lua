@@ -6,7 +6,7 @@
 -- 持つプロジェクトが実質存在しない．ts_ls は起動している typescript-language-
 -- server 自体は Node.js だが，型検査は各プロジェクトの typescript パッケージを
 -- 自動解決するため，バージョン・設定を完全にプロジェクト任せにできる
-local servers = { "lua_ls", "rust_analyzer", "ts_ls" }
+local servers = { "lua_ls", "rust_analyzer", "ts_ls", "sqls" }
 
 return {
   {

@@ -82,8 +82,7 @@
 
 - Vault のパスは `/Users/m1sk9/Documents/m1sk9-vault`．
 - 書き込み操作は MCP を使い，読み込み操作は ripgrep を使うこと（トークンを無駄にしないため）．
-- 触るときは必ず許可を取ること．
-- フォルダーに `CLAUDE.md` がある場合はそれに従うこと．
+- 扱い方は Vault ルート直下の `CLAUDE.md` に従うこと．
 
 ## Claude としての立ちふるまい
 

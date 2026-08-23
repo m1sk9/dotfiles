@@ -22,6 +22,7 @@ return {
       "markdown_inline",
       "query",
       "rust",
+      "sql",
       "toml",
       "tsx",
       "typescript",
