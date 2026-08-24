@@ -12,6 +12,8 @@ manifest_check = true
 switch_tab = "cmd+1..9"
 next_agent = "cmd+j"
 previous_agent = "cmd+k"
+next_workspace = "ctrl+cmd+j"
+previous_workspace = "ctrl+cmd+k"
 
 [[keys.command]]
 key = "prefix+ctrl+g"
