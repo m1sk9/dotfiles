@@ -4,5 +4,12 @@ shell = "/opt/homebrew/bin/fish"
 copy = [".env", ".env.local"]
 run = []
 
+# Why: .husky/pre-commit runs `pnpm exec lint-staged` in frontend/admin, which
+# fails when a fresh worktree has no node_modules yet. Seed them here instead
+# of relying on the hook to install on the fly.
 [repos.lazy-tracker]
 copy = ["config.yml"]
+run = [
+    "pnpm --dir $WORKTREE/frontend install --frozen-lockfile",
+    "pnpm --dir $WORKTREE/admin install --frozen-lockfile",
+]
