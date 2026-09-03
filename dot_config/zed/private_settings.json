@@ -62,7 +62,9 @@
     "font_size": 13.0,
     "button": true,
     "font_features": null,
-    "shell": "system",
+    "shell": {
+      "program": "/opt/homebrew/bin/fish",
+    },
   },
   "status_bar": {
     "cursor_position_button": true,
