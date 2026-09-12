@@ -86,7 +86,10 @@
     "quick_actions": true,
     "breadcrumbs": true,
   },
-  "auto_signature_help": true,
+  "auto_signature_help": false,
+  "inlay_hints": {
+    "enabled": false,
+  },
   "vim_mode": false,
   "ui_font_weight": 400.0,
   "buffer_font_family": "PlemolJP35 Console NF",
