@@ -12,7 +12,7 @@
     "dock": "left",
   },
   "edit_predictions": {
-    "provider": "copilot",
+    "provider": "none",
   },
   "enable_language_server": true,
   "language_servers": ["!biome", "!cspell", "..."],
