@@ -33,7 +33,7 @@
     "button": true,
   },
   "project_panel": {
-    "folder_icons": false,
+    "folder_indicator": "chevron",
     "file_icons": true,
     "dock": "left",
   },
