@@ -119,7 +119,9 @@ auto_switch = false
 [theme.custom]
 accent = "#73a3b7"        # blue.bright
 panel_bg = "#152528"      # bg1
-sidebar_bg = "#0f1c1e"    # bg0
+# Why not bg0: Ghostty の Terafox テーマは background に bg1 (#152528) を使っており，
+# サイドバーだけ bg0 にすると境目の色差がくっきり出てしまう
+sidebar_bg = "#152528"    # bg1
 active_row_bg = "#293e40" # sel0
 selection_bg = "#425e5e"  # sel1
 surface0 = "#1d3337"      # bg2
