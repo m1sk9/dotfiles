@@ -14,8 +14,8 @@
   "edit_predictions": {
     "provider": "copilot",
   },
-  "enable_language_server": false,
-  "language_server": ["!biome", "!cspell"],
+  "enable_language_server": true,
+  "language_servers": ["!biome", "!cspell", "..."],
   "agent": {
     "dock": "right",
     "button": false,
