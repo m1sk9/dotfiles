@@ -15,6 +15,7 @@
     "provider": "copilot",
   },
   "enable_language_server": false,
+  "language_server": ["!biome", "!cspell"],
   "agent": {
     "dock": "right",
     "button": false,
