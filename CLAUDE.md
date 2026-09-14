@@ -31,9 +31,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `.chezmoi.toml.tmpl` で `git.autoCommit` / `git.autoPush` が `true` になっている．ただしこれが発火するのは `chezmoi add` / `chezmoi re-add` のようにソースディレクトリ自体を書き換えるコマンドの後だけで，`chezmoi apply` 単体では（ソース側に変更が無い限り）何もコミットされない．Edit/Write でソースファイルを直接編集した場合は，`chezmoi apply` を実行しても自動コミットは走らないので，`git add` → `git commit` → `git push` は都度手動で行うこと．
 
-`chezmoi diff` で差分確認した後の `chezmoi apply` は，確認を取らずに実行してよい．ただしファイル削除を伴う変更・暗号化ファイルや秘密情報が絡む変更など，破壊的・不可逆な変更が伴う場合は事前に確認を取ること．
+Edit/Write でソースファイルを変更したら，`chezmoi diff` で差分確認したうえで `chezmoi apply` まで毎回実行すること．ただしファイル削除を伴う変更・暗号化ファイルや秘密情報が絡む変更など，破壊的・不可逆な変更が伴う場合は事前に確認を取ること．
 
-通常の `git add` → `git commit` → `git push`（現在のブランチを origin へ通常 push）は，確認を取らずに実行してよい．ただし force push や履歴を書き換える操作は対象外で，別途確認を取ること．
+通常の `git add` → `git commit` → `git push`（現在のブランチを origin へ通常 push）も，確認を取らずに毎回実行すること．ただし force push や履歴を書き換える操作は対象外で，別途確認を取ること．
 
 ## 暗号化
 
