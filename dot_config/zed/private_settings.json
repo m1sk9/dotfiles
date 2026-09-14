@@ -18,7 +18,7 @@
   "language_servers": ["!biome", "!cspell", "..."],
   "agent": {
     "dock": "right",
-    "button": false,
+    "button": true,
     "model_parameters": [],
   },
   "chat_panel": {
