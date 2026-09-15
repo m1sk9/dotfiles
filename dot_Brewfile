@@ -44,7 +44,6 @@ brew "zoxide"
 
 cask "claude"
 cask "comet"
-cask "cleanshot"
 cask "discord@canary"
 cask "firefox@nightly"
 cask "font-plemol-jp-nf"
