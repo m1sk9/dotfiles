@@ -16,8 +16,6 @@ set -gx GHR_ROOT $HOME/Repositories
 # Colima の config dir を固定する (~/.colima の有無に関わらず最優先される)
 set -gx COLIMA_HOME $HOME/.config/colima
 set -gx DOCKER_HOST unix://$COLIMA_HOME/default/docker.sock
-# Homebrew の tap trust は非推奨 (will be removed) で毎回警告が出るため無効化
-set -gx HOMEBREW_NO_REQUIRE_TAP_TRUST 1
 # Why not `gpgconf --list-dirs agent-ssh-socket`: コマンド置換で ~9ms かかり，
 # GNUPGHOME 既定ではこの固定パスと同値のため
 set -gx SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh

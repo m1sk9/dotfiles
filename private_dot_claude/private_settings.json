@@ -156,5 +156,6 @@
   "theme": "dark-daltonized",
   "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "hooks": {"SessionStart":[{"matcher":"*","hooks":[{"type":"command","command":"bash '/Users/m1sk9/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]}
 }

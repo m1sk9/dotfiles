@@ -1,6 +1,7 @@
-tap "m1sk9/tap"
-tap "modem-dev/tap"
-tap "s6n-jp/tap"
+tap "m1sk9/tap", trusted: true
+tap "modem-dev/tap", trusted: true
+tap "s6n-jp/tap", trusted: true
+tap "lzhgus/tap", trusted: true
 
 brew "age"
 brew "bat"
@@ -42,8 +43,8 @@ brew "typescript-language-server"
 brew "zoxide"
 
 cask "claude"
-cask "cleanshot"
 cask "comet"
+cask "capso"
 cask "discord@canary"
 cask "firefox@nightly"
 cask "font-plemol-jp-nf"
