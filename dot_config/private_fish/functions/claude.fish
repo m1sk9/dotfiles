@@ -40,5 +40,29 @@ function claude
         end
     end
 
+    # --plan は Fable で計画だけを作り，--impl はその計画を Opus の新しいセッションで実装する．
+    # Why not optional_local に入れる: あちらは local scope への投入で，こちらは起動引数の
+    # 書き換えなので表の形に合わない．
+    # Why not 計画を承認して同じセッションで /model を切り替える: キャッシュはモデルごとに
+    # 別なので，計画中に積んだ文脈を Opus がキャッシュなしで読み直すことになる．
+    if set -l i (contains -i -- --plan $argv)
+        set -e argv[$i[1]]
+        set -p argv --model fable --permission-mode plan --append-system-prompt \
+            'このセッションでは計画だけを作る．実装は別のセッションがこの計画ファイルだけを読んで行うので，変更対象のファイル，手順，検証に使うテストやコマンド，判断とその理由を，会話を読まなくても実装できる粒度で計画に書き切ること．'
+    else if set -l i (contains -i -- --impl $argv)
+        set -e argv[$i[1]]
+        # Why not 最新の計画を自動で選ぶ: ~/.claude/plans は全プロジェクト共通なので，
+        # 最新のものが別プロジェクトの計画であることがある．
+        set -l plans ~/.claude/plans/*.md
+        if test (count $plans) -eq 0
+            echo 'claude: ~/.claude/plans に計画ファイルがありません' >&2
+            return 1
+        end
+        set -l plan (command ls -t -- $plans | fzf --prompt 'plan> ' --preview 'bat --color=always --style=plain {}')
+        or return 1
+        set -p argv --model opus
+        set -a argv "計画ファイル $plan は承認済みです．この計画に沿って実装してください．"
+    end
+
     command claude $argv
 end
