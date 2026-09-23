@@ -126,6 +126,11 @@
     "defaultMode": "auto"
   },
   "model": "opus[1m]",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
   "disableClaudeAiConnectors": true,
   "statusLine": {
     "type": "command",
@@ -150,7 +155,6 @@
   },
   "feedbackSurveyRate": 0,
   "spinnerTipsEnabled": true,
-  "effortLevel": "high",
   "tui": "default",
   "showThinkingSummaries": true,
   "theme": "dark-daltonized",

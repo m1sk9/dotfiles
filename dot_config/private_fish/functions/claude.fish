@@ -1,5 +1,3 @@
-# Disable adaptive thinking for Claude to speed up responses
-#
 # Why not 全部 user scope に置く: stripe plugin は skill を常時 ~1.5k tok 積み，
 # ブラウザは要るプロジェクトが限られるので，フラグを付けた起動でそのプロジェクト
 # (local scope) にだけ入れる．
@@ -42,5 +40,5 @@ function claude
         end
     end
 
-    env CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1 command claude $argv
+    command claude $argv
 end
