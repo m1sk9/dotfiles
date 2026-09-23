@@ -134,7 +134,12 @@
   "disableClaudeAiConnectors": true,
   "statusLine": {
     "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
+    "command": "bash ~/.claude/statusline-command.sh",
+    "refreshInterval": 1
+  },
+  "subagentStatusLine": {
+    "type": "command",
+    "command": "node ~/.claude/statusline-subagent.js"
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": false,
