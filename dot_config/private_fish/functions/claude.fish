@@ -47,6 +47,7 @@ function claude
     # 別なので，計画中に積んだ文脈を Opus がキャッシュなしで読み直すことになる．
     if set -l i (contains -i -- --plan $argv)
         set -e argv[$i[1]]
+        __claude_warn_fable_usage
         set -p argv --model fable --permission-mode plan --append-system-prompt \
             'このセッションでは計画だけを作る．実装は別のセッションがこの計画ファイルだけを読んで行うので，変更対象のファイル，手順，検証に使うテストやコマンド，判断とその理由を，会話を読まなくても実装できる粒度で計画に書き切ること．'
     else if set -l i (contains -i -- --impl $argv)
@@ -65,4 +66,53 @@ function claude
     end
 
     command claude $argv
+end
+
+# Fable の週次枠が statusline.conf の usage_scoped_warn / _crit に達していたら警告する．
+# 数値は statusline (fork 版 claude-code-status-bar) が書く使用量キャッシュから読むだけで，
+# 認証情報には触れない．
+function __claude_warn_fable_usage
+    set -l cache ~/.claude/.statusline-usage-cache
+    test -r $cache; or return 0
+    read -l fetched json <$cache
+
+    set -l fable (printf '%s' $json | jq -r 'first(.limits[]? | select(.kind == "weekly_scoped" and .scope.model.display_name == "Fable")) | "\(.percent | floor) \(try (.resets_at | sub("[.][0-9]+"; "") | sub("[+]00:00$"; "Z") | fromdateiso8601) catch 0)"' 2>/dev/null)
+    test -n "$fable"; or return 0
+    set -l pct (string split ' ' -- $fable)[1]
+    set -l resets (string split ' ' -- $fable)[2]
+    set -l now (date +%s)
+
+    # Why not 古いキャッシュを捨てる: statusline は Claude Code の起動中にしか取得しないので，
+    # 起動前のここではたいてい古い．捨てると警告が最も要る起動時に出せないため，枠が
+    # リセットされる前なら取得時刻を添えて最後の値を使う．
+    test $resets -gt 0 -a $resets -le $now; and return 0
+
+    set -l conf ~/.claude/statusline.conf
+    set -l warn 80
+    set -l crit 95
+    if test -r $conf
+        set -l v (string replace -rf '^usage_scoped_warn=(\d+)$' '$1' <$conf)
+        test -n "$v[1]"; and set warn $v[1]
+        set v (string replace -rf '^usage_scoped_crit=(\d+)$' '$1' <$conf)
+        test -n "$v[1]"; and set crit $v[1]
+    end
+
+    set -l color
+    if test $pct -ge $crit
+        set color red
+    else if test $pct -ge $warn
+        set color yellow
+    else
+        return 0
+    end
+
+    set -l age ''
+    set -l hours (math -s0 "($now - $fetched) / 3600")
+    test $hours -ge 1; and set age "（$hours 時間前の値）"
+    set_color $color >&2
+    echo "⚠ Fable の週次枠を $pct% 使用しています$age．" >&2
+    if test $color = red
+        echo '  Opus で計画するなら: claude --model opus --effort xhigh --permission-mode plan' >&2
+    end
+    set_color normal >&2
 end
