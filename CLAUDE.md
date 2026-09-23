@@ -73,3 +73,5 @@ user scope の MCP サーバー定義の source of truth は `.chezmoitemplates/
 ## 依存バージョンの自動更新（Renovate）
 
 `.github/renovate.json` は `.chezmoiexternal.toml.tmpl` 内の `# renovate: datasource=... depName=...` コメントを正規表現で検出するカスタムマネージャーを持つ．外部ファイル（例: `statusbar` のダウンロード元バージョン）を追加・更新する際は，このコメント規約に従うことで Renovate の自動 PR 対象にできる．
+
+ただし statusline 本体（`.claude/statusline-command.sh`）だけは上流ではなく fork（[m1sk9/claude-code-status-bar](https://github.com/m1sk9/claude-code-status-bar)）の `m1sk9` ブランチに切ったタグ（`$statusbarForkTag`）から取る．上流へ出したバグ修正（briansmith80/claude-code-status-bar#71）と，上流に出さない独自機能（Fable の週次枠を独立表示する `usage_7d_scoped`）を載せるため．Renovate が `$statusbarVersion` を上げる PR は「fork を追従させる合図」として扱い，fork 側で rebase と新タグ作成をしてから `$statusbarForkTag` も差し替えること（手順は fork の `FORK.md`）．

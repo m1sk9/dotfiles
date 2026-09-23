@@ -1,9 +1,14 @@
 # renovate: datasource=github-releases depName=briansmith80/claude-code-status-bar
 {{ $statusbarVersion := "v2.24.0" }}
+# Why not 本体も上流から取る: briansmith80/claude-code-status-bar#71 のバグ修正と
+# 独自の usage_7d_scoped セグメントを載せた fork (m1sk9 ブランチ) のタグを使う．
+# Renovate が $statusbarVersion を上げたら，fork の m1sk9 ブランチをその版へ
+# rebase して新しいタグを切り，ここを差し替える (手順は fork の FORK.md)．
+{{ $statusbarForkTag := "v2.24.0-m1sk9.1" }}
 
 [".claude/statusline-command.sh"]
     type = "file"
-    url = "https://raw.githubusercontent.com/briansmith80/claude-code-status-bar/{{ $statusbarVersion }}/statusline-command.sh"
+    url = "https://raw.githubusercontent.com/m1sk9/claude-code-status-bar/{{ $statusbarForkTag }}/statusline-command.sh"
     refreshPeriod = "168h"
 
 [".claude/statusline.conf.example"]
