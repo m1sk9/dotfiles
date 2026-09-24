@@ -27,13 +27,11 @@ agent_panel_sort = "priority"
 # 1 行だけ出力するようにしている．
 tab_bar_right = [
   { type = "zoom" },
-  { type = "hostname" },
   { type = "command", command = "echo \"🔋$(pmset -g batt | grep -Eo '[0-9]+%' | head -1)\"", interval_seconds = 60, timeout_seconds = 3 },
   { type = "command", command = "top -l 1 -n 0 | awk '/CPU usage/{gsub(\"%\",\"\",$7); printf \"⚙️%.0f%%\\n\", 100-$7}'", interval_seconds = 5, timeout_seconds = 3 },
-  { type = "command", command = "top -l 1 -n 0 | awk '/PhysMem/{print \"🧮\"$2}'", interval_seconds = 10, timeout_seconds = 3 },
-  { type = "datetime", format = "%H:%M" },
+  { type = "command", command = "top -l 1 -n 0 | awk '/PhysMem/{print \"🧮\"$2}'", interval_seconds = 10, timeout_seconds = 3 }
 ]
-tab_bar_right_separator = " │ "
+tab_bar_right_separator = " · "
 
 [ui.sidebar.spaces]
 row_gap = 0
