@@ -125,6 +125,12 @@
     ],
     "defaultMode": "auto"
   },
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Resolving review threads via `gh api graphql` with a `resolveReviewThread` mutation (and nothing else in the same request) on a PR in the session's repo that the user named or the agent opened this session, after the agent has addressed the comment or the user asked to resolve it. Thread IDs obtained from a `reviewThreads` query on that PR are acceptable. This carves out External System Writes for this operation only."
+    ]
+  },
   "model": "opus[1m]",
   "modelSettings": {
     "claude-opus-5-5": {
