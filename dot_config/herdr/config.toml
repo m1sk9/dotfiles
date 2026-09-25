@@ -2,7 +2,6 @@ onboarding = false
 
 [terminal]
 default_shell = "/opt/homebrew/bin/fish"
-new_cwd = "home"
 
 [worktrees]
 directory = "~/Repositories/claude.ai"
