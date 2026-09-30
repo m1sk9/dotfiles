@@ -125,19 +125,22 @@
     ],
     "defaultMode": "auto"
   },
-  "autoMode": {
-    "allow": [
-      "$defaults",
-      "Resolving review threads via `gh api graphql` with a `resolveReviewThread` mutation (and nothing else in the same request) on a PR in the session's repo that the user named or the agent opened this session, after the agent has addressed the comment or the user asked to resolve it. Thread IDs obtained from a `reviewThreads` query on that PR are acceptable. This carves out External System Writes for this operation only."
+  "model": "opus[1m]",
+  "disableClaudeAiConnectors": true,
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/m1sk9/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
-  "model": "opus[1m]",
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "medium"
-    }
-  },
-  "disableClaudeAiConnectors": true,
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
@@ -160,16 +163,27 @@
       "source": {
         "source": "github",
         "repo": "mk-system/claude-plugins"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "feedbackSurveyRate": 0,
   "spinnerTipsEnabled": true,
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
   "tui": "default",
   "showThinkingSummaries": true,
   "theme": "dark-daltonized",
   "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "hooks": {"SessionStart":[{"matcher":"^(startup|resume|clear|compact|fork)$","hooks":[{"type":"command","command":"bash '/Users/m1sk9/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]}
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Resolving review threads via `gh api graphql` with a `resolveReviewThread` mutation (and nothing else in the same request) on a PR in the session's repo that the user named or the agent opened this session, after the agent has addressed the comment or the user asked to resolve it. Thread IDs obtained from a `reviewThreads` query on that PR are acceptable. This carves out External System Writes for this operation only."
+    ]
+  }
 }
