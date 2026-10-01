@@ -3,5 +3,6 @@ LICENSE
 README.md
 CLAUDE.md
 .zed
+.luarc.json
 .github
 key.txt

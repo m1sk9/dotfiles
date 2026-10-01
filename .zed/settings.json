@@ -1,0 +1,19 @@
+// Project settings for editing this chezmoi source directory.
+// Lua Language Server options live in .luarc.json because Zed reads them from there.
+{
+  // chezmoi prefixes and .tmpl suffixes hide the real file type from Zed.
+  "file_types": {
+    "Lua": ["*.lua.tmpl"],
+    "Fish": ["*.fish.tmpl"],
+    "TOML": ["*.toml.tmpl"],
+    "Git Config": ["dot_gitconfig"],
+  },
+  "languages": {
+    "Lua": {
+      "tab_size": 2,
+    },
+    "Fish": {
+      "tab_size": 4,
+    },
+  },
+}
