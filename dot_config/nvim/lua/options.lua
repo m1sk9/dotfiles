@@ -23,7 +23,6 @@ opt.incsearch = true
 
 -- 表示
 opt.termguicolors = true
-opt.signcolumn = "yes"
 opt.cursorline = true
 opt.scrolloff = 8
 opt.wrap = false
@@ -38,7 +37,5 @@ opt.splitbelow = true
 opt.swapfile = false
 opt.undofile = true
 
--- Why not 既定の 4000ms / 1000ms: LSP の診断表示と which-key のポップアップが
--- 体感で「出てこない」と感じる長さになるため詰める
-opt.updatetime = 250
+-- Why not 既定の 1000ms: which-key のポップアップが体感で「出てこない」と感じる長さになるため詰める
 opt.timeoutlen = 300

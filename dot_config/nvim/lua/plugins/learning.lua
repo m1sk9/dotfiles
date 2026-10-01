@@ -7,8 +7,6 @@ return {
       preset = "helix",
       spec = {
         { "<leader>b", group = "バッファ" },
-        { "<leader>c", group = "コード / LSP" },
-        { "<leader>f", group = "検索" },
       },
     },
     keys = {

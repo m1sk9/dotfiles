@@ -21,8 +21,6 @@ map("v", ">", ">gv", { desc = "インデントを増やす" })
 map("n", "<leader>w", "<cmd>write<CR>", { desc = "保存" })
 map("n", "<leader>q", "<cmd>quit<CR>", { desc = "ウィンドウを閉じる" })
 
--- <leader>e / <leader>E はファイルツリーの担当（lua/plugins/filetree.lua）
-
 map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "バッファを閉じる" })
 map("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "次のバッファ" })
 map("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "前のバッファ" })

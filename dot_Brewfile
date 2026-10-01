@@ -36,11 +36,6 @@ brew "pinentry-mac"
 brew "ripgrep"
 brew "rclone"
 brew "s6n-jp/tap/ghr"
-# Why not tree-sitter: あちらは incremental parsing library のみで CLI を含まない．
-# nvim-treesitter (main) が要求するのは tree-sitter CLI 0.26.1+ であり，
-# neovim の依存として入る tree-sitter では要件を満たさない
-brew "tree-sitter-cli"
-brew "typescript-language-server"
 brew "zoxide"
 
 cask "claude"
@@ -50,6 +45,7 @@ cask "font-plemol-jp-nf"
 # Why: macOS 27 でタブの描画問題が発生しているので，一時的に tip 版に切り替える
 cask "ghostty@tip"
 cask "google-chrome@dev"
+cask "hammerspoon"
 cask "jetbrains-toolbox"
 cask "notion-calendar"
 cask "obsidian"

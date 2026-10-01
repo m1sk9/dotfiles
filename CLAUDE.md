@@ -43,9 +43,13 @@ Edit/Write でソースファイルを変更したら，`chezmoi diff` で差分
 
 ## Neovim（dot_config/nvim/）
 
-`init.lua` は `options.lua` → `keymaps.lua` → lazy.nvim の順で読み込む（`keymaps.lua` が `vim.g.mapleader` を設定するため，これより後に lazy.nvim を読み込むとプラグイン側の `<leader>` マッピングが素の `<Space>` として登録されてしまう）．lazy.nvim 自体は `.chezmoiexternal.toml` 経由ではなく `init.lua` 内で git clone して自己管理する（バージョン固定は lazy.nvim 自身の `lazy-lock.json` に任せ，chezmoi external との二重管理を避けるため）．
+開発環境（LSP・補完・Treesitter・ファイルツリー・ファジーファインダー等）としては使わず，Vim の代替として使える程度の設定（options / keymaps / colorscheme / autopairs / which-key）だけを残している．開発用途は Zed が担うので，IDE 化するプラグインを戻さないこと．
 
-`lazy.setup({ spec = { { import = "plugins" } } })` により `lua/plugins/` 配下の全ファイルがプラグイン定義として読み込まれる．プラグインの追加はこのディレクトリに 1 ファイル置くだけで完結し，どこかに登録し直す必要はない．LSP サーバーの有効化は `plugins/lsp.lua` 冒頭の `servers` テーブルに追記，Treesitter パーサーの追加は `plugins/treesitter.lua` の `install()` 呼び出しにパーサー名を足す形になっている．詳細な追加手順は Obsidian vault の `Notes/Neovim 早見表.md` を参照．
+`init.lua` は `options.lua` → `keymaps.lua` → lazy.nvim の順で読み込む（`keymaps.lua` が `vim.g.mapleader` を設定するため，これより後に lazy.nvim を読み込むとプラグイン側の `<leader>` マッピングが素の `<Space>` として登録されてしまう）．lazy.nvim 自体は `.chezmoiexternal.toml` 経由ではなく `init.lua` 内で git clone して自己管理する（バージョン固定は lazy.nvim 自身の `lazy-lock.json` に任せ，chezmoi external との二重管理を避けるため）．`lua/plugins/` 配下の全ファイルがプラグイン定義として読み込まれる．
+
+## Hammerspoon（dot_hammerspoon/）
+
+ウィンドウ管理を Rectangle から Hammerspoon（`~/.hammerspoon/init.lua`）へ試験的に移行中（2026-10-02 開始）．ショートカットは Rectangle 時代の割り当てを引き継いでいる．試用で問題がなければ `dot_Brewfile` から `cask "rectangle"` を外す．両方を同時に起動するとショートカットを取り合うので，試用中は Rectangle を終了しておくこと．`init.lua` は `hs.pathwatcher` で監視しているので，`chezmoi apply` するだけで自動リロードされる．
 
 ## シェル環境
 
