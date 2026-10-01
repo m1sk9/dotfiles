@@ -54,11 +54,11 @@ rows = [
 ]
 
 [ui.toast]
-delivery = "system"
+delivery = "off"
 delay_seconds = 1
 
-[ui.toast.herdr]
-position = "bottom-right"
+[ui.sound]
+enabled = true
 
 [experimental]
 pane_history = false
