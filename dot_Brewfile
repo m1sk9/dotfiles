@@ -27,7 +27,7 @@ brew "gnupg"
 brew "lazygit"
 brew "llama.cpp"
 brew "lua-language-server"
-# Why not neovim の依存に任せる: run_onchange_after_configure-macos-defaults.lua の実行に使う
+# Why not neovim の依存に任せる: macOS 設定スクリプトと Claude Code のステータスラインの実行に使う
 brew "luajit"
 brew "mas"
 brew "m1sk9/tap/strays"

@@ -80,6 +80,10 @@ user scope の MCP サーバー定義の source of truth は `.chezmoitemplates/
 
 ## 依存バージョンの自動更新（Renovate）
 
-`.github/renovate.json` は `.chezmoiexternal.toml.tmpl` 内の `# renovate: datasource=... depName=...` コメントを正規表現で検出するカスタムマネージャーを持つ．外部ファイル（例: `statusbar` のダウンロード元バージョン）を追加・更新する際は，このコメント規約に従うことで Renovate の自動 PR 対象にできる．
+`.github/renovate.json` は herdr-lazy の `plugins.list`（`owner/repo@vX.Y.Z`）を正規表現で検出するカスタムマネージャーを持つ．herdr のプラグインを追加・更新する際はこの書式に従うことで Renovate の自動 PR 対象にできる．
 
-ただし statusline の本体と Node.js 製の helper（`.claude/statusline-command.sh`，`statusline-subagent.js`）は上流ではなく fork（[m1sk9/claude-code-status-bar](https://github.com/m1sk9/claude-code-status-bar)）の `m1sk9` ブランチに切ったタグ（`$statusbarForkTag`）から取る．上流へ出したバグ修正（briansmith80/claude-code-status-bar#71）と，上流に出さない独自機能（Fable の週次枠を独立表示する `usage_7d_scoped`）を載せるため．Renovate が `$statusbarVersion` を上げる PR は「fork を追従させる合図」として扱い，fork 側で rebase と新タグ作成をしてから `$statusbarForkTag` も差し替えること（手順は fork の `FORK.md`）．
+## Claude Code のステータスラインと使用量の通知
+
+- **ステータスライン**（`private_dot_claude/statusline/`）: `statusLine` から `luajit ~/.claude/statusline/statusline.lua` で呼ぶ自作の 1 行．Claude Code が stdin に渡す JSON を自前の `json.lua` で読み，`render.lua` が整形する．git は `branch --show-current` しか叩かない（`git status` は大きなリポジトリで描画のたびに CPU を食うため入れない）．テストは `luajit private_dot_claude/statusline/.tests/run.lua`（ドット始まりなので展開されない）．
+- **使用量の通知**（`private_dot_claude/mods/usage-alert/`）: Claude Code の Mod．5 時間枠・週次枠・Fable の週次枠が 80% / 95% を超えたときだけ toast を出す．`settings.json` の `env.CLAUDE_CODE_PLUGIN_DIRS` で読み込ませている．Fable の枠は `$.session.usage()` に来ないため，`$.session.authorize()` のハンドルで内部 API（`api.anthropic.com/api/oauth/usage`）を 10 分ごとに叩き，結果を `~/.claude/.usage-cache` にも書く（fish の `claude --plan` の起動前警告が読む）．
+  - chezmoi はドット始まりのソースを展開しないので，マニフェストのディレクトリは `dot_claude-plugin/` と書く．同じ理由で `claude plugin validate` / `claude plugin test` はソースではなく apply 後の `~/.claude/mods/usage-alert` に対して実行すること．

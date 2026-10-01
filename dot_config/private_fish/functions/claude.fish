@@ -68,11 +68,11 @@ function claude
     command claude $argv
 end
 
-# Fable の週次枠が statusline.conf の usage_scoped_warn / _crit に達していたら警告する．
-# 数値は statusline (fork 版 claude-code-status-bar) が書く使用量キャッシュから読むだけで，
-# 認証情報には触れない．
+# Fable の週次枠が 80% / 95% に達していたら警告する．閾値は Mod usage-alert の
+# THRESHOLDS (~/.claude/mods/usage-alert/hooks/alerts.ts) と揃えている．
+# 数値はその Mod が書く使用量キャッシュから読むだけで，認証情報には触れない．
 function __claude_warn_fable_usage
-    set -l cache ~/.claude/.statusline-usage-cache
+    set -l cache ~/.claude/.usage-cache
     test -r $cache; or return 0
     read -l fetched json <$cache
 
@@ -82,20 +82,13 @@ function __claude_warn_fable_usage
     set -l resets (string split ' ' -- $fable)[2]
     set -l now (date +%s)
 
-    # Why not 古いキャッシュを捨てる: statusline は Claude Code の起動中にしか取得しないので，
+    # Why not 古いキャッシュを捨てる: Mod は Claude Code の起動中にしか取得しないので，
     # 起動前のここではたいてい古い．捨てると警告が最も要る起動時に出せないため，枠が
     # リセットされる前なら取得時刻を添えて最後の値を使う．
     test $resets -gt 0 -a $resets -le $now; and return 0
 
-    set -l conf ~/.claude/statusline.conf
     set -l warn 80
     set -l crit 95
-    if test -r $conf
-        set -l v (string replace -rf '^usage_scoped_warn=(\d+)$' '$1' <$conf)
-        test -n "$v[1]"; and set warn $v[1]
-        set v (string replace -rf '^usage_scoped_crit=(\d+)$' '$1' <$conf)
-        test -n "$v[1]"; and set crit $v[1]
-    end
 
     set -l color
     if test $pct -ge $crit

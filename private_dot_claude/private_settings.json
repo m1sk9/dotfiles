@@ -1,6 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 20,
+  "env": {
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/usage-alert"
+  },
   "attribution": {
     "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
     "pr": ""
@@ -143,11 +146,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
-  },
-  "subagentStatusLine": {
-    "type": "command",
-    "command": "node ~/.claude/statusline-subagent.js"
+    "command": "luajit ~/.claude/statusline/statusline.lua"
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": false,

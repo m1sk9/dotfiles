@@ -1,0 +1,6 @@
+{
+  "name": "usage-alert",
+  "version": "0.1.0",
+  "description": "Toast when the 5-hour, weekly or Fable weekly usage crosses 80% / 95%",
+  "author": { "name": "m1sk9" }
+}
