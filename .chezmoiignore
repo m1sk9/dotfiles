@@ -6,3 +6,6 @@ CLAUDE.md
 .luarc.json
 .github
 key.txt
+# Why not deploy it: the engine lays its own tsconfig.json there; this one only points
+# the editor at the types the engine wrote, for editing the source directly.
+.claude/mods/usage-alert/tsconfig.json

@@ -15,5 +15,18 @@
     "Fish": {
       "tab_size": 4,
     },
+    // Why not format on save: the usage-alert mod is not Prettier-clean at any
+    // print width, so saving would reflow hand-kept one-liners in the tests.
+    // The options still match its style for an explicit `editor: format`.
+    "TypeScript": {
+      "tab_size": 2,
+      "format_on_save": "off",
+      "prettier": {
+        "semi": false,
+        "singleQuote": true,
+        "arrowParens": "avoid",
+        "printWidth": 100,
+      },
+    },
   },
 }
