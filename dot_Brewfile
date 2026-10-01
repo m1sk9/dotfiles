@@ -34,7 +34,6 @@ brew "modem-dev/tap/hunk"
 brew "neovim"
 brew "pinentry-mac"
 brew "ripgrep"
-brew "rclone"
 brew "s6n-jp/tap/ghr"
 brew "zoxide"
 
