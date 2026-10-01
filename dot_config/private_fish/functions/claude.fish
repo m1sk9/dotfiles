@@ -11,6 +11,11 @@
 # (~/.claude.json / .claude/settings.local.json) に残るので，二度目以降は素の
 # `claude` でも有効になる．外すのは `claude mcp remove <name> --scope local` /
 # `claude plugin disable <name> --scope local`．
+#
+# Why not Lua に移す: optional_local の文字列分割や jq のフィルタは Lua の表と
+# statusline の json.lua で書いたほうが読みやすいが，fish から呼ぶ入口は残るので
+# fzf の対話や `command claude` への引数渡しが二層をまたぐ．optional_local が
+# 増えて文字列表現が破綻し始めたら移行を考え直す．
 function claude
     # --<flag> を付けた起動でだけ local scope に入れるもの．
     # 増やすときは `<flag>:<kind>:<name>:<payload>` の行を足す．
