@@ -49,7 +49,7 @@ Edit/Write でソースファイルを変更したら，`chezmoi diff` で差分
 
 ## Hammerspoon（dot_hammerspoon/）
 
-ウィンドウ管理を Rectangle から Hammerspoon（`~/.hammerspoon/init.lua`）へ試験的に移行中（2026-10-02 開始）．ショートカットは Rectangle 時代の割り当てを引き継いでいる．試用で問題がなければ `dot_Brewfile` から `cask "rectangle"` を外す．両方を同時に起動するとショートカットを取り合うので，試用中は Rectangle を終了しておくこと．`init.lua` は `hs.pathwatcher` で監視しているので，`chezmoi apply` するだけで自動リロードされる．
+ウィンドウ管理は Hammerspoon（`~/.hammerspoon/init.lua`）が担う（2026-10-02 に Rectangle から移行）．ショートカットは Rectangle 時代の割り当てを引き継いでいる．`init.lua` は `hs.pathwatcher` で監視しているので，`chezmoi apply` するだけで自動リロードされる．
 
 ## シェル環境
 
