@@ -68,6 +68,7 @@ test('session.measure toasts each crossing once, across repeated measurements', 
   const toasts: string[] = []
   on('ui.toast', (_$, e) => {
     toasts.push(e.text)
+    return { value: undefined }
   })
   on('session.measure', (_$, e) => ({ changed: e.changed }))
 
@@ -103,6 +104,7 @@ test('session.start fetches the usage API, caches it for fish and toasts the Fab
   })
   on('ui.toast', (_$, e) => {
     toasts.push(e.text)
+    return { value: undefined }
   })
 
   on('session.start', (_$, e) => e as never)
