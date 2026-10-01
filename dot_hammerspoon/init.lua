@@ -5,6 +5,24 @@ hs.autoLaunch(true)
 -- Why not local: init.lua のチャンク終了後に GC され，監視が止まる
 ConfigWatcher = hs.pathwatcher.new(hs.configdir, hs.reload):start()
 
+-- Why not screencapture の target = clipboard: ファイルとして残らなくなる．
+-- 保存先に書き出された画像を拾ってクリップボードにも入れ，両方を得る
+local screenshotDir = hs.execute("defaults read com.apple.screencapture location"):gsub("%s+$", ""):gsub("^~", os.getenv("HOME"))
+local copiedScreenshots = {}
+ScreenshotWatcher = hs.pathwatcher.new(screenshotDir, function(paths)
+  for _, path in ipairs(paths) do
+    local name = path:match("[^/]+$")
+    -- 書き出し中の一時ファイルはドット始まりの名前で作られ，完成後に rename される
+    if name:match("%.png$") and not name:match("^%.") and not copiedScreenshots[path] then
+      local image = hs.image.imageFromPath(path)
+      if image then
+        hs.pasteboard.writeObjects(image)
+        copiedScreenshots[path] = true
+      end
+    end
+  end
+end):start()
+
 local units = {
   leftHalf = { x = 0, y = 0, w = 1 / 2, h = 1 },
   rightHalf = { x = 1 / 2, y = 0, w = 1 / 2, h = 1 },
