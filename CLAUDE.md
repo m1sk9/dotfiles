@@ -51,6 +51,10 @@ Edit/Write でソースファイルを変更したら，`chezmoi diff` で差分
 
 ウィンドウ管理は Hammerspoon（`~/.hammerspoon/init.lua`）が担う（2026-10-02 に Rectangle から移行）．ショートカットは Rectangle 時代の割り当てを引き継いでいる．`init.lua` は `hs.pathwatcher` で監視しているので，`chezmoi apply` するだけで自動リロードされる．
 
+## macOS のシステム設定
+
+Dock・Finder・キーボードなどの `defaults` は `run_onchange_after_configure-macos-defaults.lua`（LuaJIT）の `settings` 表で管理する．項目の追加はドメインとキーを表に足すだけで，値の Lua 型から `-bool` / `-int` / `-float` / `-string` が決まる．現在値と異なる項目だけを書き込み，変更があったドメインに対応するプロセス（Dock / Finder など）だけを再起動する．GUI で設定を変えたら表にも反映すること（表と食い違うと次に表を変更して apply したときに巻き戻る）．
+
 ## シェル環境
 
 ログインシェルは **fish**（`dot_config/private_fish/config.fish`）．スクリプトを書く際の前提:
@@ -60,7 +64,7 @@ Edit/Write でソースファイルを変更したら，`chezmoi diff` で差分
 
 ## パッケージ管理
 
-`dot_Brewfile`（→ `~/.Brewfile`）が唯一の Homebrew マニフェスト．パッケージの追加・削除はここを編集し，`brew bundle --file ~/.Brewfile` で反映する．`--zap` でマニフェスト外のものは削除されるため，手動 `brew install` したものは Brewfile に追記しないと消える．
+`dot_Brewfile`（→ `~/.Brewfile`）が唯一の Homebrew マニフェスト．パッケージの追加・削除はここを編集し，`brew bundle --file ~/.Brewfile` で反映する．`--zap` でマニフェスト外のものは削除されるため，手動 `brew install` したものは Brewfile に追記しないと消える．App Store のアプリも `mas "<名前>", id: <ID>` で同じ Brewfile に載せる（ID は `mdls -raw -name kMDItemAppStoreAdamID <app>` で取れる）．
 
 ## Claude Code 設定（private_dot_claude/）
 

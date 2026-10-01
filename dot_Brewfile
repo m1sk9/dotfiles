@@ -27,6 +27,9 @@ brew "gnupg"
 brew "lazygit"
 brew "llama.cpp"
 brew "lua-language-server"
+# Why not neovim の依存に任せる: run_onchange_after_configure-macos-defaults.lua の実行に使う
+brew "luajit"
+brew "mas"
 brew "m1sk9/tap/strays"
 brew "mise"
 brew "usage"
@@ -57,3 +60,11 @@ cask "slack"
 cask "spotify"
 cask "tailscale-app"
 cask "zed"
+
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft Outlook", id: 985367838
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
+mas "OneDrive", id: 823766827
+mas "Proton Pass for Safari", id: 6502835663
+mas "Steam Link", id: 1246969117
