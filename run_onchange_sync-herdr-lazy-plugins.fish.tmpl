@@ -18,6 +18,32 @@ if not herdr plugin list 2>/dev/null | grep -q "^- herdr-lazy "
     herdr plugin install natori-hrj/herdr-lazy --yes
 end
 
+# Why not rely on sync: herdr-lazy cannot verify tag/branch pins locally, so
+# bumping `owner/repo@v1.2.3` in plugins.list leaves the old version installed.
+# herdr records the ref it was installed with (source.requested_ref), so
+# reinstall exactly the entries whose pinned ref differs from it.
+set -l list_file ~/.config/herdr/plugins/config/herdr-lazy/plugins.list
+if test -f "$list_file"
+    herdr plugin list --json | python3 -c '
+import json, sys
+installed = {
+    (s.get("owner"), s.get("repo")): s.get("requested_ref")
+    for s in (p.get("source") or {} for p in json.load(sys.stdin)["result"]["plugins"])
+}
+for line in open(sys.argv[1]):
+    entry = line.split("#")[0].strip()
+    if "@" not in entry:
+        continue
+    repo, ref = entry.split("@", 1)
+    owner, name = repo.split("/", 1)
+    if (owner, name) in installed and installed[(owner, name)] != ref:
+        print(repo, ref)
+' "$list_file" | while read -l repo ref
+        echo "herdr-lazy: moving $repo to $ref"
+        herdr plugin install $repo --ref $ref --yes
+    end
+end
+
 set -l invoke_json (herdr plugin action invoke sync --plugin herdr-lazy)
 set -l log_id (echo $invoke_json | python3 -c 'import sys, json; print(json.load(sys.stdin)["result"]["log"]["log_id"])' 2>/dev/null)
 
