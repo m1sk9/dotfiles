@@ -1,0 +1,106 @@
+#!/usr/bin/env luajit
+-- herdr-lazy が plugins.list (dot_config/herdr/plugins/config/herdr-lazy/) を
+-- source of truth として plugin の導入・pin を一括管理する．
+-- https://github.com/natori-hrj/herdr-lazy
+--
+-- Why .tmpl: run_onchange は自分自身の render 結果のハッシュでしか再実行を
+-- 判定しない．plugins.list の中身をここに埋め込むことで，list が変わったら
+-- このスクリプトも変わったことになり，chezmoi apply のたびに sync が走る．
+-- plugins.list sha256: {{ include "dot_config/herdr/plugins/config/herdr-lazy/plugins.list" | sha256sum }}
+
+-- Why not require: run_ スクリプトは一時ディレクトリにコピーされて実行されるので，
+-- statusline の json.lua をパスで読めない．テンプレートで埋め込んで source を 1 つに保つ
+local json = (function()
+{{ include "private_dot_claude/statusline/json.lua" }}
+end)()
+
+local function quote(s)
+  return "'" .. s:gsub("'", "'\\''") .. "'"
+end
+
+local function run(cmd)
+  local p = io.popen(cmd .. " 2>/dev/null")
+  local out = p:read("*a")
+  p:close()
+  return out
+end
+
+local function herdr_json(cmd)
+  local ok, value = pcall(json.decode, run("herdr " .. cmd))
+  return ok and value and value.result or nil
+end
+
+if os.execute("command -v herdr >/dev/null 2>&1") ~= 0 then
+  print("herdr command not found; skipping plugin sync")
+  os.exit(0)
+end
+
+local listed = herdr_json("plugin list --json")
+local installed = {}
+local has_lazy = false
+for _, plugin in ipairs(listed and listed.plugins or {}) do
+  has_lazy = has_lazy or plugin.plugin_id == "herdr-lazy"
+  local source = plugin.source or {}
+  if source.owner and source.repo then
+    installed[source.owner .. "/" .. source.repo] = source.requested_ref or false
+  end
+end
+
+if not has_lazy then
+  os.execute("herdr plugin install natori-hrj/herdr-lazy --yes")
+end
+
+-- Why not rely on sync: herdr-lazy cannot verify tag/branch pins locally, so
+-- bumping `owner/repo@v1.2.3` in plugins.list leaves the old version installed.
+-- herdr records the ref it was installed with (source.requested_ref), so
+-- reinstall exactly the entries whose pinned ref differs from it.
+local list = io.open(os.getenv("HOME") .. "/.config/herdr/plugins/config/herdr-lazy/plugins.list")
+if list then
+  for line in list:lines() do
+    local repo, ref = line:gsub("#.*", ""):match("^%s*([^@%s]+)@(%S+)")
+    if repo and installed[repo] ~= nil and installed[repo] ~= ref then
+      print(("herdr-lazy: moving %s to %s"):format(repo, ref))
+      os.execute(("herdr plugin install %s --ref %s --yes"):format(quote(repo), quote(ref)))
+    end
+  end
+  list:close()
+end
+
+local invoked = herdr_json("plugin action invoke sync --plugin herdr-lazy")
+local log_id = invoked and invoked.log and invoked.log.log_id
+if not log_id then
+  print("herdr-lazy: could not read sync log_id; skipping lock copy-back")
+  os.exit(0)
+end
+
+-- sync はデーモン側で非同期に走るので，ログの status が確定するまで待つ．
+local final_status = ""
+for _ = 1, 60 do
+  local logs = herdr_json("plugin log list --plugin herdr-lazy --limit 5")
+  for _, log in ipairs(logs and logs.logs or {}) do
+    if log.log_id == log_id then
+      final_status = log.status or ""
+    end
+  end
+  if final_status == "succeeded" or final_status == "failed" then
+    break
+  end
+  os.execute("sleep 1")
+end
+
+if final_status ~= "succeeded" then
+  print(("herdr-lazy: sync did not report success (status: %s); skipping lock copy-back"):format(final_status))
+  os.exit(0)
+end
+
+-- sync は herdr の実行時 config-dir に plugins.lock を書く．resolved commit を
+-- ドリフトさせないよう，chezmoi source 側にもコピーして次の commit 対象にする．
+local live = io.open(os.getenv("HOME") .. "/.config/herdr/plugins/config/herdr-lazy/plugins.lock", "rb")
+if live then
+  local lock = live:read("*a")
+  live:close()
+  local source = assert(io.open("{{ .chezmoi.sourceDir }}/dot_config/herdr/plugins/config/herdr-lazy/plugins.lock", "wb"))
+  source:write(lock)
+  source:close()
+  print("herdr-lazy: copied plugins.lock back into chezmoi source")
+end
