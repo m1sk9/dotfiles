@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 概要
 
-このリポジトリは [chezmoi](https://github.com/twpayne/chezmoi) で管理する macOS 向け dotfiles の**ソースディレクトリ**である．`~/.local/share/chezmoi` に置かれ，`chezmoi apply` で実ファイル（`$HOME` 配下）に展開される．つまりここで編集するのはソースであって，反映先のファイルではない点に常に注意すること．
+このリポジトリは [chezmoi](https://github.com/twpayne/chezmoi) で管理する macOS 向け dotfiles の**ソースディレクトリ**である．`~/dotfiles` に置かれ（`.chezmoi.toml.tmpl` の `sourceDir`），`chezmoi apply` で実ファイル（`$HOME` 配下）に展開される．つまりここで編集するのはソースであって，反映先のファイルではない点に常に注意すること．
 
 ## よく使うコマンド
 
