@@ -24,6 +24,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `encrypted_foo.age` → age で復号して展開（`dot_awseal/encrypted_config.json.age`）
 - `*.tmpl` → Go テンプレートとして評価してから展開
 - `run_once_*` → `chezmoi apply` 時に一度だけ実行されるスクリプト
+- `run_*` スクリプトはすべて `.chezmoiscripts/` に置く（ここに置くと `$HOME` 側にディレクトリが作られない）．移動すると `run_onchange_` は次の apply で一度だけ再実行される（実行済み状態がパスで記録されるため．`run_once_` は内容のハッシュで記録されるので再実行されない）．
 
 管理対象外のファイルは `.chezmoiignore` に列挙されている．リポジトリにはあるが `$HOME` には展開されない．
 
