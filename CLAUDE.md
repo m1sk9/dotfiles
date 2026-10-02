@@ -61,6 +61,7 @@ Dock・Finder・キーボードなどの `defaults` は `run_onchange_after_conf
 - エイリアスでコマンドが置き換わっている: `cat`→`bat`, `ls`→`eza`, `find`→`fd`, `grep`→`rg`, `cd`→`z`(zoxide)．スクリプト内でこれらの挙動に依存しないこと．
 - `XDG_CONFIG_HOME=$HOME/.config` を前提に各ツールの設定パスが決まる．
 - SSH 認証は GPG agent 経由（`SSH_AUTH_SOCK` を gpgconf で設定）．
+- `dot_zshrc` は Claude Code の Bash ツール専用（`CLAUDE_CODE_SHELL` は bash / zsh しか受け付けず fish にできない）．PATH を `conf.d/00-env.fish` と揃えること．
 
 ## 新規マシンのセットアップ（bootstrap）
 

@@ -1,0 +1,4 @@
+# Why not fish only: Claude Code runs its Bash tool in zsh (CLAUDE_CODE_SHELL accepts
+# only bash or zsh), so a Claude Code started outside fish gets its PATH from here.
+# Keep in step with fish's conf.d/00-env.fish.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.deno/bin:$PATH"
