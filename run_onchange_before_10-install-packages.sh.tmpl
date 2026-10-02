@@ -1,0 +1,26 @@
+#!/bin/sh
+# Why not fish: bootstrap scripts run before Homebrew has installed fish.
+#
+# Why .tmpl: run_onchange only reruns when its rendered content changes, so the
+# Brewfile hash below reruns `brew bundle` whenever the Brewfile is edited.
+# dot_Brewfile sha256: {{ include "dot_Brewfile" | sha256sum }}
+#
+# Why not --zap / cleanup here: uninstalling is destructive, so it stays in
+# homebrew.fish where it runs only on request. --no-upgrade keeps apply quick.
+set -eu
+
+if [ ! -x /opt/homebrew/bin/brew ]; then
+  # Why sudo -v first: NONINTERACTIVE makes the installer probe with `sudo -n`,
+  # which fails unless credentials are already cached.
+  sudo -v
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Why not stop on failure: mas entries fail until the App Store is signed in, and
+# aborting would leave every later script unapplied.
+/opt/homebrew/bin/brew bundle --no-upgrade --file "{{ .chezmoi.sourceDir }}/dot_Brewfile" ||
+  echo "brew bundle reported failures; rerun it after signing in to the App Store" >&2
+
+if [ ! -x "{{ .chezmoi.homeDir }}/.local/bin/claude" ]; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi

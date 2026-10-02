@@ -37,7 +37,7 @@ Edit/Write でソースファイルを変更したら，`chezmoi diff` で差分
 
 ## 暗号化
 
-- 暗号化方式は **age**．`encrypted_*.age` ファイルは復号鍵 `~/.config/chezmoi/key.txt` が無いと扱えない．
+- 暗号化方式は **age**．`encrypted_*.age` ファイルは復号鍵 `~/.config/chezmoi/key.txt` が無いと扱えない．復号鍵そのものはパスフレーズで暗号化して `.chezmoi-key.age` に置き，鍵が無いマシンでは `run_onchange_before_00-decrypt-age-key.sh.tmpl` が apply の最初に復号する（パスフレーズ入力を求められる）．
 - `dot_awseal/encrypted_config.json.age` は [awseal](https://github.com/s6n-jp) の設定．**復号後の平文を誤って平文ファイルとしてコミットしないこと．**
 - `$HOME` に平文を落としたくない秘密は `encrypted_*` ではなく，ドット始まりのソースファイル（例: `.obsidian-token.age`）に置き，テンプレート内で ``{{ joinPath .chezmoi.sourceDir `<file>` | include | decrypt }}`` として使う．ドット始まりは chezmoi が展開対象から外すため，復号値はレンダリング結果にしか現れない．
 
@@ -62,9 +62,16 @@ Dock・Finder・キーボードなどの `defaults` は `run_onchange_after_conf
 - `XDG_CONFIG_HOME=$HOME/.config` を前提に各ツールの設定パスが決まる．
 - SSH 認証は GPG agent 経由（`SSH_AUTH_SOCK` を gpgconf で設定）．
 
+## 新規マシンのセットアップ（bootstrap）
+
+README の 1 行（`get.chezmoi.io` → `init --apply`）で完結させる．その前提として:
+- `run_*_before_*` と `run_*_after_<数字>-*` の bootstrap スクリプトは **POSIX sh** で書く（fish はまだ入っていない／fish に依存させないため）．fish 前提の原則の例外はこれらだけ．
+- スクリプトの PATH は `.chezmoi.toml.tmpl` の `[scriptEnv]` で固定している．Homebrew 未導入のシェルから起動されても，before スクリプトが入れた fish / luajit / herdr / claude を後続スクリプトが見つけられるようにするため．新しく PATH に依存するツールの置き場所が増えたらここに足すこと．`.chezmoi.toml.tmpl` を変えたら `chezmoi init` で設定を再生成すること．
+- 一度しか成功しない前提を置けない処理（YubiKey が挿さっていないと終われない GPG の取り込みなど）は `run_once_` にせず，冪等な `run_after_` にして早期 return する（`run_once_` はスキップして exit 0 しても実行済みになる）．
+
 ## パッケージ管理
 
-`dot_Brewfile`（→ `~/.Brewfile`）が唯一の Homebrew マニフェスト．パッケージの追加・削除はここを編集し，`brew bundle --file ~/.Brewfile` で反映する．`--zap` でマニフェスト外のものは削除されるため，手動 `brew install` したものは Brewfile に追記しないと消える．App Store のアプリも `mas "<名前>", id: <ID>` で同じ Brewfile に載せる（ID は `mdls -raw -name kMDItemAppStoreAdamID <app>` で取れる）．
+`dot_Brewfile`（→ `~/.Brewfile`）が唯一の Homebrew マニフェスト．パッケージの追加・削除はここを編集し，`chezmoi apply` で反映する（`run_onchange_before_10-install-packages.sh.tmpl` が Brewfile のハッシュを埋め込んでいるので，Brewfile を変えた次の apply で `brew bundle --no-upgrade` が走る）．削除と upgrade は apply では行わず `homebrew.fish` が担う．`--zap` でマニフェスト外のものは削除されるため，手動 `brew install` したものは Brewfile に追記しないと消える．App Store のアプリも `mas "<名前>", id: <ID>` で同じ Brewfile に載せる（ID は `mdls -raw -name kMDItemAppStoreAdamID <app>` で取れる）．
 
 ## Claude Code 設定（private_dot_claude/）
 

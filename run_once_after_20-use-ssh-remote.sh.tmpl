@@ -1,0 +1,6 @@
+#!/bin/sh
+# Why not clone over SSH: SSH authenticates through the YubiKey's gpg-agent,
+# which is unusable until the GPG key is imported later in the same apply.
+set -eu
+
+git -C "{{ .chezmoi.sourceDir }}" remote set-url origin git@github.com:m1sk9/dotfiles.git

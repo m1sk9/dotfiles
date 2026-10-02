@@ -1,6 +1,13 @@
 sourceDir = "~/dotfiles"
 encryption = "age"
 
+# Why not inherit PATH: on a fresh machine chezmoi starts from a shell that has no
+# Homebrew in PATH, so `#!/usr/bin/env fish` and `command -q herdr` would fail even
+# after the before scripts installed them, and run_onchange scripts that skipped
+# never run again.
+[scriptEnv]
+  PATH = "/opt/homebrew/bin:/opt/homebrew/sbin:{{ .chezmoi.homeDir }}/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
 [edit]
   command = "vim"
 [git]

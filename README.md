@@ -6,33 +6,39 @@ Supports macOS and can be set up using [chezmoi](https://github.com/twpayne/chez
 
 ## Installation
 
-First, install [“Command Line Tools for Xcode”](https://developer.apple.com/documentation/xcode/installing-the-command-line-tools/#Download-and-install-the-Command-Line-Tools-for-Xcode-package) to enable Homebrew and Git.
+### Before you start
 
-```bash
-# git will prompt you to install it during first execution
-git
-# Install Homebrew
-/bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”
+1. Sign in to the App Store (the Brewfile installs App Store apps with `mas`, which cannot sign in by itself).
+2. Insert the YubiKey.
+
+### Run
+
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply m1sk9
 ```
 
-After installation, install chezmoi and initialize using this repository
+This clones the repository to `~/dotfiles` and applies it. Along the way it asks for:
 
-```bash
-brew install chezmoi
-chezmoi init <url>
-```
+- the passphrase of the age key (`.chezmoi-key.age`)
+- your password for `sudo` (Homebrew, and switching the login shell to fish)
 
-Once initialization is complete, use Homebrew to install the application.
+In order, the apply:
 
-```bash
-brew bundle --zap --file ‘~/.Brewfile’
-```
+1. decrypts the age key to `~/.config/chezmoi/key.txt`
+2. installs Homebrew (with the Command Line Tools), runs `brew bundle`, and installs Claude Code
+3. deploys the dotfiles and runs the setup scripts (Rust, MCP servers, herdr plugins, macOS defaults)
+4. imports the GPG public key and creates the YubiKey stubs
+5. switches the `~/dotfiles` remote to SSH
+6. makes fish the login shell, and removes the bootstrap copy of chezmoi in favour of the Homebrew one
 
-After completing all setups, switch the URL in your Git repository config to SSH. (I hate HTTPS authentication via PAT, so I use SSH authentication. Otherwise, operations like pull will fail.)
+If the YubiKey or the App Store sign-in was missing, fix it and run `chezmoi apply` again.
 
-```bash
-vim .git/config
-```
+### After it finishes
+
+1. Open Hammerspoon and grant it Accessibility access.
+2. Run `claude` and log in.
+3. Open a new terminal (fish starts as the login shell).
+4. Enter the YubiKey PIN on the first `git pull` / `git push`.
 
 ## Special Thanks
 

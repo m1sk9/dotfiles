@@ -1,0 +1,15 @@
+#!/bin/sh
+# Why not fish: bootstrap scripts run before Homebrew has installed fish.
+#
+# Why not ship key.txt itself: it decrypts every encrypted_* file. The source keeps
+# it passphrase-encrypted, so a new machine only needs the passphrase. The dot
+# prefix keeps chezmoi from deploying the encrypted key to $HOME.
+set -eu
+
+key="{{ .chezmoi.homeDir }}/.config/chezmoi/key.txt"
+[ -f "$key" ] && exit 0
+
+mkdir -p "$(dirname "$key")"
+"{{ .chezmoi.executable }}" age decrypt --passphrase \
+  --output "$key" "{{ .chezmoi.sourceDir }}/.chezmoi-key.age"
+chmod 600 "$key"
