@@ -10,14 +10,17 @@ Supports macOS and can be set up using [chezmoi](https://github.com/twpayne/chez
 
 1. Sign in to the App Store (the Brewfile installs App Store apps with `mas`, which cannot sign in by itself).
 2. Insert the YubiKey.
+3. Download the passphrase-protected age key (`.chezmoi-key.age`) from Proton Pass. It is kept out of this public repository.
 
 ### Run
 
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply m1sk9
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init m1sk9
+cp ~/Downloads/.chezmoi-key.age ~/dotfiles/
+~/.local/bin/chezmoi apply
 ```
 
-This clones the repository to `~/dotfiles` and applies it. Along the way it asks for:
+`init` clones the repository to `~/dotfiles`, and `apply` sets everything up. Along the way it asks for:
 
 - the passphrase of the age key (`.chezmoi-key.age`)
 - your password for `sudo` (Homebrew, and switching the login shell to fish)

@@ -1,15 +1,21 @@
 #!/bin/sh
 # Why not fish: bootstrap scripts run before Homebrew has installed fish.
 #
-# Why not ship key.txt itself: it decrypts every encrypted_* file. The source keeps
-# it passphrase-encrypted, so a new machine only needs the passphrase. The dot
-# prefix keeps chezmoi from deploying the encrypted key to $HOME.
+# key.txt decrypts every encrypted_* file. It travels as a passphrase-encrypted
+# copy kept in Proton Pass and placed in the source directory by hand.
+# Why not commit that copy: the repository is public, so the passphrase alone
+# would guard every secret against offline guessing.
 set -eu
 
 key="{{ .chezmoi.homeDir }}/.config/chezmoi/key.txt"
 [ -f "$key" ] && exit 0
 
+encrypted="{{ .chezmoi.sourceDir }}/.chezmoi-key.age"
+if [ ! -f "$encrypted" ]; then
+  echo "age key not found: download .chezmoi-key.age from Proton Pass to $encrypted and run chezmoi apply again" >&2
+  exit 1
+fi
+
 mkdir -p "$(dirname "$key")"
-"{{ .chezmoi.executable }}" age decrypt --passphrase \
-  --output "$key" "{{ .chezmoi.sourceDir }}/.chezmoi-key.age"
+"{{ .chezmoi.executable }}" age decrypt --passphrase --output "$key" "$encrypted"
 chmod 600 "$key"

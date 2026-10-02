@@ -37,7 +37,7 @@ Edit/Write でソースファイルを変更したら，`chezmoi diff` で差分
 
 ## 暗号化
 
-- 暗号化方式は **age**．`encrypted_*.age` ファイルは復号鍵 `~/.config/chezmoi/key.txt` が無いと扱えない．復号鍵そのものはパスフレーズで暗号化して `.chezmoi-key.age` に置き，鍵が無いマシンでは `run_onchange_before_00-decrypt-age-key.sh.tmpl` が apply の最初に復号する（パスフレーズ入力を求められる）．
+- 暗号化方式は **age**．`encrypted_*.age` ファイルは復号鍵 `~/.config/chezmoi/key.txt` が無いと扱えない．復号鍵そのものはパスフレーズで暗号化した `.chezmoi-key.age` として Proton Pass に保管し（公開リポジトリなのでコミットしない．`.gitignore` 済み），新しいマシンでは手でソースディレクトリに置く．鍵が無いマシンでは `run_onchange_before_00-decrypt-age-key.sh.tmpl` が apply の最初に復号する（パスフレーズ入力を求められる）．
 - `dot_awseal/encrypted_config.json.age` は [awseal](https://github.com/s6n-jp) の設定．**復号後の平文を誤って平文ファイルとしてコミットしないこと．**
 - `$HOME` に平文を落としたくない秘密は `encrypted_*` ではなく，ドット始まりのソースファイル（例: `.obsidian-token.age`）に置き，テンプレート内で ``{{ joinPath .chezmoi.sourceDir `<file>` | include | decrypt }}`` として使う．ドット始まりは chezmoi が展開対象から外すため，復号値はレンダリング結果にしか現れない．
 
@@ -64,7 +64,7 @@ Dock・Finder・キーボードなどの `defaults` は `run_onchange_after_conf
 
 ## 新規マシンのセットアップ（bootstrap）
 
-README の 1 行（`get.chezmoi.io` → `init --apply`）で完結させる．その前提として:
+README の手順（`get.chezmoi.io` で `init` → Proton Pass の age 鍵をコピー → `apply`）で完結させる．その前提として:
 - `run_*_before_*` と `run_*_after_<数字>-*` の bootstrap スクリプトは **POSIX sh** で書く（fish はまだ入っていない／fish に依存させないため）．fish 前提の原則の例外はこれらだけ．
 - スクリプトの PATH は `.chezmoi.toml.tmpl` の `[scriptEnv]` で固定している．Homebrew 未導入のシェルから起動されても，before スクリプトが入れた fish / luajit / herdr / claude を後続スクリプトが見つけられるようにするため．新しく PATH に依存するツールの置き場所が増えたらここに足すこと．`.chezmoi.toml.tmpl` を変えたら `chezmoi init` で設定を再生成すること．
 - 一度しか成功しない前提を置けない処理（YubiKey が挿さっていないと終われない GPG の取り込みなど）は `run_once_` にせず，冪等な `run_after_` にして早期 return する（`run_once_` はスキップして exit 0 しても実行済みになる）．
