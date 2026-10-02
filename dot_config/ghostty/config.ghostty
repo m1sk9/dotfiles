@@ -8,7 +8,7 @@ font-feature = -dlig
 font-feature = -liga
 font-size = 13
 keybind = cmd+c=copy_to_clipboard:plain
-keybind = cmd+i=text:cdi\n
+keybind = cmd+i=text:zi\n
 keybind = ctrl+cmd+a=text:zi\n
 keybind = ctrl+cmd+c=text:claude\n
 keybind = ctrl+cmd+r=toggle_readonly
