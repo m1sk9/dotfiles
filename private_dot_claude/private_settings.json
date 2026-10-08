@@ -169,11 +169,6 @@
   },
   "feedbackSurveyRate": 0,
   "spinnerTipsEnabled": true,
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "medium"
-    }
-  },
   "tui": "default",
   "showThinkingSummaries": true,
   "theme": "dark-daltonized",
