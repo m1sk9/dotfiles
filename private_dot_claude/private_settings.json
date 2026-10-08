@@ -129,6 +129,7 @@
     "defaultMode": "auto"
   },
   "model": "opus",
+  "advisorModel": "fable",
   "disableClaudeAiConnectors": true,
   "hooks": {
     "SessionStart": [
