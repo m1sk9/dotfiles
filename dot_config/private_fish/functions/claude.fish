@@ -66,7 +66,10 @@ function claude
         end
         set -l plan (command ls -t -- $plans | fzf --prompt 'plan> ' --preview 'bat --color=always --style=plain {}')
         or return 1
-        set -p argv --model opus
+        # Why not settings.json の advisorModel: 全セッションで Fable の枠を消費し得るので，
+        # 実装セッションにだけ起動引数で付ける．
+        __claude_warn_fable_usage
+        set -p argv --model opus --advisor fable
         set -a argv "計画ファイル $plan は承認済みです．この計画に沿って実装してください．"
     end
 
