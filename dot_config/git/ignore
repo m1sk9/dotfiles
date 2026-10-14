@@ -3,6 +3,7 @@
 .secret
 node_modules
 CLAUDE.local.md
+mise.local.toml
 /.claude/worktrees/
 
 .claude/settings.local.json
