@@ -1,7 +1,7 @@
 shell = "/opt/homebrew/bin/fish"
 
 [defaults]
-copy = [".env", ".env.local", ".idea/", "CLAUDE.local.md"]
+copy = [".env", ".env.local", ".idea/", "CLAUDE.local.md", "mise.local.toml"]
 run = []
 
 # Why: .husky/pre-commit runs `pnpm exec lint-staged` in frontend/admin, which
