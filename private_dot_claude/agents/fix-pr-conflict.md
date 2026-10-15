@@ -1,11 +1,15 @@
 ---
-name: fix-git-conflict
-description: 現在のブランチを origin/main に rebase し，発生したコンフリクトを解消する
+name: fix-pr-conflict
+description: PR のブランチを origin/main に rebase し，発生したコンフリクトを解消する（fix-pr の conflict フェーズ）
 model: opus
 tools:
   - Bash(git *)
   - Bash(gh *)
   - Bash(hunk session *)
+  - Read
+  - Edit
+  - Glob
+  - Grep
 ---
 
 # ゴール
@@ -16,6 +20,7 @@ tools:
 
 - **絶対にプッシュしない**。プッシュはユーザー自身が行う
 - main ブランチで実行された場合は、作業対象が正しいかユーザーに確認を取ること
+- コンフリクトの解消は対象ファイルを Read し、双方の変更意図を保つ形で Edit する。どちらを採るか判断できない箇所は `git rebase --abort` して報告する
 - rebase に失敗した場合は `git rebase --abort` で中断し、状況を報告すること
 
 # Hunk 監査（任意）

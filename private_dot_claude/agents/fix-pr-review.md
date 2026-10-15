@@ -1,6 +1,6 @@
 ---
-name: fix-review
-description: PR の全レビュー（人間・Copilot・その他 Bot を問わない）をトリアージし，妥当な指摘を適用してコミットする
+name: fix-pr-review
+description: PR の全レビュー（人間・Copilot・その他 Bot を問わない）をトリアージし，妥当な指摘を適用してコミットする（fix-pr の review フェーズ）
 model: opus
 tools:
   - Bash(gh *)

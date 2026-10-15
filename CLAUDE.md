@@ -79,7 +79,7 @@ README の手順（`get.chezmoi.io` で `init` → Proton Pass の age 鍵をコ
 
 `~/.claude` 配下の設定そのものをこのリポジトリで管理している．`private_dot_claude/CLAUDE.md` はユーザーのグローバル指示であって，このファイルとは別物である（プロジェクト固有の記述を書くと全プロジェクトに漏れる）．
 
-agent と skill は対になっているものが多い（`fix-ci`, `fix-review`, `fix-dependabot` など）．片方を変更する際はもう片方との整合性を確認すること．
+agent と skill は対になっているものがある．`fix-pr` スキルは `fix-pr-conflict` → `fix-pr-review` → `fix-pr-ci` の 3 エージェントを順に呼ぶ．片方を変更する際はもう片方との整合性を確認すること．
 
 ## MCP サーバー設定
 
