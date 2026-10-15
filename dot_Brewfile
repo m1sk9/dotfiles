@@ -60,6 +60,7 @@ cask "hermes-desktop"
 cask "slack"
 cask "spotify"
 cask "tailscale-app"
+cask "vlc"
 cask "zed"
 
 mas "Microsoft Excel", id: 462058435
