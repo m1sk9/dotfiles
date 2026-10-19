@@ -1,0 +1,20 @@
+#!/bin/sh
+# Why not `launchctl kickstart -k`: it restarts the job but does not re-read a changed plist.
+# caffeinate plist sha256: {{ include "private_Library/LaunchAgents/dev.m1sk9.caffeinate.plist" | sha256sum }}
+# brew-autoupdate plist sha256: {{ include "private_Library/LaunchAgents/dev.m1sk9.brew-autoupdate.plist.tmpl" | sha256sum }}
+set -eu
+
+[ "$(uname -s)" = Darwin ] || exit 0
+
+uid=$(id -u)
+for label in dev.m1sk9.caffeinate dev.m1sk9.brew-autoupdate; do
+  plist="$HOME/Library/LaunchAgents/$label.plist"
+  launchctl bootout "gui/$uid/$label" 2>/dev/null || true
+  # bootout is asynchronous; bootstrap can fail with EIO until the old job is gone.
+  n=0
+  until launchctl bootstrap "gui/$uid" "$plist"; do
+    n=$((n + 1))
+    [ "$n" -lt 5 ] || exit 1
+    sleep 1
+  done
+done
