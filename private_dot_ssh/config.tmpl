@@ -1,3 +1,10 @@
 Include {{ .chezmoi.homeDir }}/.config/colima/ssh_config
 
 {{ joinPath .chezmoi.sourceDir `.ssh-hosts.age` | include | decrypt | trim }}
+
+# Why not SSH_AUTH_SOCK だけに頼るか: fish の conf.d でしか設定されないため，
+# fish を経由しない起動（Claude Code のバックグラウンド実行・Hermes など）では
+# launchd の ssh-agent を参照して publickey で失敗する．
+# 末尾に置くのは ssh_config が最初に得た値を採用するため（個別ホストの指定を優先させる）．
+Host *
+  IdentityAgent ~/.gnupg/S.gpg-agent.ssh
