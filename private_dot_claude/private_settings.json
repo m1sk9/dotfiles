@@ -132,6 +132,26 @@
   "advisorModel": "fable",
   "disableClaudeAiConnectors": true,
   "hooks": {
+    "WorktreeCreate": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/opt/homebrew/bin/fish ~/.claude/hooks/worktree-create.fish"
+          }
+        ]
+      }
+    ],
+    "WorktreeRemove": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/opt/homebrew/bin/fish ~/.claude/hooks/worktree-remove.fish"
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "matcher": "^(startup|resume|clear|compact|fork)$",
@@ -156,7 +176,8 @@
     "kotlin-lsp@claude-plugins-official": false,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "stripe@claude-plugins-official": false
+    "stripe@claude-plugins-official": false,
+    "claude-security@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "mk": {
@@ -171,6 +192,7 @@
   "spinnerTipsEnabled": true,
   "tui": "default",
   "showThinkingSummaries": true,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark-daltonized",
   "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
