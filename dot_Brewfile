@@ -43,6 +43,8 @@ brew "ripgrep"
 brew "s6n-jp/tap/ghr"
 brew "zoxide"
 
+cask "1password"
+cask "1password-cli"
 cask "claude"
 cask "discord@canary"
 cask "distroav"
