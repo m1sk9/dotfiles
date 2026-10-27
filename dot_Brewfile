@@ -31,6 +31,7 @@ brew "lua-language-server"
 # Why not neovim の依存に任せる: macOS 設定スクリプトと Claude Code のステータスラインの実行に使う
 brew "luajit"
 brew "mas"
+brew "mole"
 brew "m1sk9/tap/strays"
 brew "mise"
 brew "usage"
