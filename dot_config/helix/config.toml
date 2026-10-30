@@ -1,0 +1,26 @@
+theme = "terafox"
+
+[editor]
+line-number = "relative"
+mouse = true
+scrolloff = 8
+cursorline = true
+color-modes = true
+# Why not LSP: development happens in Zed; keep Helix a light Vim replacement
+lsp.enable = false
+
+[editor.soft-wrap]
+enable = false
+
+[editor.whitespace.render]
+tab = "all"
+nbsp = "all"
+trailing = "all"
+
+[editor.whitespace.characters]
+tab = "»"
+nbsp = "␣"
+trailing = "·"
+
+[editor.search]
+smart-case = true

@@ -13,7 +13,7 @@
 [core]
 	autocrlf = input
 	ignorecase = false
-	editor = vim
+	editor = hx
 	quotepath = false
 [color]
 	ui = true

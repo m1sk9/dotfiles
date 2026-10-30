@@ -57,7 +57,7 @@ pane_history = false
 name = "gruvbox"
 auto_switch = false
 
-# Why: Ghostty (theme = Terafox) / nvim (colorscheme = terafox) に配色を揃える．
+# Why: Ghostty (theme = Terafox) / Helix (theme = terafox) に配色を揃える．
 # herdr の組み込みテーマに terafox はないため，base は gruvbox のまま
 # theme.custom で全トークンを terafox 公式パレット
 # (https://github.com/EdenEast/nightfox.nvim/blob/main/lua/nightfox/palette/terafox.lua)

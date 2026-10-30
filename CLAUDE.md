@@ -42,11 +42,9 @@ Edit/Write でソースファイルを変更したら，`chezmoi diff` で差分
 - `dot_awseal/encrypted_config.json.age` は [awseal](https://github.com/s6n-jp) の設定．**復号後の平文を誤って平文ファイルとしてコミットしないこと．**
 - `$HOME` に平文を落としたくない秘密は `encrypted_*` ではなく，ドット始まりのソースファイル（例: `.obsidian-token.age`）に置き，テンプレート内で ``{{ joinPath .chezmoi.sourceDir `<file>` | include | decrypt }}`` として使う．ドット始まりは chezmoi が展開対象から外すため，復号値はレンダリング結果にしか現れない．
 
-## Neovim（dot_config/nvim/）
+## Helix（dot_config/helix/）
 
-開発環境（LSP・補完・Treesitter・ファイルツリー・ファジーファインダー等）としては使わず，Vim の代替として使える程度の設定（options / keymaps / colorscheme / autopairs / which-key）だけを残している．開発用途は Zed が担うので，IDE 化するプラグインを戻さないこと．
-
-`init.lua` は `options.lua` → `keymaps.lua` → lazy.nvim の順で読み込む（`keymaps.lua` が `vim.g.mapleader` を設定するため，これより後に lazy.nvim を読み込むとプラグイン側の `<leader>` マッピングが素の `<Space>` として登録されてしまう）．lazy.nvim 自体は `.chezmoiexternal.toml` 経由ではなく `init.lua` 内で git clone して自己管理する（バージョン固定は lazy.nvim 自身の `lazy-lock.json` に任せ，chezmoi external との二重管理を避けるため）．`lua/plugins/` 配下の全ファイルがプラグイン定義として読み込まれる．
+エディタは Helix．開発環境（LSP 等）としては使わず，Vim の代替として使える程度の設定（行番号・mouse・空白の可視化・テーマ）だけを置いている．開発用途は Zed が担うので，`lsp.enable = false` を外さないこと．Neovim は 2026-10-30 に廃止した（`EDITOR` / chezmoi の `[edit]` / git の `core.editor` はすべて `hx`）．
 
 ## Hammerspoon（dot_hammerspoon/）
 

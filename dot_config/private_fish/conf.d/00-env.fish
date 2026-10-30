@@ -9,7 +9,7 @@ end
 
 fish_add_path --global $HOME/.local/bin $HOME/.cargo/bin $HOME/.deno/bin
 
-set -gx EDITOR /usr/bin/vim
+set -gx EDITOR /opt/homebrew/bin/hx
 set -gx LANG en_US.UTF-8
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx GHR_ROOT $HOME/Repositories
