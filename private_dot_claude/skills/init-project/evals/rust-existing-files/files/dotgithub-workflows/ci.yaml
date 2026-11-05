@@ -1,0 +1,7 @@
+name: CUSTOM
+on: push
+jobs:
+  x:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo custom

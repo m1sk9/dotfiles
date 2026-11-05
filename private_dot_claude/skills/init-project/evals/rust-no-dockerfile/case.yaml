@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rust-no-dockerfile
+expected_outcome: |
+  The skill asks whether to drop the Docker build/merge jobs from release.yaml instead of silently choosing, since no Dockerfile exists.
+context:
+  scaffold_script: place-files.sh

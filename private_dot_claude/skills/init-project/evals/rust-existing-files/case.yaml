@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rust-existing-files
+expected_outcome: |
+  The existing ci.yaml is left untouched and the user is asked what to do with the conflict; non-conflicting files are still generated.
+context:
+  scaffold_script: place-files.sh

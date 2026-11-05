@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: rust-no-cargo-toml
+expected_outcome: |
+  No files are generated; the user is told to run cargo init first (or move to a crate directory); cargo init is not run.
