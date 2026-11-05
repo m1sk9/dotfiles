@@ -16,6 +16,7 @@ argument-hint: [rust]
 | 引数 | 対象 | 手順 |
 | --- | --- | --- |
 | `rust` | Rust クレート．babyrite / Pythia / chime の CI・リリース構成 | `references/rust.md` |
+| `zed` | Zed のプロジェクト設定（`.zed/settings.json`）．babyrite / Pythia の構成 | `references/zed.md` |
 
 ## 2. 手順を読んで実行する
 
