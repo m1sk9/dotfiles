@@ -1,6 +1,10 @@
 // Project settings for editing this chezmoi source directory.
 // Lua Language Server options live in .luarc.json because Zed reads them from there.
 {
+  // LSP is off globally (~/.config/zed/settings.json). Opt in here with an explicit
+  // list: without "...", Zed does not pull in servers beyond the ones named.
+  "enable_language_server": true,
+  "language_servers": ["lua-language-server", "vtsls"],
   // chezmoi prefixes and .tmpl suffixes hide the real file type from Zed.
   "file_types": {
     "Lua": ["*.lua.tmpl"],

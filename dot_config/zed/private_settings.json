@@ -19,8 +19,7 @@
   "edit_predictions": {
     "provider": "none",
   },
-  "enable_language_server": true,
-  "language_servers": ["!biome", "!cspell", "..."],
+  "enable_language_server": false,
   "agent": {
     "dock": "right",
     "button": true,
