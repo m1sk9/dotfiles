@@ -39,7 +39,12 @@
 
 ## Git / GitHub
 
-- コミットメッセージは Conventional Commits に従い，すべて英語で書くこと．本文には変更の Why を書くこと（「設計思想」参照）．
+- コミットメッセージは Conventional Commits の形式 `<type>(<scope>): <subject>` を必ず守ること（scope は省略可）．
+  - type は `feat` / `fix` / `docs` / `chore` / `refactor` / `test` / `ci` / `build` / `perf` / `style` / `revert` のいずれかに限る．
+  - subject は英語の命令形で書き，末尾にピリオドを付けない．`Update ...` / `Add ...` / `update` のように type を欠く形式は使わない．
+  - 1 コミットには 1 つの変更だけを含める．複数の変更は分けてコミットする．
+  - 破壊的変更は type の後に `!` を付けるか，本文に `BREAKING CHANGE:` フッターを書く．
+  - すべて英語で書き，本文には変更の Why を書くこと（「設計思想」参照）．
 - 作成するプルリクエストのタイトルは，そのまま CHANGELOG の一項目として使えるように書くこと．
 - ブランチ単位の作業メモ・TODO は git branch description に残すこと（`git config branch.<name>.description "..."`）．ローカルの `.git/config` 保存で push されない自分用メモである．チーム共有が必要になったら Draft PR 本文へ移すこと．
 - SSH 認証や GPG 鍵のエラーが出た場合は停止し，ユーザーに伝えること．指示があり次第再実行すること．
