@@ -211,7 +211,12 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "stripe@claude-plugins-official": false,
-    "claude-security@claude-plugins-official": true
+    "claude-security@claude-plugins-official": true,
+    "review-pr@mk": true,
+    "engineering@synced": false,
+    "data@synced": false,
+    "productivity@synced": false,
+    "pdf-viewer@synced": false
   },
   "extraKnownMarketplaces": {
     "mk": {
