@@ -6,7 +6,7 @@
       "args": [
         "--bun",
         "chrome-devtools-mcp",
-        "--wsEndpoint=wss://kitesurf.dev/devtools/browser"
+        "--channel=dev"
       ]
     },
     "obsidian": {

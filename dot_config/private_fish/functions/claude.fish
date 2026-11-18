@@ -2,7 +2,7 @@
 # ブラウザは要るプロジェクトが限られるので，フラグを付けた起動でそのプロジェクト
 # (local scope) にだけ入れる．
 #
-# Why not chrome を別名で入れる: user scope の browser (Kitesurf) と名前を揃えると
+# Why not kitesurf を別名で入れる: user scope の browser (ローカル Chrome) と名前を揃えると
 # local が user を隠すため，ブラウザ MCP は常に 1 つしか起動しない．別名にすると
 # 同じ chrome-devtools-mcp が 2 つ立ち，同じツールが 2 セット見えて選べなくなる．
 # 代償として `claude mcp list` に [Conflicting scopes] 警告が出るが動作に影響はない．
@@ -22,7 +22,7 @@ function claude
     # kind=mcp は payload を `mcp add-json` に渡す JSON，kind=plugin は payload なし．
     # JSON 側の ':' は `string split -m 3` が 4 要素目に残すので割れない．
     set -l optional_local \
-        'chrome:mcp:browser:{"type":"stdio","command":"bunx","args":["chrome-devtools-mcp","--channel=dev"]}' \
+        'kitesurf:mcp:browser:{"type":"stdio","command":"bunx","args":["--bun","chrome-devtools-mcp","--wsEndpoint=wss://kitesurf.dev/devtools/browser"]}' \
         'stripe:plugin:stripe@claude-plugins-official:'
 
     for entry in $optional_local
