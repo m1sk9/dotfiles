@@ -262,7 +262,7 @@
 
 ## Obsidian
 
-- Vault のパスは /Users/m1sk9/Documents/m1sk9-vault です．
+- Vault のパスは /Users/m1sk9/Documents/Personal です．
 - このパスは，存在を確認してから使います．
   別のマシンで同じパスが使えると仮定しません．
 - 扱い方は Vault ルート直下の CLAUDE.md に従います．
