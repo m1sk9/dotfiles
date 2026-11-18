@@ -4,8 +4,9 @@
       "type": "stdio",
       "command": "bunx",
       "args": [
+        "--bun",
         "chrome-devtools-mcp",
-        "--wsEndpoint=wss://kitesurf.cloudflare.app/devtools/browser"
+        "--wsEndpoint=wss://kitesurf.dev/devtools/browser"
       ]
     },
     "obsidian": {
