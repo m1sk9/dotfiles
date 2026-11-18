@@ -83,7 +83,7 @@ agent と skill は対になっているものがある．`fix-pr` スキルは 
 
 user scope の MCP サーバー定義の source of truth は `.chezmoitemplates/mcp-servers.json` であり，`~/.claude.json` を直接編集・管理下には置いていない（`numStartups` や `projects` などの可変状態を含むため）．`run_onchange_configure-claude-mcp.fish.tmpl` がこの JSON を読み，`claude mcp remove` → `claude mcp add-json --scope user` で CLI 経由で注入する．MCP サーバーを追加・変更する際は `.chezmoitemplates/mcp-servers.json` を編集すること（詳細な理由は同スクリプト内の Why not コメントを参照）．
 
-ただしここに置いたものは全プロジェクトに載る．用途が限られる MCP・plugin は `dot_config/private_fish/functions/claude.fish` の `optional_local` 表に `<flag>:<kind>:<name>:<payload>` を足し，`claude --kitesurf` のように起動時フラグで local scope に投入する．ブラウザ MCP は user scope の `browser` (ローカル Chrome Dev) と同名を local scope に入れて隠す設計なので，Kitesurf を使う側も名前は `browser` にすること（別名にすると同じ chrome-devtools-mcp が 2 つ起動する）．
+ただしここに置いたものは全プロジェクトに載る．用途が限られる MCP・plugin は `dot_config/private_fish/functions/claude.fish` の `optional_local` 表に `<flag>:<kind>:<name>:<payload>` を足し，`claude --stripe` のように起動時フラグで local scope に投入する．ブラウザ MCP (`browser`) は user scope の chrome-devtools-mcp（ローカル Chrome Dev）だけを置き，別の接続先を足す場合も同じ名前で local scope に入れて隠すこと（別名にすると同じ chrome-devtools-mcp が 2 つ起動する）．
 
 ## 依存バージョンの自動更新（Renovate）
 
