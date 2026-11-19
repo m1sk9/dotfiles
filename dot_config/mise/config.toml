@@ -1,2 +1,15 @@
+# Why not node を未設定のまま: bunx が chrome-devtools-mcp などの node 製 CLI を shebang 経由で
+# 起動するとき，shim が解決できる global の node が要る．未設定だと
+# `mise ERROR No version is set for shim: node` で即終了する．
+# Why not latest: 奇数世代の Current に上がらないよう，LTS だけを追従する．
 [tools]
 bun = "latest"
+node = "lts"
+
+# Why not 自動インストールを残す: 未導入のツールを shim 実行・cd・command-not-found の
+# どれでも黙って取得して実行してしまう．npm / pnpm を含むパッケージの取得が
+# 意図しないタイミングで走るのを避けるため，導入は明示的な `mise install` だけにする．
+[settings]
+auto_install = false
+exec_auto_install = false
+not_found_auto_install = false
