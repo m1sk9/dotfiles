@@ -92,7 +92,7 @@
 
 ## Obsidian
 
-- Vault のパスは `/Users/m1sk9/Documents/m1sk9-vault`．
+- Vault のパスは `/Users/m1sk9/Documents/Personal`．
 - 書き込み操作は MCP を使い，読み込み操作は ripgrep を使うこと（トークンを無駄にしないため）．
 - 扱い方は Vault ルート直下の `CLAUDE.md` に従うこと．
 
