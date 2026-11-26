@@ -5,39 +5,6 @@ hs.autoLaunch(true)
 -- Why not local: init.lua のチャンク終了後に GC され，監視が止まる
 ConfigWatcher = hs.pathwatcher.new(hs.configdir, hs.reload):start()
 
--- Why not screencapture の target = clipboard: ファイルとして残らなくなる．
--- 保存先に書き出された画像を拾ってクリップボードにも入れ，両方を得る
-local function resolveScreenshotDir()
-  local output, ok = hs.execute("defaults read com.apple.screencapture location")
-  -- Why not location-last: location が未設定だと screencapture はそれを見ずにデスクトップへ保存する
-  local dir = ok and output:gsub("%s+$", ""):gsub("^~", os.getenv("HOME")) or os.getenv("HOME") .. "/Desktop"
-  -- Why not 空のまま監視: 空パスの pathwatcher はファイルシステム全体を監視し，
-  -- どのアプリが書いた PNG でもクリップボードに入れてしまう
-  if dir == "" or hs.fs.attributes(dir, "mode") ~= "directory" then
-    return nil
-  end
-  return dir
-end
-
-local screenshotDir = resolveScreenshotDir()
-local copiedScreenshots = {}
-ScreenshotWatcher = screenshotDir and hs.pathwatcher.new(screenshotDir, function(paths)
-  for _, path in ipairs(paths) do
-    local name = path:match("[^/]+$")
-    -- 書き出し中の一時ファイルはドット始まりの名前で作られ，完成後に rename される
-    if name:match("%.png$") and not name:match("^%.") and not copiedScreenshots[path] then
-      local file = io.open(path, "rb")
-      if file then
-        -- Why not writeObjects(hs.image): NSImage は TIFF を先頭に積むため，
-        -- Raycast のクリップボード履歴などが PNG ではなく TIFF として保存する
-        hs.pasteboard.writeDataForUTI(nil, "public.png", file:read("*a"))
-        file:close()
-        copiedScreenshots[path] = true
-      end
-    end
-  end
-end):start()
-
 local units = {
   leftHalf = { x = 0, y = 0, w = 1 / 2, h = 1 },
   rightHalf = { x = 1 / 2, y = 0, w = 1 / 2, h = 1 },

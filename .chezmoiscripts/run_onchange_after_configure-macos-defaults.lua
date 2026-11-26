@@ -27,10 +27,9 @@ local settings = {
     FXRemoveOldTrashItems = true,
   },
   ["com.apple.screencapture"] = {
-    location = "~/Pictures/Screenshots",
-    -- Why: サムネイル表示中はファイルの書き出しが待たされ，dot_hammerspoon の
-    -- クリップボードへのコピーも数秒遅れる
-    ["show-thumbnail"] = false,
+    -- Why not ファイル: 残したい画像は Raycast のクリップボード履歴から「Save as File」で保存する
+    target = "clipboard",
+    ["target-screenshot"] = "clipboard",
   },
   -- Why: ウィンドウ配置は Hammerspoon が担うので，OS 標準のタイリングとぶつけない
   ["com.apple.WindowManager"] = {
