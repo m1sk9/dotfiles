@@ -26,9 +26,12 @@ ScreenshotWatcher = screenshotDir and hs.pathwatcher.new(screenshotDir, function
     local name = path:match("[^/]+$")
     -- 書き出し中の一時ファイルはドット始まりの名前で作られ，完成後に rename される
     if name:match("%.png$") and not name:match("^%.") and not copiedScreenshots[path] then
-      local image = hs.image.imageFromPath(path)
-      if image then
-        hs.pasteboard.writeObjects(image)
+      local file = io.open(path, "rb")
+      if file then
+        -- Why not writeObjects(hs.image): NSImage は TIFF を先頭に積むため，
+        -- Raycast のクリップボード履歴などが PNG ではなく TIFF として保存する
+        hs.pasteboard.writeDataForUTI(nil, "public.png", file:read("*a"))
+        file:close()
         copiedScreenshots[path] = true
       end
     end
